@@ -1,103 +1,241 @@
-import Image from "next/image";
+import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Github, Youtube, MessageSquare, Gamepad2, Instagram } from "lucide-react"
+import ProjectCard from "@/components/project-card"
+import SocialLinks from "@/components/social-links"
+import ElectronicBackground from "@/components/electronic-background"
+import { CustomButton } from "@/components/custom-button"
+
+interface Project {
+  id: number
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  link: string
+  live: string
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Sample projects data - replace with your actual projects
+  const projects: Project[] = [
+    {
+      id: 1,
+      title: "Shipping company",
+      description: "A HTML, CSS & JS website built with single page",
+      image: "/shipping.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript"],
+      link: "https://github.com/Osama-Alghoul/Shipping_company",
+      live: "https://osama-alghoul.github.io/Shipping_company/",
+    },
+    {
+      id: 2,
+      title: "Book shelves by JS",
+      description: "A simple book shelves website built with HTML, CSS & JS",
+      image: "/book shelves.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript"],
+      link: "https://github.com/Osama-Alghoul/Book-shelves-by-JS",
+      live: "https://osama-alghoul.github.io/Book-shelves-by-JS/",
+    },
+    {
+      id: 3,
+      title: "Elzero Web School",
+      description: "All Elzero Web School Tasks, Assignments and challenges",
+      image: "/elzero.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript"],
+      link: "https://github.com/Osama-Alghoul/Elzero-web-school",
+      live: "https://osama-alghoul.github.io/Elzero-web-school/",
+    },
+    {
+      id: 4,
+      title: "Moviedux",
+      description: "Moives website built using React",
+      image: "/moviedux.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript", "React"],
+      link: "https://github.com/Osama-Alghoul/Moviedux-React",
+      live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
+    },
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+  return (
+    <main className="flex min-h-screen flex-col overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center bg-black">
+        <ElectronicBackground />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-black z-0"></div>
+        <div className="container px-4 md:px-6 relative z-10">
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="h-24 w-24 rounded-full border-2 border-gold overflow-hidden mb-4">
+              <Image
+                src="/Me.jpg?height=96&width=96"
+                alt="Profile"
+                width={96}
+                height={96}
+                className="object-cover"
+              />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gold">Osama Alghoul</h1>
+            <p className="text-xl md:text-2xl text-blue-400">
+              Software Engineer | Web Developer | Gamer | Content Creator
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              <CustomButton href="#projects">View Projects</CustomButton>
+              <CustomButton href="#contact" variant="outline">
+                Contact Me
+              </CustomButton>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <a href="#about" className="text-blue-400 hover:text-gold transition-colors">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-black">
+        <div className="container px-4 md:px-6 mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">About Me</h2>
+          <div className="grid md:grid-cols-2 items-center">
+            <div>
+              <svg className="mx-auto" width="359" height="236" viewBox="0 0 359 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="126.335" y="22.832" width="26" height="154.102" rx="13" transform="rotate(55 126.335 22.832)" fill="#F3AC39" />
+                <rect x="142" y="6.10544" width="26" height="235.937" rx="13" transform="rotate(-13.5813 142 6.10544)" fill="#F3AC39" />
+                <rect x="134.761" y="196.055" width="26" height="154.102" rx="13" transform="rotate(130 134.761 196.055)" fill="#F3AC39" />
+                <rect width="26" height="154.102" rx="13" transform="matrix(-0.573576 0.819152 0.819152 0.573576 231.913 21)" fill="#F3AC39" />
+                <rect width="26" height="154.102" rx="13" transform="matrix(0.642788 0.766044 0.766044 -0.642788 223.487 194.223)" fill="#F3AC39" />
+              </svg>
+            </div>
+            <div className="space-y-4">
+              <p className="text-lg text-gray-300">
+                Hello! I&apos;m a passionate software engineer and web developer with expertise in modern web technologies. I
+                specialize in building responsive, user-friendly applications using React, Next.js, and TypeScript.
+              </p>
+              <p className="text-lg text-gray-300">
+                When I&apos;m not coding, I&apos;m an avid gamer and content creator. I run a Discord community where I connect
+                with fellow gamers and tech enthusiasts. I&apos;m also passionate about creating content related to
+                programming and gaming.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <CustomButton href="#contact">Get In Touch</CustomButton>
+                <CustomButton href="/gaming" variant="outline">
+                  <Gamepad2 className="mr-2 h-4 w-4" />
+                  Gaming Profile
+                </CustomButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 bg-black/95">
+        <div className="container px-4 md:px-6 mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">My Projects</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <CustomButton href="https://github.com/yourusername" variant="outline" external>
+              <Github className="mr-2 h-4 w-4" />
+              View More on GitHub
+            </CustomButton>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Creator Section */}
+      <section id="content" className="py-20 bg-black">
+        <div className="container px-4 md:px-6 mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">Content Creator</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="aspect-video rounded-lg overflow-hidden border border-blue-600/30">
+                <Image
+                  src="/placeholder.svg?height=315&width=560"
+                  alt="Content Creator"
+                  width={560}
+                  height={315}
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-blue-400">My Content</h3>
+              <p className="text-lg text-gray-300">
+                I planning to create content about software development, web technologies. Subscribe to my channels to
+                stay updated to videos, tutorials, and live streams.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <CustomButton href="https://www.youtube.com/channel/UC4w0lxr1YonewXpbUeOH5Vw" variant="red" external>
+                  <Youtube className="mr-2 h-4 w-4" />
+                  YouTube
+                </CustomButton>
+                <CustomButton href="https://www.instagram.com/osssghoul/" variant="purple" external>
+                  <Instagram className="mr-2 h-4 w-4" />
+                  Instagram
+                </CustomButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-black/95">
+        <div className="container px-4 md:px-6 mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">Get In Touch</h2>
+          <div className="max-w-md mx-auto">
+            <Card className="bg-blue-950/30 border-blue-800">
+              <CardContent className="p-6 space-y-4">
+                <div className="space-y-2">
+                  <h3 className="text-xl font-bold text-gold">Contact Me</h3>
+                  <p className="text-gray-300">
+                    Feel free to reach out for collaborations, questions, or just to say hello!
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <MessageSquare className="mr-2 h-5 w-5 text-blue-400" />
+                    <span className="text-gray-300">osamalghoul2@gmial.com</span>
+                  </div>
+                  <SocialLinks />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 bg-blue-950">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <span className="text-gold font-bold">Osama Alghoul</span>
+              <span className="text-gray-400">© {new Date().getFullYear()}</span>
+            </div>
+            <div className="mt-4 md:mt-0">
+              <SocialLinks size="sm" />
+            </div>
+          </div>
+        </div>
       </footer>
-    </div>
-  );
+    </main>
+  )
 }
