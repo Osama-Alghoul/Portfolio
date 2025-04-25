@@ -21,7 +21,7 @@ export default function SocialLinks({ size = "md" }: SocialLinksProps) {
         <Instagram className={iconSize} />
       </Link>
       <Link
-        href="https://www.facebook.com/OsamaAlghoul"
+        href="https://www.facebook.com/OsamaAlghou/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-blue-400 hover:text-gold transition-colors"

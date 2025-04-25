@@ -20,6 +20,33 @@ export default function Home() {
   // Sample projects data - replace with your actual projects
   const projects: Project[] = [
     {
+      id: 4,
+      title: "Moviedux",
+      description: "Moives website built using React",
+      image: "/moviedux.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript", "React"],
+      link: "https://github.com/Osama-Alghoul/Moviedux-React",
+      live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
+    },
+    {
+      id: 5,
+      title: "Posting Section",
+      description: "Posts website built using React and Node.js",
+      image: "/placeholder.svg?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+      link: "https://github.com/Osama-Alghoul/Simple-Posts-section",
+      live: "https://v0-new-project-vmuldoj9rhe.vercel.app/",
+    },
+    {
+      id: 6,
+      title: "Local Market and a map",
+      description: " local market website built with pure code",
+      image: "/marketmap.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript"],
+      link: "https://github.com/Osama-Alghoul/Market---Map",
+      live: "https://osama-alghoul.github.io/Market---Map/",
+    },
+    {
       id: 1,
       title: "Shipping company",
       description: "A HTML, CSS & JS website built with single page",
@@ -46,15 +73,7 @@ export default function Home() {
       link: "https://github.com/Osama-Alghoul/Elzero-web-school",
       live: "https://osama-alghoul.github.io/Elzero-web-school/",
     },
-    {
-      id: 4,
-      title: "Moviedux",
-      description: "Moives website built using React",
-      image: "/moviedux.png?height=200&width=300",
-      tags: ["HTML", "CSS", "JavaScript", "React"],
-      link: "https://github.com/Osama-Alghoul/Moviedux-React",
-      live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
-    },
+    
   ]
 
   return (
@@ -167,11 +186,11 @@ export default function Home() {
             <div>
               <div className="aspect-video rounded-lg overflow-hidden border border-blue-600/30">
                 <Image
-                  src="/placeholder.svg?height=315&width=560"
+                  src="/placeholder.svg?width=560&height=315"
                   alt="Content Creator"
                   width={560}
                   height={315}
-                  className="object-cover"
+                  className="h-full w-full"
                 />
               </div>
             </div>

@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Mountain, Menu, X, Gamepad2 } from "lucide-react"
+import { Menu, X, Gamepad2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CustomButton } from "./custom-button"
+import Image from "next/image"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -37,7 +38,13 @@ export default function Header() {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <Mountain className="h-6 w-6 text-gold" />
+            <Image
+              src="/placeholder.svg?height=30&width=30"
+              alt="Profile"
+              width={30}
+              height={30}
+              className="object-cover"
+            />
             <span className="font-bold text-gold">Osama Alghoul</span>
           </Link>
 

@@ -21,92 +21,119 @@ export default function GamingPage() {
     {
       id: 1,
       title: "Valorant",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/Valorant.png?height=200&width=300",
       genre: "FPS",
       platform: "PC",
-      hoursPlayed: 450,
-      rating: 4.5,
+      hoursPlayed: 45,
+      rating: 3,
     },
     {
       id: 2,
       title: "Minecraft",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/minecraft.png?height=200&width=300",
       genre: "Sandbox",
       platform: "PC",
-      hoursPlayed: 1200,
-      rating: 5,
-    },
-    {
-      id: 3,
-      title: "League of Legends",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "MOBA",
-      platform: "PC",
-      hoursPlayed: 800,
-      rating: 4,
-    },
-    {
-      id: 4,
-      title: "Call of Duty",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "FPS",
-      platform: "PC/Console",
-      hoursPlayed: 350,
-      rating: 4,
-    },
-    {
-      id: 5,
-      title: "Apex Legends",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "Battle Royale",
-      platform: "PC",
-      hoursPlayed: 300,
-      rating: 4.5,
-    },
-    {
-      id: 6,
-      title: "The Witcher 3",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "RPG",
-      platform: "PC",
-      hoursPlayed: 200,
-      rating: 5,
-    },
-    {
-      id: 7,
-      title: "Cyberpunk 2077",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "RPG",
-      platform: "PC",
-      hoursPlayed: 150,
-      rating: 4,
-    },
-    {
-      id: 8,
-      title: "Fortnite",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "Battle Royale",
-      platform: "PC/Console",
-      hoursPlayed: 250,
-      rating: 3.5,
-    },
-    {
-      id: 9,
-      title: "Elden Ring",
-      image: "/placeholder.svg?height=200&width=300",
-      genre: "Action RPG",
-      platform: "PC",
-      hoursPlayed: 180,
-      rating: 5,
+      hoursPlayed: 30,
+      rating: 3.9,
     },
     {
       id: 10,
       title: "Counter-Strike 2",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/cs2.png?height=200&width=300",
       genre: "FPS",
       platform: "PC",
-      hoursPlayed: 500,
+      hoursPlayed: 120,
       rating: 4.5,
+    },
+    {
+      id: 3,
+      title: "PAYDAY 2",
+      image: "/payday2.png?height=200&width=300",
+      genre: "Co-op FPS",
+      platform: "PC",
+      hoursPlayed: 300,
+      rating: 5,
+    },
+    {
+      id: 4,
+      title: "Dying Light",
+      image: "/dl.png?height=200&width=300",
+      genre: "First-person survival",
+      platform: "PC",
+      hoursPlayed: 60,
+      rating: 5,
+    },
+    {
+      id: 5,
+      title: "Black Mesa",
+      image: "/blackmesa.png?height=200&width=300",
+      genre: "First-person shooter",
+      platform: "PC",
+      hoursPlayed: 20,
+      rating: 5,
+    },
+    {
+      id: 6,
+      title: "Borderlands",
+      image: "/borderlands.png?height=200&width=300",
+      genre: "Co-op FPS",
+      platform: "PC",
+      hoursPlayed: 150,
+      rating: 4.5,
+    },
+    {
+      id: 7,
+      title: "Zombie Army Trilogy",
+      image: "/zombiearmy.png?height=200&width=300",
+      genre: "Co-op shooter",
+      platform: "PC",
+      hoursPlayed: 60,
+      rating: 4.8,
+    },
+    {
+      id: 8,
+      title: "Half-Life 2",
+      image: "/halflife2.png?height=200&width=300",
+      genre: "First-person shooter",
+      platform: "PC",
+      hoursPlayed: 20,
+      rating: 5,
+    },
+    {
+      id: 9,
+      title: "Portal 2",
+      image: "/portal2.png?height=200&width=300",
+      genre: "First-person puzzle",
+      platform: "PC",
+      hoursPlayed: 15,
+      rating: 5,
+    },
+    {
+      id: 11,
+      title: "Left 4 Dead 2",
+      image: "/l4d2.png?height=200&width=300",
+      genre: "Co-op FPS",
+      platform: "PC",
+      hoursPlayed: 20,
+      rating: 4.4,
+    },
+    {
+      id: 12,
+      title: "Rogue company",
+      image: "/roguecompany.png?height=200&width=300",
+      genre: "PvP TPS",
+      platform: "PC",
+      hoursPlayed: 100,
+      rating: 3.9,
+    },
+    {
+      id: 13,
+      title: "GTA V",
+      image: "/GTAV.png?height=200&width=300",
+      genre: "Co-op Open-world",
+      platform: "PC",
+      hoursPlayed: 15,
+      rating: 4.9,
     },
   ]
 
@@ -129,7 +156,7 @@ export default function GamingPage() {
           <div className="mb-20">
             <Card className="bg-blue-950/50 border-blue-800 overflow-hidden">
               <div className="relative h-64 md:h-80">
-                <Image src="/placeholder.svg?height=400&width=1200" alt="Gaming Setup" fill className="object-cover" />
+                <Image src="/games.png?height=400&width=1200" alt="Gaming Setup" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <Badge className="bg-gold text-black mb-2">Gaming Passion</Badge>
@@ -201,7 +228,7 @@ export default function GamingPage() {
               </div>
               <div className="relative h-64 rounded-lg overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=300&width=500"
+                  src="/gaming.png?height=300&width=500"
                   alt="Discord Community"
                   fill
                   className="object-cover"
