@@ -1,10 +1,12 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
-import { Github, Youtube, MessageSquare, Gamepad2, Instagram } from "lucide-react"
+import { Github, Youtube, MessageSquare, Instagram } from "lucide-react"
 import ProjectCard from "@/components/project-card"
 import SocialLinks from "@/components/social-links"
 import ElectronicBackground from "@/components/electronic-background"
 import { CustomButton } from "@/components/custom-button"
+import SkillsSet from "@/components/skills"
+import Hero from "@/components/hero"
 
 interface Project {
   id: number
@@ -20,7 +22,16 @@ export default function Home() {
   // Sample projects data - replace with your actual projects
   const projects: Project[] = [
     {
-      id: 4,
+      id: 7,
+      title: "Next Level Food",
+      description: "Yummy Food recepies !",
+      image: "/nlfood.png?height=200&width=300",
+      tags: ["HTML", "CSS", "JavaScript", "Next JS", 'sqlite'],
+      link: "https://github.com/Osama-Alghoul/Next-Level-Food",
+      live: "https://next-level-food-lovat.vercel.app/",
+    },
+    {
+      id: 1,
       title: "Moviedux",
       description: "Moives website built using React",
       image: "/moviedux.png?height=200&width=300",
@@ -29,16 +40,16 @@ export default function Home() {
       live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
     },
     {
-      id: 5,
+      id: 2,
       title: "Posting Section",
       description: "Posts website built using React and Node.js",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/posts.png?height=200&width=300",
       tags: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
       link: "https://github.com/Osama-Alghoul/Simple-Posts-section",
       live: "https://v0-new-project-vmuldoj9rhe.vercel.app/",
     },
     {
-      id: 6,
+      id: 3,
       title: "Local Market and a map",
       description: " local market website built with pure code",
       image: "/marketmap.png?height=200&width=300",
@@ -47,7 +58,7 @@ export default function Home() {
       live: "https://osama-alghoul.github.io/Market---Map/",
     },
     {
-      id: 1,
+      id: 4,
       title: "Shipping company",
       description: "A HTML, CSS & JS website built with single page",
       image: "/shipping.png?height=200&width=300",
@@ -56,7 +67,7 @@ export default function Home() {
       live: "https://osama-alghoul.github.io/Shipping_company/",
     },
     {
-      id: 2,
+      id: 5,
       title: "Book shelves by JS",
       description: "A simple book shelves website built with HTML, CSS & JS",
       image: "/book shelves.png?height=200&width=300",
@@ -65,7 +76,7 @@ export default function Home() {
       live: "https://osama-alghoul.github.io/Book-shelves-by-JS/",
     },
     {
-      id: 3,
+      id: 6,
       title: "Elzero Web School",
       description: "All Elzero Web School Tasks, Assignments and challenges",
       image: "/elzero.png?height=200&width=300",
@@ -82,29 +93,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center bg-black">
         <ElectronicBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-black z-0"></div>
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div className="h-24 w-24 rounded-full border-2 border-gold overflow-hidden mb-4">
-              <Image
-                src="/Me.jpg?height=96&width=96"
-                alt="Profile"
-                width={96}
-                height={96}
-                className="object-cover"
-              />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gold">Osama Alghoul</h1>
-            <p className="text-xl md:text-2xl text-blue-400">
-              Software Engineer | Web Developer | Gamer | Content Creator
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <CustomButton href="#projects">View Projects</CustomButton>
-              <CustomButton href="#contact" variant="outline">
-                Contact Me
-              </CustomButton>
-            </div>
-          </div>
-        </div>
+        <Hero />
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <a href="#about" className="text-blue-400 hover:text-gold transition-colors">
             <svg
@@ -141,19 +130,22 @@ export default function Home() {
             <div className="space-y-4">
               <p className="text-lg text-gray-300">
                 Hello! I&apos;m a passionate software engineer and web developer with expertise in modern web technologies. I
-                specialize in building responsive, user-friendly applications using React, Next.js, and TypeScript.
+                specialize in building responsive, user-friendly applications using React, Next.js, and TypeScript with 5 years of experience and 4
+                monthes of internship. Here is my
+                full programming skills:
               </p>
-              <p className="text-lg text-gray-300">
+              {/* <p className="text-lg text-gray-300">
                 When I&apos;m not coding, I&apos;m an avid gamer and content creator. I run a Discord community where I connect
                 with fellow gamers and tech enthusiasts. I&apos;m also passionate about creating content related to
                 programming and gaming.
-              </p>
+              </p> */}
+              <SkillsSet />
               <div className="flex flex-wrap gap-4 pt-4">
                 <CustomButton href="#contact">Get In Touch</CustomButton>
-                <CustomButton href="/gaming" variant="outline">
+                {/* <CustomButton href="/gaming" variant="outline">
                   <Gamepad2 className="mr-2 h-4 w-4" />
                   Gaming Profile
-                </CustomButton>
+                </CustomButton> */}
               </div>
             </div>
           </div>
@@ -231,7 +223,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <MessageSquare className="mr-2 h-5 w-5 text-blue-400" />
-                    <span className="text-gray-300">osamalghoul2@gmial.com</span>
+                    <a href="mailto:osamalghoul2@gmail.com" className="text-blue-400">osamalghoul2@gmail.com</a>
                   </div>
                   <SocialLinks />
                 </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Gamepad2 } from "lucide-react"
+import { Menu, X} from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CustomButton } from "./custom-button"
 import Image from "next/image"
@@ -56,10 +56,10 @@ export default function Header() {
             <Link href={getSectionLink("projects")} className="text-gray-300 hover:text-gold transition-colors">
               Projects
             </Link>
-            <Link href="/gaming" className="text-gray-300 hover:text-gold transition-colors flex items-center gap-1">
+            {/* <Link href="/gaming" className="text-gray-300 hover:text-gold transition-colors flex items-center gap-1">
               <Gamepad2 className="h-4 w-4" />
               Gaming
-            </Link>
+            </Link> */}
             <Link href={getSectionLink("content")} className="text-gray-300 hover:text-gold transition-colors">
               Content
             </Link>
@@ -93,14 +93,6 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Projects
-            </Link>
-            <Link
-              href="/gaming"
-              className="text-gray-300 hover:text-gold transition-colors py-2 border-b border-blue-900/30 flex items-center gap-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Gamepad2 className="h-4 w-4" />
-              Gaming
             </Link>
             <Link
               href={getSectionLink("content")}
