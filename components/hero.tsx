@@ -17,8 +17,8 @@ export default function Hero() {
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gold">Hello I&apos;m</h1>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gold">Osama Alghoul</h1>
                     <br />
-                    <p className="text-xl md:text-2xl text-blue-400">
-                        &lt;Software Engineer | Web Developer /&gt;
+                    <p className="text-lg md:text-xl text-blue-400 sm:text-base md:sm:text-lg lg:sm:text-xl xl:sm:text-2xl 2xl:sm:text-3xl">
+                        Software_Engineer | Web_Developer
                     </p>
                     <div className="flex flex-wrap justify-center gap-4 mt-8">
                         <CustomButton href="#projects">View Projects</CustomButton>
@@ -31,3 +31,4 @@ export default function Hero() {
         </div>
     )
 }
+
