@@ -1,0 +1,102 @@
+import { CustomButton } from "./custom-button"
+import ProjectCard from "./project-card"
+import { Github } from "lucide-react"
+
+interface Project {
+    id: number
+    title: string
+    description: string
+    image: string
+    tags: string[]
+    link: string
+    live: string
+}
+
+export default function Projects() {
+
+    const projects: Project[] = [
+        {
+            id: 7,
+            title: "Next Level Food",
+            description: "Yummy Food recepies !",
+            image: "/nlfood.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript", "Next JS", 'sqlite'],
+            link: "https://github.com/Osama-Alghoul/Next-Level-Food",
+            live: "https://next-level-food-lovat.vercel.app/",
+        },
+        {
+            id: 1,
+            title: "Moviedux",
+            description: "Moives website built using React",
+            image: "/moviedux.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript", "React"],
+            link: "https://github.com/Osama-Alghoul/Moviedux-React",
+            live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
+        },
+        {
+            id: 2,
+            title: "Posting Section",
+            description: "Posts website built using React and Node.js",
+            image: "/posts.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+            link: "https://github.com/Osama-Alghoul/Simple-Posts-section",
+            live: "https://v0-new-project-vmuldoj9rhe.vercel.app/",
+        },
+        {
+            id: 3,
+            title: "Local Market and a map",
+            description: " local market website built with pure code",
+            image: "/marketmap.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript"],
+            link: "https://github.com/Osama-Alghoul/Market---Map",
+            live: "https://osama-alghoul.github.io/Market---Map/",
+        },
+        {
+            id: 4,
+            title: "Shipping company",
+            description: "A HTML, CSS & JS website built with single page",
+            image: "/shipping.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript"],
+            link: "https://github.com/Osama-Alghoul/Shipping_company",
+            live: "https://osama-alghoul.github.io/Shipping_company/",
+        },
+        {
+            id: 5,
+            title: "Book shelves by JS",
+            description: "A simple book shelves website built with HTML, CSS & JS",
+            image: "/book shelves.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript"],
+            link: "https://github.com/Osama-Alghoul/Book-shelves-by-JS",
+            live: "https://osama-alghoul.github.io/Book-shelves-by-JS/",
+        },
+        {
+            id: 6,
+            title: "Elzero Web School",
+            description: "All Elzero Web School Tasks, Assignments and challenges",
+            image: "/elzero.png?height=200&width=300",
+            tags: ["HTML", "CSS", "JavaScript"],
+            link: "https://github.com/Osama-Alghoul/Elzero-web-school",
+            live: "https://osama-alghoul.github.io/Elzero-web-school/",
+        },
+
+    ]
+    return (
+        <section id="projects" className="py-20 bg-black/95">
+            <div className="container px-4 md:px-6 mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">My Projects</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {projects.map((project) => (
+                        <ProjectCard key={project.id} project={project} />
+                    ))}
+                </div>
+                <div className="text-center mt-12">
+                    <CustomButton href="https://github.com/yourusername" variant="outline" external>
+                        <Github className="mr-2 h-4 w-4" />
+                        View More on GitHub
+                    </CustomButton>
+                </div>
+            </div>
+        </section>
+    )
+}
+
