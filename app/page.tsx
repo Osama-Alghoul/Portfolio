@@ -117,7 +117,7 @@ export default function Home() {
       <section id="about" className="py-20 bg-black">
         <div className="container px-4 md:px-6 mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">About Me</h2>
-          <div className="grid md:grid-cols-2 items-center">
+          <div className="grid md:grid-cols-2 gap-9 md:gap-0 items-center">
             <div>
               <svg className="mx-auto" width="359" height="236" viewBox="0 0 359 236" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="126.335" y="22.832" width="26" height="154.102" rx="13" transform="rotate(55 126.335 22.832)" fill="#F3AC39" />
