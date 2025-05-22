@@ -25,6 +25,15 @@ export default function Projects() {
             live: "https://next-level-food-lovat.vercel.app/",
         },
         {
+            id: 8,
+            title: "Developer Portfolio",
+            description: "Mobile developer portfolio website",
+            image: "/mobileDev.png?height=200&width=300",
+            tags: ["HTML", "CSS", "TypeScript", "Next JS"],
+            link: "https://github.com/Osama-Alghoul/Portfolio.Abdullah-Abo-sido",
+            live: "https://portfolio-abdullah-abo-sido.vercel.app/",
+        },
+        {
             id: 1,
             title: "Moviedux",
             description: "Moives website built using React",
