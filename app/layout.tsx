@@ -1,4 +1,4 @@
-import type React from "react"
+import React from "react"
 import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="light" style={{ colorScheme: "light" }}>
       <body className={`${inter.className} bg-black text-white min-h-screen overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Header />
@@ -28,3 +28,4 @@ export default function RootLayout({
     </html>
   )
 }
+
