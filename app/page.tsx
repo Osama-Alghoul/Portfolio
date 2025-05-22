@@ -4,6 +4,7 @@ import Content from "@/components/Content"
 import HeroSection from "@/components/heroSection"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
+import Services from "@/components/services"
 
 export default function Home() {
 
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col overflow-x-hidden">
       <HeroSection />
       <About />
+      <Services />
       <Projects />
       <Content />
       <Contact />

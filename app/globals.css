@@ -165,3 +165,55 @@ body {
     transform: translateX(0px);
   }
 }
+
+/* SVG Animation Styles */
+svg .svg-elem-1,
+svg .svg-elem-2,
+svg .svg-elem-3,
+svg .svg-elem-4,
+svg .svg-elem-5 {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1s ease-in-out;
+  opacity: 0;
+}
+
+svg.animate .svg-elem-1 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in forwards;
+  animation-delay: 0.1s;
+}
+
+svg.animate .svg-elem-2 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in forwards;
+  animation-delay: 0.3s;
+}
+
+svg.animate .svg-elem-3 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in forwards;
+  animation-delay: 0.5s;
+}
+
+svg.animate .svg-elem-4 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in forwards;
+  animation-delay: 0.7s;
+}
+
+svg.animate .svg-elem-5 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in forwards;
+  animation-delay: 0.9s;
+}
+
+/* Service card hover effect */
+.service-card:hover {
+  transform: translateY(-5px);
+}
