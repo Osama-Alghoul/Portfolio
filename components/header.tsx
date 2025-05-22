@@ -53,11 +53,11 @@ export default function Header() {
             <Link href={getSectionLink("about")} className="text-gray-300 hover:text-gold transition-colors">
               About
             </Link>
-            <Link href={getSectionLink("projects")} className="text-gray-300 hover:text-gold transition-colors">
-              Projects
-            </Link>
             <Link href={getSectionLink("services")} className="text-gray-300 hover:text-gold transition-colors">
               Services
+            </Link>
+            <Link href={getSectionLink("projects")} className="text-gray-300 hover:text-gold transition-colors">
+              Projects
             </Link>
             <Link href={getSectionLink("content")} className="text-gray-300 hover:text-gold transition-colors">
               Content
