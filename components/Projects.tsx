@@ -70,15 +70,6 @@ export default function Projects() {
             live: "https://osama-alghoul.github.io/Shipping_company/",
         },
         {
-            id: 5,
-            title: "Book shelves by JS",
-            description: "A simple book shelves website built with HTML, CSS & JS",
-            image: "/book shelves.png?height=200&width=300",
-            tags: ["HTML", "CSS", "JavaScript"],
-            link: "https://github.com/Osama-Alghoul/Book-shelves-by-JS",
-            live: "https://osama-alghoul.github.io/Book-shelves-by-JS/",
-        },
-        {
             id: 6,
             title: "Elzero Web School",
             description: "All Elzero Web School Tasks, Assignments and challenges",
