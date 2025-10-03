@@ -16,6 +16,15 @@ export default function Projects() {
 
     const projects: Project[] = [
         {
+            id: 2,
+            title: "Masar",
+            description: "Market and a map platform built to help the refugees in Gaza strip",
+            image: "/masar.png?height=200&width=300",
+            tags: ["Next JS", "CSS", "TypeScript", "Laravel", 'MySQL'],
+            link: "https://github.com/graduationUP/Masar_Project/",
+            live: "https://masar-project-frontui.vercel.app/",
+        },
+        {
             id: 7,
             title: "Next Level Food",
             description: "Yummy Food recepies !",
@@ -41,15 +50,6 @@ export default function Projects() {
             tags: ["HTML", "CSS", "JavaScript", "React"],
             link: "https://github.com/Osama-Alghoul/Moviedux-React",
             live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
-        },
-        {
-            id: 2,
-            title: "Posting Section",
-            description: "Posts website built using React and Node.js",
-            image: "/posts.png?height=200&width=300",
-            tags: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
-            link: "https://github.com/Osama-Alghoul/Simple-Posts-section",
-            live: "https://v0-new-project-vmuldoj9rhe.vercel.app/",
         },
         {
             id: 3,
