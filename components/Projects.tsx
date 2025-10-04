@@ -53,12 +53,12 @@ export default function Projects() {
         },
         {
             id: 3,
-            title: "Local Market and a map",
-            description: " local market website built with pure code",
-            image: "/marketmap.png?height=200&width=300",
-            tags: ["HTML", "CSS", "JavaScript"],
-            link: "https://github.com/Osama-Alghoul/Market---Map",
-            live: "https://osama-alghoul.github.io/Market---Map/",
+            title: "E-commerce app",
+            description: "An e-commerce application built with React and Vite",
+            image: "/e-commerce.png?height=200&width=300",
+            tags: ["React", "CSS", "TypeScript", "Vite"],
+            link: "https://github.com/Osama-Alghoul/Full-E-commerce-website",
+            live: "https://full-e-commerce-website-gdjb.vercel.app/",
         },
         {
             id: 4,
