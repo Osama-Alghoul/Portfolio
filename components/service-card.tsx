@@ -1,10 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { AnimatedSvgIcon } from "./animated-svg-icon"
-import { cn } from "@/lib/utils"
+import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedSvgIcon } from "./animated-svg-icon";
+import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
-  title: string
-  description: string
+  title: string;
+  description: string;
   iconType:
     | "design"
     | "responsive"
@@ -14,16 +14,21 @@ interface ServiceCardProps {
     | "integration"
     | "maintenance"
     | "ecommerce"
-    | "maps"
-  className?: string
+    | "maps";
+  className?: string;
 }
 
-export function ServiceCard({ title, description, iconType, className }: ServiceCardProps) {
+export function ServiceCard({
+  title,
+  description,
+  iconType,
+  className,
+}: ServiceCardProps) {
   return (
     <Card
       className={cn(
         "bg-blue-950/30 border-blue-800 hover:border-gold transition-all duration-300 hover:shadow-lg hover:shadow-blue-900/20 group",
-        className,
+        className
       )}
     >
       <CardContent className="p-6 flex flex-col items-center text-center md:items-start md:text-left">
@@ -34,5 +39,5 @@ export function ServiceCard({ title, description, iconType, className }: Service
         <p className="text-gray-300">{description}</p>
       </CardContent>
     </Card>
-  )
+  );
 }

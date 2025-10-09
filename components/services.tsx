@@ -1,8 +1,8 @@
-import { CustomButton } from "./custom-button"
-import { ServiceCard } from "./service-card"
+import { CustomButton } from "./custom-button";
+import { ServiceCard } from "./service-card";
 
 export default function Services() {
-    const services = [
+  const services = [
     {
       title: "Website Design Brought to Life",
       description:
@@ -57,31 +57,34 @@ export default function Services() {
         "If you have a physical location or want to show information on a map, I can integrate maps into your website.",
       iconType: "maps" as const,
     },
-  ]
-    return(
-        <section id="services" className="py-20 bg-black/95">
-        <div className="container px-4 md:px-6 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gold">My Services</h2>
-          <p className="text-blue-400 text-center max-w-3xl mx-auto mb-12">
-            I offer a range of web development services to help bring your digital ideas to life
-          </p>
+  ];
+  return (
+    <section id="services" className="py-20 bg-black/95">
+      <div className="container px-4 md:px-6 mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gold">
+          My Services
+        </h2>
+        <p className="text-blue-400 text-center max-w-3xl mx-auto mb-12">
+          I offer a range of web development services to help bring your digital
+          ideas to life
+        </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                title={service.title}
-                description={service.description}
-                iconType={service.iconType}
-                className="service-card"
-              />
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <CustomButton href="#contact">Discuss Your Project</CustomButton>
-          </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              description={service.description}
+              iconType={service.iconType}
+              className="service-card"
+            />
+          ))}
         </div>
-      </section>
-    )
+
+        <div className="text-center mt-12">
+          <CustomButton href="#contact">Discuss Your Project</CustomButton>
+        </div>
+      </div>
+    </section>
+  );
 }
