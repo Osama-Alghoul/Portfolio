@@ -25,6 +25,15 @@ export default function Projects() {
       live: "https://masar-project-frontui.vercel.app/",
     },
     {
+      id: 3,
+      title: "E-commerce app",
+      description: "An e-commerce application built with React and Vite",
+      image: "/e-commerce.png?height=200&width=300",
+      tags: ["React", "CSS", "TypeScript", "Vite"],
+      link: "https://github.com/Osama-Alghoul/Full-E-commerce-website",
+      live: "https://full-e-commerce-react.vercel.app/",
+    },
+    {
       id: 7,
       title: "Next Level Food",
       description: "Yummy Food recepies !",
@@ -50,15 +59,6 @@ export default function Projects() {
       tags: ["HTML", "CSS", "JavaScript", "React"],
       link: "https://github.com/Osama-Alghoul/Moviedux-React",
       live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
-    },
-    {
-      id: 3,
-      title: "E-commerce app",
-      description: "An e-commerce application built with React and Vite",
-      image: "/e-commerce.png?height=200&width=300",
-      tags: ["React", "CSS", "TypeScript", "Vite"],
-      link: "https://github.com/Osama-Alghoul/Full-E-commerce-website",
-      live: "https://full-e-commerce-website-gdjb.vercel.app/",
     },
     {
       id: 4,
