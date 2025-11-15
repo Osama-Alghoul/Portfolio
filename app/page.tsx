@@ -5,6 +5,12 @@ import HeroSection from "@/components/heroSection"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import Services from "@/components/services"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Osama Alghoul - Software Engineer & Web Developer",
+  description: "Portfolio website of Osama Alghoul, a software engineer, web developer, and content creator.",
+}
 
 export default function Home() {
 
@@ -20,3 +26,4 @@ export default function Home() {
     </main>
   )
 }
+
