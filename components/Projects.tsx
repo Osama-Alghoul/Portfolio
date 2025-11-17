@@ -92,7 +92,7 @@ export default function Projects() {
         </div>
         <div className="text-center mt-12">
           <CustomButton
-            href="https://github.com/yourusername"
+            href="https://github.com/Osama-Alghoul"
             variant="outline"
             external
           >
