@@ -58,7 +58,7 @@ export default function Projects() {
       image: "/moviedux.png?height=200&width=300",
       tags: ["HTML", "CSS", "JavaScript", "React"],
       link: "https://github.com/Osama-Alghoul/Moviedux-React",
-      live: "https://moviedux-react-34a6yw6ng-osama-alghouls-projects.vercel.app/",
+      live: "https://moviedux-react.vercel.app/",
     },
     {
       id: 4,
