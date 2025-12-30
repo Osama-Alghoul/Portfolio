@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { CustomButton } from "./custom-button";
 import { usePlayerStore, Character } from "@/lib/store";
-import { Wand2, Sword, Shield, Zap } from "lucide-react";
+import { Wand2, Sword, Shield } from "lucide-react";
 
 export default function Hero() {
   const { setCharacter, addXP, character } = usePlayerStore();

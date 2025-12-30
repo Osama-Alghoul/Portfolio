@@ -1,16 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Progress } from "./ui/progress";
-import {
-  Shield,
-  Wand2,
-  Sword,
-  Loader2,
-  Cpu,
-  Database,
-  Network,
-} from "lucide-react";
+import { Shield, Wand2, Sword, Cpu, Database, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function GameLoader() {

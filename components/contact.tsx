@@ -1,13 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "./ui/card";
-import {
-  MessageSquare,
-  ScrollText,
-  Send,
-  Sparkles,
-  CheckCircle,
-} from "lucide-react";
+import { MessageSquare, Sparkles, CheckCircle } from "lucide-react";
 import SocialLinks from "./social-links";
 import { usePlayerStore } from "@/lib/store";
 import { Badge } from "./ui/badge";

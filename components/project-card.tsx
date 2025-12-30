@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Trophy, CheckCircle } from "lucide-react";
+import { ExternalLink, Github, Trophy } from "lucide-react";
 import { CustomButton } from "./custom-button";
 import { usePlayerStore } from "@/lib/store";
 import { XPNode } from "./xp-node";
