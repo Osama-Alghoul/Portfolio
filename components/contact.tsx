@@ -45,9 +45,9 @@ export default function Contact() {
 
               <div className="space-y-4 border-l-4 border-gold/30 pl-6 py-2 italic font-serif relative">
                 <p className="text-base text-gray-300 leading-relaxed antialiased">
-                  "Your journey across the digital layers ends here, traveler.
-                  The final objective is clear: send your signal across the
-                  expanse. Will you forge a new alliance?"
+                  &quot;Your journey across the digital layers ends here,
+                  traveler. The final objective is clear: send your signal
+                  across the expanse. Will you forge a new alliance?&quot;
                 </p>
               </div>
 
