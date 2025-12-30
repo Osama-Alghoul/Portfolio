@@ -69,6 +69,30 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom Scrollbar - Game Style */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+.snap-section {
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 :root {
   --gold: 37 89% 59%;
 }
