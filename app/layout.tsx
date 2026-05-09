@@ -3,8 +3,9 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import PlayerHUD from "@/components/player-hud";
-import { GameLoader } from "@/components/game-loader";
+import MemoWidget from "@/components/memo-widget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +25,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-black text-white min-h-screen overflow-x-hidden`}
       >
-        <GameLoader />
         <Header />
-        <PlayerHUD />
         {children}
+        <PlayerHUD />
+        <MemoWidget />
+        <Footer />
       </body>
     </html>
   );

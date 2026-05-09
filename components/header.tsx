@@ -3,11 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CustomButton } from "./custom-button";
 import Image from "next/image";
-import PlayerHUD from "./player-hud";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +33,7 @@ export default function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-black/90 backdrop-blur-sm py-2 shadow-md"
-          : "bg-transparent py-4"
+          : "bg-transparent py-4",
       )}
     >
       <div className="container px-4 md:px-6 mx-auto">
@@ -81,21 +79,6 @@ export default function Header() {
               Contact
             </CustomButton>
           </nav>
-
-          {/* Mobile Menu Button & HUD */}
-          <div className="flex md:hidden items-center gap-4">
-            <PlayerHUD variant="inline" />
-            <button
-              className="text-gray-300 p-2 rounded-md hover:bg-blue-900/20"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
         </div>
       </div>
 

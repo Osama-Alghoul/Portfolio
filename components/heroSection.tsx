@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center bg-black">
       <ElectronicBackground />
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-black z-0"></div>
+      <div className="absolute inset-0"></div>
       <Hero />
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a

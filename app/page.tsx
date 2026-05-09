@@ -3,7 +3,6 @@ import Projects from "@/components/Projects";
 import Content from "@/components/Content";
 import HeroSection from "@/components/heroSection";
 import Contact from "@/components/contact";
-import Footer from "@/components/footer";
 import Services from "@/components/services";
 import { Metadata } from "next";
 
@@ -22,7 +21,6 @@ export default function Home() {
       <Projects />
       <Content />
       <Contact />
-      <Footer />
     </main>
   );
 }

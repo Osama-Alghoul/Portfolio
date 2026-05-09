@@ -70,10 +70,9 @@ export default function Services() {
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <ServiceCard
-              key={index}
-              index={index}
+              key={service.title}
               title={service.title}
               description={service.description}
               iconType={service.iconType}

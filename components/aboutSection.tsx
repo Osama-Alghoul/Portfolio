@@ -4,11 +4,8 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import SkillsSet from "./skills";
 import { CustomButton } from "./custom-button";
-import { usePlayerStore } from "@/lib/store";
-import { XPNode } from "./xp-node";
 
 export default function About() {
-  const { character } = usePlayerStore();
   const [firstDivRef, firstDivInView] = useInView({
     triggerOnce: true,
   });
@@ -23,20 +20,12 @@ export default function About() {
     { name: "Agility", value: 88, color: "bg-emerald-500" },
   ];
 
-  if (!character) return null;
-
   return (
     <section
       id="about"
       className="h-full flex items-center bg-black overflow-hidden py-12"
     >
       <div className="container px-4 md:px-6 mx-auto">
-        <XPNode id="about_lore_read" amount={30}>
-          <h2 className="text-3xl md:text-5xl font-black text-center mb-16 text-gold uppercase italic tracking-widest">
-            Character Profile
-          </h2>
-        </XPNode>
-
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
             ref={firstDivRef}
@@ -45,9 +34,6 @@ export default function About() {
             }`}
           >
             <div className="space-y-6 bg-blue-950/20 p-8 rounded-2xl border-2 border-blue-900/30 backdrop-blur-md shadow-2xl relative">
-              <div className="absolute -top-3 left-6 bg-blue-600 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-tighter shadow-lg">
-                Level 1 Stats
-              </div>
               <h3 className="text-xl font-black text-white uppercase tracking-widest mb-6 italic">
                 Base Attributes
               </h3>
@@ -91,17 +77,14 @@ export default function About() {
               secondDivInView ? "slide-in-right" : "opacity-0"
             }`}
           >
-            <XPNode id="about_bio_read" amount={20}>
-              <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
-                Hello! I&apos;m{" "}
-                <span className="text-gold font-black italic underline decoration-gold/30">
-                  Osama Alghoul
-                </span>
-                , a Software Engineer crafting premium digital paradigms. I
-                build high-performance systems with React, Next.js, and
-                TypeScript.
-              </p>
-            </XPNode>
+            <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
+              Hello! I&apos;m{" "}
+              <span className="text-gold font-black italic underline decoration-gold/30">
+                Osama Alghoul
+              </span>
+              , a Software Engineer crafting premium digital paradigms. I build
+              high-performance systems with React, Next.js, and TypeScript.
+            </p>
             <div className="space-y-4">
               <h4 className="text-xs font-black text-blue-400 uppercase tracking-[0.3em]">
                 Skill Tree Unlocked
@@ -109,14 +92,12 @@ export default function About() {
               <SkillsSet />
             </div>
             <div className="flex flex-wrap gap-4 pt-4">
-              <XPNode id="about_contact_cta" amount={10}>
-                <CustomButton
-                  href="#contact"
-                  className="h-12 px-8 uppercase font-black italic tracking-widest"
-                >
-                  Initialize Quest
-                </CustomButton>
-              </XPNode>
+              <CustomButton
+                href="#contact"
+                className="h-12 px-8 uppercase font-black italic tracking-widest"
+              >
+                Initialize Quest
+              </CustomButton>
             </div>
           </div>
         </div>
