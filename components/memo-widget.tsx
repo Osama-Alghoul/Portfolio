@@ -583,11 +583,7 @@ export default function MemoWidget() {
                   aria-label="إرسال الرسالة"
                   id="memo-send-button"
                 >
-                  <Send
-                    size={16}
-                    color="white"
-                    style={{ transform: "rotate(180deg)" }}
-                  />
+                  <Send size={16} color="white" />
                 </button>
               </form>
               <p
