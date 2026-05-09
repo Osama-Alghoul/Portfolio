@@ -122,6 +122,27 @@
     {
       "question": "من هو اكبر داعم لك",
       "answer": "امي وابي وصديقي محمود."
+    },
+    {
+      "question": "ما هي لعبتك المفضلة؟",
+      "answer": "Dying light, PAYDAY, Black Mesa, Helldivers 2"
+    }
+  ],
+  "Projects_sample": [
+    {
+      "name": "Rowwad Himam",
+      "link": "https://rowwadhimam.org",
+      "type": "personal"
+    },
+    {
+      "name": "Quranik",
+      "link": "https://quranik.org",
+      "type": "personal"
+    },
+    {
+      "name": "privco.com",
+      "link": "https://privco.com",
+      "type": "with ooblek"
     }
   ]
 }
