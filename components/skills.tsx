@@ -13,7 +13,7 @@ export default function SkillsSet() {
         JavaScript
       </Badge>
       <Badge variant="secondary" className="bg-blue-900/50 text-blue-200">
-        Sass
+        AI
       </Badge>
       <Badge variant="secondary" className="bg-blue-900/50 text-blue-200">
         Bootstarp
@@ -32,6 +32,12 @@ export default function SkillsSet() {
       </Badge>
       <Badge variant="secondary" className="bg-blue-900/50 text-blue-200">
         Git & GitHub
+      </Badge>
+      <Badge variant="secondary" className="bg-blue-900/50 text-blue-200">
+        Google Analytics
+      </Badge>
+      <Badge variant="secondary" className="bg-blue-900/50 text-blue-200">
+        SEO
       </Badge>
     </div>
   );

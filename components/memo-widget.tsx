@@ -1,6 +1,7 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
 
@@ -11,12 +12,14 @@ export default function MemoWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { messages, append, isLoading, error } = useChat({
-    api: "/api/chat",
+  const { messages, sendMessage: chatSendMessage, status, error } = useChat({
+    transport: new DefaultChatTransport({ api: "/api/chat" }),
     onFinish: () => {
       if (!isOpen) setHasNewMessage(true);
     },
   });
+
+  const isLoading = status === "submitted" || status === "streaming";
 
   // Auto-scroll to bottom on new messages
   useEffect(() => {
@@ -35,7 +38,7 @@ export default function MemoWidget() {
 
   const sendMessage = () => {
     if (input.trim() && !isLoading) {
-      append({ role: "user", content: input.trim() });
+      chatSendMessage({ text: input.trim() });
       setInput("");
     }
   };
@@ -416,7 +419,12 @@ export default function MemoWidget() {
                       whiteSpace: "pre-wrap",
                     }}
                   >
-                    {message.content}
+                    {message.parts.map((part, index) => {
+                      if (part.type === "text") {
+                        return <span key={index}>{part.text}</span>;
+                      }
+                      return null;
+                    })}
                   </div>
                 </div>
               ))}

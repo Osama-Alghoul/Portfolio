@@ -1,5 +1,5 @@
 import { createGroq } from "@ai-sdk/groq";
-import { streamText } from "ai";
+import { streamText, createTextStreamResponse, toTextStream } from "ai";
 import { readFileSync } from "fs";
 import { join } from "path";
 
@@ -37,5 +37,9 @@ ${knowledgeBase}`;
     messages,
   });
 
-  return result.toDataStreamResponse();
+  const textStream = toTextStream({
+    stream: result.stream,
+  });
+
+  return createTextStreamResponse({ stream: textStream });
 }
