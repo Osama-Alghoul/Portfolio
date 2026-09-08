@@ -1,5 +1,5 @@
 import { createGroq } from "@ai-sdk/groq";
-import { streamText, createTextStreamResponse, toTextStream } from "ai";
+import { streamText, convertToModelMessages } from "ai";
 import { readFileSync } from "fs";
 import { join } from "path";
 
@@ -32,14 +32,11 @@ export async function POST(req: Request) {
 ${knowledgeBase}`;
 
   const result = streamText({
-    model: groq("llama-3.1-8b-instant"),
+    model: groq("openai/gpt-oss-120b"),
     system: systemPrompt,
-    messages,
+    messages: await convertToModelMessages(messages),
   });
 
-  const textStream = toTextStream({
-    stream: result.stream,
-  });
-
-  return createTextStreamResponse({ stream: textStream });
+  return result.toUIMessageStreamResponse();
 }
+

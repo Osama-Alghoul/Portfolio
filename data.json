@@ -24,6 +24,8 @@
       "GA4 & gtag.js",
       "Google indexing"
     ],
+    "backend": ["Node.js", "Express.js"],
+    "AI": ["Claude", "Codex", "Gemini"],
     "Others": ["SEO"]
   },
   "Light_knowledge": ["Java", "GO lang"],
@@ -40,6 +42,10 @@
     {
       "name": "تحسين الأداء",
       "description": "تحسين سرعة وأداء المواقع والتطبيقات الموجودة لضمان تجربة مستخدم أفضل."
+    },
+    {
+      "name": "بناء واتمتة الأنظمة بالذكاء الاصطناعي",
+      "description": "بناء واتمتة الأنظمة باستخدام الذكاء الاصطناعي، وتطوير حلول مخصصة لتلبية احتياجات عملك."
     }
   ],
   "contact": {
@@ -143,6 +149,11 @@
       "name": "privco.com",
       "link": "https://privco.com",
       "type": "with ooblek"
+    },
+    {
+      "name": "Telegram bot to count electricity usage",
+      "link": "https://t.me/osssghoul3addad_bot",
+      "type": "personal"
     }
   ]
 }
