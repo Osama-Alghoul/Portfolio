@@ -11,19 +11,13 @@
       "React",
       "Next.js",
       "TypeScript",
+      "GA4 & gtag.js",
       "Tailwind CSS",
       "HTML",
       "CSS",
       "JavaScript"
     ],
-    "tools": [
-      "Git",
-      "GitHub",
-      "VS Code",
-      "Figma",
-      "GA4 & gtag.js",
-      "Google indexing"
-    ],
+    "tools": ["Git", "GitHub", "VS Code", "Figma", "Google indexing"],
     "backend": ["Node.js", "Express.js"],
     "AI": ["Claude", "Codex", "Gemini"],
     "Others": ["SEO"]
