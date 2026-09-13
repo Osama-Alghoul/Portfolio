@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import PlayerHUD from "@/components/player-hud";
 import MemoWidget from "@/components/memo-widget";
+import WebmcpColorTool from "@/components/webmcp-color-tool";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         <PlayerHUD />
         <MemoWidget />
         <Footer />
+        <WebmcpColorTool />
       </body>
     </html>
   );
