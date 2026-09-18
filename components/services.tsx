@@ -4,58 +4,40 @@ import { ServiceCard } from "./service-card";
 export default function Services() {
   const services = [
     {
-      title: "Website Design Brought to Life",
+      title: "Designing Systems That Scale With You",
       description:
-        "Taking a design you love (or helping you create one) and turning it into a real, working website that people can visit online.",
-      iconType: "design" as const,
-    },
-    {
-      title: "Making Your Website Look Great on All Devices",
-      description:
-        "Ensuring your website looks good and works perfectly whether someone is using a computer, a tablet, or a mobile phone.",
-      iconType: "responsive" as const,
-    },
-    {
-      title: "Creating Websites That Are Easy to Use",
-      description:
-        "Building websites that are simple to navigate and understand, so your visitors have a good experience.",
-      iconType: "usability" as const,
-    },
-    {
-      title: "Building Fast and Responsive Websites",
-      description:
-        "Making sure your website loads quickly and responds smoothly when people click buttons or move around the page. This keeps visitors happy and engaged.",
-      iconType: "performance" as const,
-    },
-    {
-      title: "Building Interactive Features for Your Website",
-      description:
-        "Adding elements to your website that people can interact with, like buttons that do things, forms to fill out, special animations, and immersive 3D models that users can explore and interact with.",
-      iconType: "interactive" as const,
-    },
-    {
-      title: "Connecting Your Website to Other Online Tools",
-      description:
-        "Making sure your website can work with other services you might use, like payment systems for online stores or other online platforms.",
+        "Architecting strong technical foundations and scalable systems from day one, so your product can grow without needing a constant rebuild.",
       iconType: "integration" as const,
     },
     {
-      title: "Keeping Your Website Updated and Working Well",
+      title: "Building Full-Stack Web & AI-Powered Apps",
       description:
-        "Providing ongoing support to make sure your website stays secure, functions correctly, and looks up-to-date.",
+        "Designing and building complete applications — from polished, interactive interfaces to the AI-powered features running underneath them.",
+      iconType: "interactive" as const,
+    },
+    {
+      title: "Integrating AI Into Real Products",
+      description:
+        "Connecting AI services into your existing systems and workflows, turning them from a demo into something reliable your users can depend on.",
+      iconType: "design" as const,
+    },
+    {
+      title: "Making Everything Fast Under Real Load",
+      description:
+        "Tuning and optimizing your website or application so it stays fast and responsive as your traffic and data grow, not just in the demo.",
+      iconType: "performance" as const,
+    },
+    {
+      title: "Leading Teams and Technical Direction",
+      description:
+        "Providing technical leadership for your engineering team — architecture decisions, code review, mentorship, and keeping the project on a solid long-term path.",
+      iconType: "usability" as const,
+    },
+    {
+      title: "Keeping Systems Running and Scaling Smoothly",
+      description:
+        "Ongoing support to keep your systems secure, stable, and ready to scale as your business needs grow.",
       iconType: "maintenance" as const,
-    },
-    {
-      title: "Creating Online Stores",
-      description:
-        "Building the part of an e-commerce website that customers see and interact with, like product pages, shopping carts, and the checkout process.",
-      iconType: "ecommerce" as const,
-    },
-    {
-      title: "Adding Map Features to Your Website",
-      description:
-        "If you have a physical location or want to show information on a map, I can integrate maps into your website.",
-      iconType: "maps" as const,
     },
   ];
   return (
@@ -65,8 +47,8 @@ export default function Services() {
           My Services
         </h2>
         <p className="text-blue-400 text-center max-w-3xl mx-auto mb-12">
-          I offer a range of web development services to help bring your digital
-          ideas to life
+          I help businesses architect, build, and scale technical systems —
+          from strong infrastructure to AI integration
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -14,7 +14,7 @@ interface Project {
   description: string;
   image: string;
   tags: string[];
-  link: string;
+  link?: string;
   live: string;
 }
 
@@ -70,15 +70,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <div className="mt-auto flex gap-3 items-center">
-          <CustomButton
-            href={project.link}
-            external
-            variant="outline"
-            className="w-full text-[10px] h-10 font-black uppercase tracking-widest italic border-2 transition-all border-gold/30 text-gold bg-gold/5"
-          >
-            <Github className="h-4 w-4 mr-2" />
-            <span>Examine Code</span>
-          </CustomButton>
+          {project.link && (
+            <CustomButton
+              href={project.link}
+              external
+              variant="outline"
+              className="w-full text-[10px] h-10 font-black uppercase tracking-widest italic border-2 transition-all border-gold/30 text-gold bg-gold/5"
+            >
+              <Github className="h-4 w-4 mr-2" />
+              <span>Examine Code</span>
+            </CustomButton>
+          )}
 
           <CustomButton
             href={project.live}

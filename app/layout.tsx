@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 const SITE_URL = "https://www.osssghoul.com";
 const TITLE = "Osama Alghoul - Software Engineer & Web Developer";
 const DESCRIPTION =
-  "Portfolio website of Osama Alghoul, a software engineer, web developer, and content creator.";
+  "Portfolio website of Osama Alghoul, a software engineer who builds, leads, and integrates AI services into scalable systems on a strong infrastructure.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     ...data.skills.frontend,
     ...data.skills.backend,
     ...data.skills.AI,
+    ...data.skills.Architecture,
     "portfolio",
     "software engineer",
     "web developer",

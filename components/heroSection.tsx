@@ -7,7 +7,7 @@ export default function HeroSection() {
       <ElectronicBackground />
       <div className="absolute inset-0"></div>
       <Hero />
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-50">
         <a
           href="#about"
           className="text-blue-400 hover:text-gold transition-colors"

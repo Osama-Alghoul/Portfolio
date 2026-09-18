@@ -24,6 +24,7 @@ export default function JsonLd() {
           ...data.skills.frontend,
           ...data.skills.backend,
           ...data.skills.AI,
+          ...data.skills.Architecture,
           ...data.skills.tools,
         ],
         sameAs: [

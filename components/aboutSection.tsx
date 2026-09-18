@@ -82,8 +82,9 @@ export default function About() {
               <span className="text-gold font-black italic underline decoration-gold/30">
                 Osama Alghoul
               </span>
-              , a Software Engineer crafting premium digital paradigms. I build
-              high-performance systems with React, Next.js, and TypeScript.
+              , a Software Engineer & Web Developer crafting premium digital
+              paradigms. I build high-performance systems with AI integrations
+              using React, Next.js, and TypeScript.
             </p>
             <div className="space-y-4">
               <h4 className="text-xs font-black text-blue-400 uppercase tracking-[0.3em]">

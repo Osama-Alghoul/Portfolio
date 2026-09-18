@@ -2,9 +2,9 @@
   "personal": {
     "name": "أسامة الغول",
     "name_en": "Osama Alghoul",
-    "title": "مهندس برمجيات ومطور ويب",
+    "title": "مهندس برمجيات أول ومطوّر أنظمة ذكاء اصطناعي قابلة للتوسع",
     "location": "فلسطين",
-    "bio": "أسامة الغول مطور ويب متخصص في بناء تطبيقات الويب الحديثة والمتجاوبة. شغوف بتقديم تجارب مستخدم استثنائية وكتابة كود نظيف وقابل للصيانة."
+    "bio": "أسامة الغول مهندس برمجيات أول متخصص في بناء وقيادة ودمج خدمات الذكاء الاصطناعي داخل أنظمة قابلة للتوسع ببنية تقنية قوية. شغوف بالهندسة المعمارية الصلبة، وكتابة كود نظيف وقابل للصيانة، وتقديم تجارب مستخدم استثنائية."
   },
   "skills": {
     "frontend": [
@@ -19,27 +19,33 @@
     ],
     "tools": ["Git", "GitHub", "VS Code", "Figma", "Google indexing"],
     "backend": ["Node.js", "Express.js"],
-    "AI": ["Claude", "Codex", "Gemini"],
+    "AI": ["Claude", "Codex", "Gemini", "AI Service Integration"],
+    "Architecture": [
+      "System Design",
+      "Scalable Systems",
+      "Strong Infrastructure",
+      "Technical Leadership"
+    ],
     "Others": ["SEO"]
   },
   "Light_knowledge": ["Java", "GO lang"],
 
   "services": [
     {
-      "name": "تطوير مواقع الويب",
-      "description": "بناء مواقع ويب حديثة وسريعة ومتجاوبة مع جميع الأجهزة باستخدام Next.js و React."
+      "name": "تصميم البنية التقنية والأنظمة القابلة للتوسع",
+      "description": "تصميم بنية تقنية متينة وأنظمة قابلة للتوسع منذ الأساس، تدعم نمو مشروعك على المدى الطويل دون الحاجة لإعادة بناء مستمرة."
     },
     {
       "name": "تطوير تطبيقات الويب",
       "description": "تصميم وبناء تطبيقات ويب كاملة (Full-Stack) مع واجهات مستخدم تفاعلية وخلفيات قوية."
     },
     {
-      "name": "تحسين الأداء",
-      "description": "تحسين سرعة وأداء المواقع والتطبيقات الموجودة لضمان تجربة مستخدم أفضل."
+      "name": "تحسين الأداء وقابلية التوسع",
+      "description": "تحسين سرعة وأداء المواقع والتطبيقات وتهيئتها للتوسع تحت الضغط العالي، لضمان تجربة مستخدم أفضل."
     },
     {
-      "name": "بناء واتمتة الأنظمة بالذكاء الاصطناعي",
-      "description": "بناء واتمتة الأنظمة باستخدام الذكاء الاصطناعي، وتطوير حلول مخصصة لتلبية احتياجات عملك."
+      "name": "بناء وقيادة أنظمة الذكاء الاصطناعي القابلة للتوسع",
+      "description": "قيادة وبناء ودمج خدمات الذكاء الاصطناعي داخل أنظمة قابلة للتوسع ببنية تقنية قوية، وتطوير حلول مخصصة تلبي احتياجات عملك."
     }
   ],
   "contact": {
@@ -130,6 +136,31 @@
   ],
   "Projects_sample": [
     {
+      "name": "Masar",
+      "link": "https://github.com/graduationUP/Masar_Project/",
+      "type": "graduation project"
+    },
+    {
+      "name": "privco.com",
+      "link": "https://privco.com",
+      "type": "with ooblek"
+    },
+    {
+      "name": "Amtar",
+      "link": "https://amtar-jade.vercel.app/",
+      "type": "freelance"
+    },
+    {
+      "name": "Tadawul Real Estate",
+      "link": "https://tadaol.vercel.app/",
+      "type": "freelance"
+    },
+    {
+      "name": "UPAL Systems",
+      "link": "https://al-factory.vercel.app/",
+      "type": "freelance"
+    },
+    {
       "name": "Rowwad Himam",
       "link": "https://rowwadhimam.org",
       "type": "personal"
@@ -138,11 +169,6 @@
       "name": "Quranik",
       "link": "https://quranik.org",
       "type": "personal"
-    },
-    {
-      "name": "privco.com",
-      "link": "https://privco.com",
-      "type": "with ooblek"
     },
     {
       "name": "Telegram bot to count electricity usage",
