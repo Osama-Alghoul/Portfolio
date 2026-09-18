@@ -28,7 +28,7 @@ export default function Contact() {
                   <h3 className="text-xl font-black text-gold uppercase tracking-tighter italic">
                     Quest: Establish Connection
                   </h3>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">
+                  <p className="text-[10px] text-white/60 uppercase tracking-widest font-bold">
                     Difficulty: Zero-Day
                   </p>
                 </div>
@@ -44,7 +44,7 @@ export default function Contact() {
 
               <div className="space-y-8 pt-6">
                 <div className="space-y-3">
-                  <p className="text-[10px] text-white/40 uppercase tracking-[0.3em] font-black">
+                  <p className="text-[10px] text-white/60 uppercase tracking-[0.3em] font-black">
                     Transmission Channel
                   </p>
                   <div className="flex items-center p-4 rounded-xl bg-black/60 border border-white/5 hover:border-blue-500/50 transition-all group/item">
@@ -59,7 +59,7 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-4">
-                  <p className="text-[10px] text-white/40 uppercase tracking-[0.3em] font-black">
+                  <p className="text-[10px] text-white/60 uppercase tracking-[0.3em] font-black">
                     Decrypt Socials
                   </p>
                   <div className="flex justify-center md:justify-start">

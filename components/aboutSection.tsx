@@ -34,9 +34,9 @@ export default function About() {
             }`}
           >
             <div className="space-y-6 bg-blue-950/20 p-8 rounded-2xl border-2 border-blue-900/30 backdrop-blur-md shadow-2xl relative">
-              <h3 className="text-xl font-black text-white uppercase tracking-widest mb-6 italic">
+              <h2 className="text-xl font-black text-white uppercase tracking-widest mb-6 italic">
                 Base Attributes
-              </h3>
+              </h2>
               {stats.map((stat) => (
                 <div key={stat.name} className="space-y-2">
                   <div className="flex justify-between text-[10px] font-black uppercase text-white/50 tracking-widest">
@@ -54,7 +54,7 @@ export default function About() {
                 </div>
               ))}
               <div className="pt-6 border-t border-white/5">
-                <p className="text-[10px] text-white/30 leading-relaxed uppercase tracking-tighter font-medium">
+                <p className="text-[10px] text-white/60 leading-relaxed uppercase tracking-tighter font-medium">
                   Trait:{" "}
                   <span className="text-white/60">Perpetual Learner</span>
                   <br />
@@ -87,9 +87,9 @@ export default function About() {
               using React, Next.js, and TypeScript.
             </p>
             <div className="space-y-4">
-              <h4 className="text-xs font-black text-blue-400 uppercase tracking-[0.3em]">
+              <h2 className="text-xs font-black text-blue-400 uppercase tracking-[0.3em]">
                 Skill Tree Unlocked
-              </h4>
+              </h2>
               <SkillsSet />
             </div>
             <div className="flex flex-wrap gap-4 pt-4">

@@ -81,7 +81,7 @@ export function GameLoader() {
         <div className="space-y-4">
           <div className="flex justify-between items-end">
             <div className="space-y-1">
-              <p className="text-[10px] text-white/40 uppercase tracking-widest font-black italic">
+              <p className="text-[10px] text-white/60 uppercase tracking-widest font-black italic">
                 System Message
               </p>
               <p className="text-sm text-blue-400 font-mono italic animate-pulse">

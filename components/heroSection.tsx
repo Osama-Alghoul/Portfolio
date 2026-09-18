@@ -10,6 +10,8 @@ export default function HeroSection() {
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-50">
         <a
           href="#about"
+          title="know more about me"
+          aria-label="know more about me"
           className="text-blue-400 hover:text-gold transition-colors"
         >
           <svg

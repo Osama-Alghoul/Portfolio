@@ -49,7 +49,7 @@ export default function Hero() {
         {!character ? (
           <div className="space-y-6 max-w-xl animate-in fade-in slide-in-from-bottom-5 duration-700">
             <div className="space-y-2">
-              <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] font-bold">
+              <p className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-bold">
                 Select Your Paradigm
               </p>
               <div className="grid grid-cols-3 gap-4">
@@ -77,7 +77,7 @@ export default function Hero() {
                 ))}
               </div>
             </div>
-            <p className="text-[10px] text-white/30 italic">
+            <p className="text-[10px] text-white/60 italic">
               Selecting a paradigm grants{" "}
               <span className="text-gold">+50 XP</span>
             </p>
