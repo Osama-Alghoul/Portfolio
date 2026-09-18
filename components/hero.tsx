@@ -40,6 +40,7 @@ export default function Hero() {
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase italic">
             Osama <span className="text-gold">Alghoul</span>
+            <span className="block text-xl md:text-2xl text-white/60 not-italic tracking-normal mt-2"></span>
           </h1>
           <p className="text-blue-400 text-lg md:text-xl font-medium tracking-[0.3em] uppercase">
             Software Engineer & Web Developer

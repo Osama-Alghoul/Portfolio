@@ -13,7 +13,7 @@ import data from "@/data.json";
 const inter = Inter({ subsets: ["latin"] });
 
 const SITE_URL = "https://www.osssghoul.com";
-const TITLE = "Osama Alghoul - Software Engineer & Web Developer";
+const TITLE = `${data.personal.name_en} (${data.personal.handle}) - Software Engineer & Web Developer`;
 const DESCRIPTION =
   "Portfolio website of Osama Alghoul, a software engineer who builds, leads, and integrates AI services into scalable systems on a strong infrastructure.";
 
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   keywords: [
     data.personal.name_en,
+    data.personal.handle,
     ...data.skills.frontend,
     ...data.skills.backend,
     ...data.skills.AI,

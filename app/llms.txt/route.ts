@@ -91,7 +91,7 @@ export function GET() {
     "",
     `> ${TITLE_EN} based in Palestine. Builds, leads, and integrates AI services into scalable systems on a strong infrastructure, using Next.js, React, and TypeScript.`,
     "",
-    `Also known as: ${data.personal.name}. ${SITE_URL}`,
+    `Also known as: ${data.personal.handle}, ${data.personal.name}. ${SITE_URL}`,
     "",
     section("Skills", skills),
     section("Services", services),
