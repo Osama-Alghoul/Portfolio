@@ -147,6 +147,16 @@
       "type": "with ooblek"
     },
     {
+      "name": "Quranik",
+      "link": "https://quranik.org",
+      "type": "professional - Odoo backend, Next.js frontend"
+    },
+    {
+      "name": "Cordapoint",
+      "link": "https://cordapoint.net",
+      "type": "professional - React frontend, serverless TypeScript backend on Cloudflare Pages Functions"
+    },
+    {
       "name": "Amtar",
       "link": "https://amtar-jade.vercel.app/",
       "type": "freelance"
