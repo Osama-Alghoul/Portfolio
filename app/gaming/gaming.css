@@ -1,0 +1,183 @@
+/* ============ Gaming page ============ */
+
+/* ---------- Pinned play-style stage (components/gaming/play-styles.tsx) ---------- */
+.gs-pin {
+  height: calc(var(--gs-count, 4) * 100svh);
+  background: radial-gradient(ellipse at 70% 40%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%), #000;
+  transition: background 0.6s;
+}
+
+.gs-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.gs-scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.gs-scene[data-state="before"] { opacity: 0; transform: translateY(-48px) scale(0.97); pointer-events: none; }
+.gs-scene[data-state="after"] { opacity: 0; transform: translateY(48px) scale(0.97); pointer-events: none; }
+.gs-scene[data-state="active"] { opacity: 1; transform: none; }
+
+.gs-art {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gs-art svg {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 20px 40px color-mix(in srgb, var(--accent) 18%, transparent));
+}
+.gs-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .gs-scene {
+    grid-template-rows: none;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+  }
+  .gs-art { order: 0; }
+  .gs-copy { gap: 1.1rem; }
+}
+
+/* Copy slides in a beat after the art. */
+.gs-scene .gs-copy > * {
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.gs-scene:not([data-state="active"]) .gs-copy > * { opacity: 0; transform: translateX(24px); }
+.gs-scene[data-state="active"] .gs-copy > :nth-child(2) { transition-delay: 0.08s; }
+.gs-scene[data-state="active"] .gs-copy > :nth-child(3) { transition-delay: 0.16s; }
+.gs-scene[data-state="active"] .gs-copy > :nth-child(4) { transition-delay: 0.24s; }
+.gs-scene[data-state="active"] .gs-copy > :nth-child(5) { transition-delay: 0.32s; }
+
+.gs-bar-fill {
+  width: calc(var(--gs-progress, 0) * 100%);
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  transition: background 0.6s;
+}
+
+/* ---------- Scene SVG motion (components/gaming/scene-art.tsx) ---------- */
+.gs-scene svg * { transform-box: fill-box; transform-origin: center; }
+
+/* Everything idles until its scene is on stage. */
+.gs-scene [class*="sc-"] { animation-play-state: paused; }
+.gs-scene[data-state="active"] [class*="sc-"] { animation-play-state: running; }
+
+.sc-rise { animation: sc-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes sc-rise { from { opacity: 0; transform: translateY(24px); } }
+
+.sc-bar { transform-origin: left center; animation: sc-bar 0.9s ease-out both; }
+@keyframes sc-bar { from { transform: scaleX(0); } }
+
+.sc-ping { animation: sc-ping 1.8s ease-out infinite; }
+.sc-ping-2 { animation-delay: 0.9s; }
+@keyframes sc-ping { from { opacity: 0.8; transform: scale(1); } to { opacity: 0; transform: scale(1.6); } }
+
+.sc-blink { animation: sc-blink 1.2s steps(2, jump-none) infinite; }
+@keyframes sc-blink { 50% { opacity: 0.25; } }
+
+.sc-dash { animation: sc-dash 1.2s linear infinite; }
+@keyframes sc-dash { to { stroke-dashoffset: -20; } }
+
+/* Competitive: crosshair flicks onto the target, hit marker pops. */
+.sc-aim { animation: sc-aim 1s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+@keyframes sc-aim { from { transform: translate(-110px, 70px) scale(1.5); opacity: 0; } }
+.sc-spin { animation: sc-spin 8s linear infinite; }
+@keyframes sc-spin { to { transform: rotate(360deg); } }
+.sc-hit { animation: sc-hit 2.4s ease-out 0.9s infinite both; }
+@keyframes sc-hit {
+  0% { opacity: 0; transform: scale(1.4); }
+  8% { opacity: 1; transform: scale(1); }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.sc-target { animation: sc-target 2.4s ease-in 0.9s infinite both; }
+@keyframes sc-target { 0%, 10% { opacity: 1; } 30%, 90% { opacity: 0.25; } 100% { opacity: 1; } }
+
+/* Path-followers are drawn around (0,0), so measure their path in SVG user space. */
+.gs-scene .sc-cube,
+.gs-scene .sc-runner { transform-box: view-box; transform-origin: 0 0; }
+
+/* Story: portals open, cube flies through. */
+.sc-portal { animation: sc-portal 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
+@keyframes sc-portal { from { transform: scaleY(0); opacity: 0; } }
+.sc-cube {
+  offset-path: path("M120 200 Q240 60 360 200");
+  offset-rotate: 0deg;
+  animation: sc-cube 2.6s ease-in-out 0.6s infinite both;
+}
+@keyframes sc-cube {
+  0% { offset-distance: 0%; opacity: 0; transform: rotate(0deg); }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; transform: rotate(360deg); }
+}
+.sc-button { animation: sc-button 2.6s ease-in-out 0.6s infinite; }
+@keyframes sc-button { 0%, 40% { opacity: 0.3; } 50%, 100% { opacity: 1; } }
+
+/* Survival: runner follows the rooftop route. */
+.sc-runner {
+  offset-path: path("M60 210 Q100 140 145 180 Q200 120 220 230 Q260 100 305 160 Q360 120 410 200");
+  animation: sc-run 3.6s linear infinite;
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+@keyframes sc-run { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+.sc-twinkle { animation: sc-twinkle 2.4s ease-in-out infinite; }
+@keyframes sc-twinkle { 50% { opacity: 0.15; } }
+
+/* ---------- Battle station banner (components/gaming/battle-station.tsx) ---------- */
+.bs-cursor { animation: bs-blink 1s steps(2, jump-none) infinite; }
+@keyframes bs-blink { 50% { opacity: 0; } }
+.bs-rgb { animation: bs-hue 6s linear infinite; }
+@keyframes bs-hue { to { filter: hue-rotate(360deg); } }
+.bs-radar { transform-box: view-box; transform-origin: 584px 112px; animation: sc-spin 3s linear infinite; }
+.bs-blip { animation: sc-twinkle 1.5s ease-in-out infinite; }
+.bs-xp { transform-box: fill-box; transform-origin: left center; animation: bs-xp 6s ease-in-out infinite; }
+@keyframes bs-xp { 0% { transform: scaleX(0.15); } 80%, 100% { transform: scaleX(0.95); } }
+.bs-scan { animation: bs-scan 4s linear infinite; }
+@keyframes bs-scan { from { transform: translateY(0); } to { transform: translateY(200px); } }
+.bs-steam { animation: bs-steam 3s ease-in-out infinite; }
+.bs-steam-2 { animation-delay: 1.5s; }
+@keyframes bs-steam {
+  0% { opacity: 0; transform: translateY(8px); }
+  40% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-16px); }
+}
+.bs-crosshair { animation: sc-blink 3s ease-in-out infinite; }
+
+/* Discord lobby "speaking" ring */
+.gs-speaking { box-shadow: 0 0 0 2px #111214, 0 0 0 4px #23a55a; animation: gs-speak 1.4s ease-in-out infinite; }
+@keyframes gs-speak { 50% { box-shadow: 0 0 0 2px #111214, 0 0 0 4px rgb(35 165 90 / 0.3); } }
+
+/* ---------- Reduced motion: unpin into a plain list, stop all loops ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .gs-pin { height: auto; }
+  .gs-stage { position: static; height: auto; overflow: visible; }
+  .gs-scenes { display: flex; flex-direction: column; gap: 4rem; }
+  .gs-scene,
+  .gs-scene[data-state] { position: static; opacity: 1; transform: none; transition: none; }
+  .gs-scene .gs-copy > * { opacity: 1 !important; transform: none !important; }
+  .gs-art svg { max-height: 360px; }
+  .gs-progress, .gs-counter { display: none; }
+  .gs-pin [class*="sc-"],
+  .bs-cursor, .bs-rgb, .bs-radar, .bs-blip, .bs-xp, .bs-scan, .bs-steam, .bs-crosshair,
+  .gs-speaking { animation: none !important; }
+  .sc-cube, .sc-runner { offset-distance: 50%; }
+}
