@@ -1,6 +1,6 @@
 import data from "@/data.json";
-
-const SITE_URL = "https://www.osssghoul.com";
+import { LOCALES, blogPath, getAllPosts, postPath } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -84,6 +84,13 @@ export function GET() {
     `- Instagram: ${data.contact.Instagram}`,
   ];
 
+  const blog = [
+    ...LOCALES.map((lang) => `- [Blog (${lang})](${SITE_URL}${blogPath(lang)}): articles in ${lang === "ar" ? "Arabic" : "English"}`),
+    ...getAllPosts().flatMap((p) =>
+      LOCALES.map((lang) => `- [${p.translations[lang].title}](${SITE_URL}${postPath(lang, p.slug)}): ${p.translations[lang].description}`),
+    ),
+  ];
+
   const faq = TECH_FAQ_EN.map((f) => `- Q: ${f.q}\n  A: ${f.a}`);
 
   const body = [
@@ -96,6 +103,7 @@ export function GET() {
     section("Skills", skills),
     section("Services", services),
     section("Sample Projects", projects),
+    section("Blog", blog),
     section("Contact", contact),
     section("FAQ", faq),
   ].join("\n");

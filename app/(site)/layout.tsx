@@ -1,6 +1,6 @@
 import React from "react";
 import "@/app/globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -9,43 +9,30 @@ import MemoWidget from "@/components/memo-widget";
 import WebmcpColorTool from "@/components/webmcp-color-tool";
 import JsonLd from "@/components/json-ld";
 import data from "@/data.json";
+import { SITE_URL, indexableRobots } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const SITE_URL = "https://www.osssghoul.com";
 const TITLE = `${data.personal.name_en} (${data.personal.handle}) - Software Engineer & Web Developer`;
 const DESCRIPTION =
   "Portfolio website of Osama Alghoul, a software engineer who builds, leads, and integrates AI services into scalable systems on a strong infrastructure.";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#000000",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
-  keywords: [
-    data.personal.name_en,
-    data.personal.handle,
-    ...data.skills.frontend,
-    ...data.skills.backend,
-    ...data.skills.AI,
-    ...data.skills.Architecture,
-    "portfolio",
-    "software engineer",
-    "web developer",
-  ],
   authors: [{ name: data.personal.name_en, url: SITE_URL }],
   creator: data.personal.name_en,
-  alternates: {
-    canonical: SITE_URL,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-    },
-  },
+  // No canonical here: it would be inherited by every page. Each page sets its own.
+  robots: indexableRobots,
+  formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
     type: "profile",
     url: SITE_URL,

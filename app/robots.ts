@@ -1,15 +1,10 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://www.osssghoul.com";
+import { SITE_URL, isProduction } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
+  if (!isProduction) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: "/api/",
-    },
-    host: SITE_URL,
+    rules: { userAgent: "*", allow: "/", disallow: "/api/" },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

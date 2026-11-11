@@ -1,0 +1,634 @@
+{
+  "posts": [
+    {
+      "slug": "build-products-with-free-ai-tools-replit-lovable-v0",
+      "publishedAt": "2026-11-11T09:00:00+02:00",
+      "updatedAt": "2026-11-11T09:00:00+02:00",
+      "originalLocale": "ar",
+      "translations": {
+        "ar": {
+          "title": "كيف تبني منتجك الخاص بأدوات الذكاء الاصطناعي المجانية: Replit وLovable وv0",
+          "seoTitle": "ابنِ منتجك بأدوات ذكاء اصطناعي مجانية: Replit وLovable وv0",
+          "description": "دليل عملي خطوة بخطوة لبناء مشروع كامل يعمل ونشره مجاناً بأداة واحدة فقط: v0 أو Lovable أو Replit، من الفكرة حتى أول المستخدمين.",
+          "excerpt": "لم تعد تحتاج فريقاً كاملاً لإطلاق النسخة الأولى من فكرتك. في هذا الدليل أبني المشروع نفسه ثلاث مرات: مرة بـ v0 وحده، ومرة بـ Lovable وحده، ومرة بـ Replit وحده، من الفكرة حتى النشر.",
+          "tags": [
+            "الذكاء الاصطناعي",
+            "بناء المنتجات",
+            "Replit",
+            "Lovable",
+            "v0",
+            "بدون كود"
+          ],
+          "imageAlt": "غلاف مقال: كيف تبني منتجك الخاص بأدوات الذكاء الاصطناعي المجانية Replit وLovable وv0",
+          "content": [
+            {
+              "type": "p",
+              "text": "قبل سنوات قليلة، كانت فكرة بسيطة مثل «نظام حجز مواعيد لعيادة» تحتاج إلى مصمم ومطوّر واجهات ومطوّر خلفية وأسابيع من العمل. اليوم يمكنك الوصول إلى نسخة أولى تعمل فعلاً خلال عطلة نهاية أسبوع، وبدون أن تدفع شيئاً تقريباً."
+            },
+            {
+              "type": "p",
+              "text": "في هذا المقال لن أطلب منك أن تتنقل بين عدة أدوات. كل واحدة من الأدوات الثلاث، **v0** و**Lovable** و**Replit**، تستطيع وحدها أن تأخذك من الفكرة إلى مشروع كامل منشور على الإنترنت. لذلك سأبني **المشروع نفسه ثلاث مرات**، مرة بكل أداة، خطوة بخطوة، واختر أنت الطريق الذي يناسبك."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "ملاحظة عن «مجاني»",
+              "text": "الخطط المجانية تتغير باستمرار: عدد الرسائل والأرصدة وخيارات النشر والدومين الخاص. ما أشرحه هنا هو طريقة العمل، فراجع صفحة الأسعار للأداة التي تختارها قبل أن تبني خطتك عليها."
+            },
+
+            {
+              "type": "h2",
+              "id": "before-you-start",
+              "text": "قبل أن تفتح أي أداة: حدّد ماذا تبني"
+            },
+            {
+              "type": "p",
+              "text": "أكبر خطأ أراه هو البدء بكتابة الأوامر قبل وضوح الفكرة. أدوات الذكاء الاصطناعي تنفّذ بسرعة، وهذا يعني أنها ستبني الشيء الخطأ بسرعة أيضاً. اكتب هذه النقاط الأربع على ورقة أولاً:"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**المشكلة في جملة واحدة:** «أصحاب العيادات الصغيرة يضيعون وقتهم في تنظيم المواعيد عبر واتساب».",
+                "**المستخدم:** من سيستخدم المنتج؟ المريض؟ موظف الاستقبال؟ كلاهما؟",
+                "**المسار الأساسي الوحيد:** الخطوات التي يجب أن تعمل في النسخة الأولى، مثل: يختار المريض موعداً، ثم يؤكد، ثم يظهر الحجز لموظف الاستقبال.",
+                "**ما الذي لن تبنيه الآن:** الدفع الإلكتروني، تطبيق الجوال، لوحة التقارير… كلها تنتظر حتى يثبت أن أحداً يريد المنتج."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "the-project",
+              "text": "المشروع الذي سنبنيه"
+            },
+            {
+              "type": "p",
+              "text": "سنبني بكل أداة **نظام حجز مواعيد لعيادة صغيرة**، وفي كل مرة يجب أن نصل إلى نفس النتيجة: مشروع حقيقي يعمل، وليس مجرد تصميم."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**صفحة حجز عامة:** يختار المريض الخدمة واليوم والساعة ويؤكد الحجز دون إنشاء حساب.",
+                "**لوحة لموظف الاستقبال:** تسجيل دخول، ومواعيد اليوم، وإمكانية الإلغاء أو التعديل.",
+                "**قاعدة بيانات:** الخدمات والمواعيد تُحفظ فعلاً ولا تختفي عند تحديث الصفحة.",
+                "**منشور على رابط حقيقي** يستطيع أي شخص فتحه من جواله."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "اختر أداة واحدة من الثلاث، واتبع قسمها من البداية إلى النهاية."
+            },
+
+            {
+              "type": "h2",
+              "id": "v0",
+              "text": "الطريق الأول: مشروع كامل باستخدام v0"
+            },
+            {
+              "type": "p",
+              "text": "v0 من Vercel يبني تطبيقات Next.js كاملة من المحادثة: الواجهة، ومنطق الخادم، والربط بقاعدة بيانات، ثم النشر على Vercel بضغطة زر. ميزته أن الكود الذي يكتبه هو نفس الكود الذي يستخدمه المحترفون، فلن تحتاج إلى إعادة كتابة المشروع لاحقاً."
+            },
+            {
+              "type": "h3",
+              "id": "v0-steps",
+              "text": "الخطوات من الصفر إلى رابط منشور"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**ابدأ بالمسار الأساسي:** الصق وصف المشروع (القالب في قسم كتابة الأوامر أدناه) واطلب صفحة الحجز أولاً فقط. راجع الشكل على الجوال والحاسوب قبل أي خطوة أخرى.",
+                "**أضف قاعدة البيانات:** اطلب من v0 ربط المشروع بقاعدة بيانات من التكاملات المتاحة داخله (مثل Supabase أو Neon). سيقترح إنشاء الجداول (الخدمات، المواعيد) ويضيف متغيرات البيئة تلقائياً.",
+                "**اجعل الحجز حقيقياً:** اطلب أن يُحفظ الحجز في قاعدة البيانات عبر Server Action، مع التحقق من أن الموعد غير محجوز مسبقاً.",
+                "**أضف لوحة الاستقبال وتسجيل الدخول:** اطلب صفحة /admin محمية بتسجيل الدخول (مثلاً عبر Supabase Auth)، تعرض مواعيد اليوم مع أزرار الإلغاء والتعديل.",
+                "**اختبر كل شيء في المعاينة:** احجز موعداً، ثم سجّل الدخول كموظف وتأكد أنه ظهر. حاول حجز نفس الموعد مرتين.",
+                "**انشر:** اضغط Publish/Deploy لينشر المشروع على Vercel برابط حقيقي، ويمكنك ربط دومين خاص من إعدادات Vercel.",
+                "**امتلك الكود:** اربط المشروع بمستودع GitHub من داخل v0 حتى يبقى الكود معك دائماً."
+              ]
+            },
+            { "type": "h3", "id": "v0-tips", "text": "نصائح خاصة بـ v0" },
+            {
+              "type": "ul",
+              "items": [
+                "اطلب الحالات صراحة: الحالة الفارغة، وحالة التحميل، ورسالة الخطأ، فهو يتقن الواجهات إذا وصفتها جيداً.",
+                "ارفع صورة لتصميم يعجبك واطلب «نفس الأسلوب بألواني أنا».",
+                "لا تضع المفاتيح السرية في الكود؛ ضعها في متغيرات البيئة (Environment Variables) في إعدادات المشروع.",
+                "إذا أصبحت المحادثة طويلة جداً، ابدأ محادثة جديدة من آخر نسخة تعمل ولخّص فيها ما تم إنجازه."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "lovable",
+              "text": "الطريق الثاني: مشروع كامل باستخدام Lovable"
+            },
+            {
+              "type": "p",
+              "text": "Lovable مصمم لهذا الهدف تحديداً: تصف التطبيق بالكلام فيبني الواجهة والمنطق، ومعه خدمة **Lovable Cloud** التي توفر قاعدة البيانات وتسجيل الدخول وتخزين الملفات دون أن تغادر الأداة، أو يمكنك ربط مشروعك بحساب Supabase الخاص بك."
+            },
+            {
+              "type": "h3",
+              "id": "lovable-steps",
+              "text": "الخطوات من الصفر إلى رابط منشور"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**ناقش قبل أن تبني:** استخدم وضع المحادثة أو التخطيط واطلب منه خطة: الصفحات، والجداول، والأدوار. صحّح الخطة قبل أن يكتب سطراً واحداً، فهذا يوفر أرصدتك.",
+                "**ابنِ صفحة الحجز:** اطلب صفحة الحجز العامة فقط، وجرّبها في المعاينة.",
+                "**فعّل قاعدة البيانات:** فعّل Lovable Cloud (أو اربط Supabase) واطلب إنشاء جدولي الخدمات والمواعيد وربط صفحة الحجز بهما.",
+                "**أضف تسجيل الدخول ولوحة الاستقبال:** اطلب تسجيل دخول للموظفين وصفحة لوحة تحكم لا يراها غيرهم.",
+                "**أغلق الثغرات:** اطلب صراحة تفعيل **Row Level Security** وتأكد أن الزائر يستطيع إضافة حجز فقط، ولا يستطيع قراءة حجوزات الآخرين. استخدم فحص الأمان المدمج إن كان متاحاً في خطتك.",
+                "**انشر:** اضغط Publish لتحصل على رابط عام، ويمكنك ربط دومين خاص حسب خطتك.",
+                "**امتلك الكود:** فعّل مزامنة GitHub من الإعدادات ليبقى الكود في مستودعك."
+              ]
+            },
+            {
+              "type": "h3",
+              "id": "lovable-tips",
+              "text": "نصائح خاصة بـ Lovable"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "اطلب ميزة واحدة في كل رسالة، واختبرها قبل الانتقال إلى التالية.",
+                "اكتب قواعد المشروع الثابتة (اللغة، الألوان، الاتجاه من اليمين لليسار) في إعدادات المعرفة الخاصة بالمشروع حتى لا تكررها في كل رسالة.",
+                "إذا أفسد تعديلٌ شيئاً كان يعمل، ارجع إلى نسخة سابقة من السجل بدلاً من طلب «إصلاح» فوق «إصلاح».",
+                "لا تضع مفاتيح سرية في كود الواجهة؛ اطلب استخدام دالة خلفية (Edge Function) مع الأسرار المحفوظة."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "replit",
+              "text": "الطريق الثالث: مشروع كامل باستخدام Replit"
+            },
+            {
+              "type": "p",
+              "text": "Replit بيئة تطوير كاملة في المتصفح، ومعها **Replit Agent** الذي يخطط ويكتب الكود ويشغّله ويصلح أخطاءه. كل ما يحتاجه المشروع موجود في مكان واحد: قاعدة بيانات مدمجة، ونظام تسجيل دخول، وحفظ الأسرار، والنشر. وميزته الإضافية أنه لا يقيّدك بلغة أو إطار معين."
+            },
+            {
+              "type": "h3",
+              "id": "replit-steps",
+              "text": "الخطوات من الصفر إلى رابط منشور"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**صف المشروع للوكيل:** الصق الوصف واطلب منه أن يعرض خطته أولاً (التقنيات، الصفحات، الجداول). وافق عليها أو عدّلها قبل أن يبدأ.",
+                "**ابدأ بنموذج أولي للواجهة:** دع الوكيل يبني صفحة الحجز، وجرّبها في نافذة المعاينة داخل Replit.",
+                "**أضف قاعدة البيانات:** اطلب استخدام قاعدة بيانات PostgreSQL المدمجة في Replit، وإنشاء جدولي الخدمات والمواعيد مع بيانات تجريبية.",
+                "**أضف تسجيل الدخول ولوحة الاستقبال:** اطلب صفحة /admin محمية بتسجيل الدخول (يمكن استخدام Replit Auth) تعرض مواعيد اليوم.",
+                "**احفظ الأسرار بشكل صحيح:** أي مفتاح أو كلمة مرور يوضع في قسم **Secrets** وليس داخل الكود.",
+                "**اختبر واستعد عند الحاجة:** جرّب المسار كاملاً، وإذا كسر الوكيل شيئاً فارجع إلى نقطة استعادة (Checkpoint) سابقة.",
+                "**انشر:** من زر Deploy/Publish اختر نوع النشر المناسب لتحصل على رابط حقيقي؛ خيارات النشر وحدودها تختلف حسب الخطة.",
+                "**امتلك الكود:** اربط المشروع بـ GitHub، أو حمّله كاملاً في أي وقت."
+              ]
+            },
+            {
+              "type": "h3",
+              "id": "replit-tips",
+              "text": "نصائح خاصة بـ Replit"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "اطلب من الوكيل أن يشرح ما سيغيّره قبل التنفيذ، خصوصاً في التعديلات الكبيرة.",
+                "لأنه يدعم أي لغة تقريباً، يمكنك لاحقاً إضافة بوت تيليجرام لتذكير المرضى داخل نفس المشروع.",
+                "راقب سجلات التشغيل (Console) عند حدوث خطأ، وانسخ رسالة الخطأ كما هي للوكيل.",
+                "اطلب صفحة بيانات تجريبية (Seed) حتى تختبر المشروع دون إدخال البيانات يدوياً كل مرة."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "prompting",
+              "text": "كيف تكتب أوامر تعطيك نتائج حقيقية (لأي أداة اخترتها)"
+            },
+            {
+              "type": "p",
+              "text": "جودة النتيجة تساوي تقريباً جودة الوصف. الأمر الجيد يجيب عن: ماذا، ولمن، وكيف يبدو، وما القيود. هذا القالب يعمل مع الأدوات الثلاث:"
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "ابنِ تطبيق ويب لحجز المواعيد لعيادة أسنان صغيرة.\n\nالمستخدمون:\n- المريض: يختار الخدمة واليوم والساعة ويؤكد الحجز دون إنشاء حساب.\n- موظف الاستقبال: يسجل الدخول ويرى مواعيد اليوم ويلغي أو يعدّل.\n\nالبيانات: الخدمات (الاسم، المدة، السعر)، المواعيد (الاسم، الهاتف، الوقت، الحالة).\n\nالتصميم: عربي من اليمين لليسار (dir=rtl)، خط IBM Plex Sans Arabic، ألوان هادئة، ويعمل جيداً على الجوال.\n\nالقيود: لا دفع إلكتروني الآن. اشرح خطتك قبل كتابة الكود."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**تغيير واحد في كل رسالة.** الطلبات الكبيرة تنتج أخطاء كبيرة يصعب تتبعها.",
+                "**صف الخطأ بدقة:** ماذا فعلت، وماذا توقعت، وماذا حدث، مع نص رسالة الخطأ كما هو.",
+                "**اطلب الشرح:** «اشرح لي لماذا حدث هذا قبل أن تصلحه» يجعل الإصلاح أدق ويعلّمك شيئاً.",
+                "**للمواقع العربية:** اطلب صراحة الاتجاه من اليمين لليسار وخطاً عربياً، فكثير من الأدوات تبني بالإنجليزية افتراضياً."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "free-plan-tips",
+              "text": "كيف تستفيد من الخطة المجانية لأقصى حد"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**خطط قبل أن تبدأ:** جهّز الورقة والوصف مسبقاً، وادخل إلى الأداة بأوامر جاهزة بدلاً من التفكير بصوت عالٍ داخل المحادثة.",
+                "**لا تحرق الأرصدة على التفاصيل الصغيرة:** تغيير لون أو مسافة أسرع وأرخص بتعديل الكود يدوياً، والأدوات الثلاث تسمح بذلك.",
+                "**صدّر الكود مبكراً:** اربط GitHub من اليوم الأول، فإذا انتهت أرصدتك يبقى مشروعك معك.",
+                "**أنهِ المسار الأساسي أولاً:** مشروع صغير يعمل بالكامل أفضل من مشروع كبير نصفه لا يعمل."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "limits",
+              "text": "ما الذي لن تفعله هذه الأدوات نيابة عنك"
+            },
+            {
+              "type": "p",
+              "text": "أياً كانت الأداة التي اخترتها، فهي رافعة قوية لكنها ليست بديلاً عن الفهم. انتبه لهذه النقاط قبل أن تضع بيانات حقيقية لأشخاص حقيقيين:"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**الأمان والخصوصية:** الكود المولَّد قد يعمل ويبدو سليماً وفيه ثغرة، مثل جدول يستطيع أي شخص قراءته.",
+                "**الدفع والامتثال القانوني:** أي شيء يمس المال أو البيانات الحساسة يحتاج مراجعة بشرية.",
+                "**قابلية الصيانة:** بعد مئات الأوامر يصبح الكود متشابكاً، وكل تعديل يكسر شيئاً آخر.",
+                "**الأداء والتوسع:** ما يعمل مع عشرة مستخدمين قد ينهار مع عشرة آلاف.",
+                "**الاعتماد على منصة واحدة:** تأكد دائماً أنك تملك الكود وتستطيع نقله."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "launch",
+              "text": "بعد البناء: الإطلاق وأول المستخدمين"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**دومين خاص:** يعطي ثقة أكبر من رابط فرعي على منصة البناء.",
+                "**أساسيات SEO:** عنوان ووصف مختلفان لكل صفحة، وخريطة موقع (sitemap)، وصورة مشاركة لوسائل التواصل، حتى يجدك الناس على Google.",
+                "**التحليلات:** أضف Google Analytics أو أداة مشابهة لتعرف أين يتوقف المستخدمون.",
+                "**قناة للملاحظات:** زر واتساب أو نموذج بسيط، واسأل كل مستخدم سؤالاً واحداً: ما الذي كاد يجعلك تتوقف؟"
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "tip",
+              "title": "القاعدة الذهبية",
+              "text": "لا تبنِ الميزة التالية قبل أن يستخدم شخص حقيقي الميزة الحالية. السرعة التي تمنحك إياها هذه الأدوات قيمتها في التعلم من المستخدمين، لا في تكديس الميزات."
+            },
+
+            {
+              "type": "h2",
+              "id": "when-to-hire",
+              "text": "متى تحتاج إلى مهندس برمجيات؟"
+            },
+            {
+              "type": "p",
+              "text": "عندما يبدأ الناس بالدفع، أو تتعامل مع بيانات حساسة، أو يصبح كل تعديل صغير مخاطرة، فهذا هو الوقت المناسب لإدخال مهندس. ليس لإعادة كل شيء من الصفر بالضرورة، بل لمراجعة البنية وسد الثغرات وتجهيز المنتج للنمو. وهذا تحديداً ما أعمل عليه: تحويل النماذج الأولية إلى أنظمة قابلة للتوسع ببنية قوية."
+            },
+
+            { "type": "h2", "id": "final-thoughts", "text": "الخلاصة" },
+            {
+              "type": "p",
+              "text": "لا تحتاج إلى الأدوات الثلاث معاً. اختر **واحدة** فقط، v0 أو Lovable أو Replit، واتبع خطواتها حتى تصل إلى رابط منشور يستخدمه شخص حقيقي. ابدأ بالمشكلة لا بالأداة، وأطلق بسرعة، واسمع من المستخدمين، ولا تنسَ أن السرعة بلا فهم تنتج منتجاً هشاً. وإذا وصلت إلى المرحلة التي تحتاج فيها إلى أساس متين، [تواصل معي](/#contact)."
+            }
+          ],
+          "faq": [
+            {
+              "q": "هل يمكنني فعلاً بناء مشروع كامل بأداة واحدة فقط؟",
+              "a": "نعم. كل من v0 وLovable وReplit يستطيع بناء الواجهة وربطها بقاعدة بيانات وإضافة تسجيل الدخول ونشر المشروع على رابط حقيقي، دون الحاجة إلى أداة أخرى."
+            },
+            {
+              "q": "هل يمكنني فعلاً بناء منتج مجاناً؟",
+              "a": "يمكنك بناء نسخة أولى تعمل ويجربها مستخدمون حقيقيون باستخدام الخطط المجانية. التكاليف تظهر عادة عندما تحتاج أرصدة أكثر، أو دوميناً خاصاً، أو قاعدة بيانات أكبر، أو نشراً دائماً."
+            },
+            {
+              "q": "هل أحتاج إلى معرفة البرمجة؟",
+              "a": "لا تحتاجها للبدء، لكن فهم الأساسيات مثل قواعد البيانات والصلاحيات وقراءة رسائل الخطأ يجعلك أسرع بكثير، ويحميك من ثغرات أمنية لن تلاحظها الأداة."
+            },
+            {
+              "q": "هل أملك الكود الذي تولّده هذه الأدوات؟",
+              "a": "الأدوات الثلاث تتيح تصدير الكود أو مزامنته مع GitHub، فيبقى المشروع معك حتى لو توقفت عن استخدام الأداة. راجع شروط الاستخدام لكل منصة للتأكد من التفاصيل."
+            },
+            {
+              "q": "هل تدعم هذه الأدوات المواقع العربية؟",
+              "a": "نعم، لكن غالباً عليك أن تطلب ذلك صراحة: الاتجاه من اليمين لليسار (dir=rtl)، وخطاً عربياً واضحاً، ونصوصاً عربية بدلاً من النصوص الإنجليزية الافتراضية."
+            }
+          ]
+        },
+        "en": {
+          "title": "How to Build Your Own Product with Free AI Tools: Replit, Lovable and v0",
+          "seoTitle": "Build a Product with Free AI Tools: Replit, Lovable & v0",
+          "description": "A step-by-step guide to building and shipping a complete, working project for free with just one tool: v0, Lovable or Replit, from idea to first users.",
+          "excerpt": "You no longer need a full team to ship the first version of your idea. In this guide I build the same project three times: once with v0 alone, once with Lovable alone, and once with Replit alone, from idea to launch.",
+          "tags": [
+            "AI",
+            "Building products",
+            "Replit",
+            "Lovable",
+            "v0",
+            "No-code"
+          ],
+          "imageAlt": "Cover: How to build your own product with free AI tools Replit, Lovable and v0",
+          "content": [
+            {
+              "type": "p",
+              "text": "A few years ago, a simple idea like “an appointment booking system for a clinic” needed a designer, a front-end developer, a back-end developer and weeks of work. Today you can get to a first version that actually works over a weekend, for almost nothing."
+            },
+            {
+              "type": "p",
+              "text": "In this article I won't ask you to juggle several tools. Each of the three, **v0**, **Lovable** and **Replit**, can take you on its own from an idea to a complete project live on the internet. So I'll build **the same project three times**, once with each tool, step by step, and you pick the path that suits you."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "A note on “free”",
+              "text": "Free plans change all the time: message limits, credits, publishing options and custom domains. What I describe here is a way of working, so check the pricing page of the tool you choose before you build your plan around it."
+            },
+
+            {
+              "type": "h2",
+              "id": "before-you-start",
+              "text": "Before you open any tool: decide what you're building"
+            },
+            {
+              "type": "p",
+              "text": "The biggest mistake I see is writing prompts before the idea is clear. AI tools execute fast, which means they'll build the wrong thing fast too. Write these four things down first:"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**The problem in one sentence:** “Small clinic owners waste hours managing appointments over WhatsApp.”",
+                "**The user:** who will use it? The patient? The receptionist? Both?",
+                "**The one core flow:** the steps that must work in version one, e.g. the patient picks a slot, confirms, and the booking shows up for the receptionist.",
+                "**What you won't build yet:** online payments, a mobile app, reports… all of that waits until someone proves they want the product."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "the-project",
+              "text": "The project we'll build"
+            },
+            {
+              "type": "p",
+              "text": "With each tool we'll build **an appointment booking system for a small clinic**, and every time we must reach the same result: a real, working project, not just a design."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**A public booking page:** the patient picks a service, day and time and confirms without creating an account.",
+                "**A receptionist dashboard:** sign-in, today's appointments, and the ability to cancel or reschedule.",
+                "**A database:** services and appointments are actually saved and don't vanish on refresh.",
+                "**Live on a real URL** that anyone can open on their phone."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Pick one of the three tools and follow its section from start to finish."
+            },
+
+            {
+              "type": "h2",
+              "id": "v0",
+              "text": "Path one: a complete project with v0"
+            },
+            {
+              "type": "p",
+              "text": "v0 by Vercel builds complete Next.js apps from a conversation: the UI, the server logic, the database connection, then one-click deployment to Vercel. Its advantage is that the code it writes is the same code professionals use, so you won't need to rewrite the project later."
+            },
+            {
+              "type": "h3",
+              "id": "v0-steps",
+              "text": "Steps from zero to a live URL"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**Start with the core flow:** paste the project description (the template in the prompting section below) and ask for the booking page only. Check it on mobile and desktop before anything else.",
+                "**Add the database:** ask v0 to connect a database from its built-in integrations (such as Supabase or Neon). It will propose the tables (services, appointments) and add the environment variables for you.",
+                "**Make booking real:** ask for bookings to be saved to the database through a Server Action, with a check that the slot isn't already taken.",
+                "**Add the dashboard and sign-in:** ask for an /admin page protected by sign-in (for example with Supabase Auth) that lists today's appointments with cancel and reschedule buttons.",
+                "**Test everything in the preview:** book an appointment, then sign in as staff and confirm it shows up. Try booking the same slot twice.",
+                "**Publish:** hit Publish/Deploy to put the project on Vercel at a real URL; you can connect a custom domain from the Vercel settings.",
+                "**Own the code:** connect the project to a GitHub repository from inside v0 so the code always stays with you."
+              ]
+            },
+            { "type": "h3", "id": "v0-tips", "text": "v0-specific tips" },
+            {
+              "type": "ul",
+              "items": [
+                "Spell out the states: empty, loading and error. It excels at UI when you describe it well.",
+                "Upload a design you like and ask for “the same style with my colors”.",
+                "Never put secret keys in the code; put them in the project's Environment Variables.",
+                "When a chat gets very long, start a new one from the last working version and summarize what's done."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "lovable",
+              "text": "Path two: a complete project with Lovable"
+            },
+            {
+              "type": "p",
+              "text": "Lovable is built for exactly this: describe the app in plain language and it builds the UI and the logic, and with **Lovable Cloud** you get a database, sign-in and file storage without leaving the tool, or you can connect your own Supabase account."
+            },
+            {
+              "type": "h3",
+              "id": "lovable-steps",
+              "text": "Steps from zero to a live URL"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**Discuss before you build:** use chat or plan mode and ask for a plan: pages, tables and roles. Fix the plan before it writes a single line; it saves credits.",
+                "**Build the booking page:** ask for the public booking page only, and try it in the preview.",
+                "**Turn on the database:** enable Lovable Cloud (or connect Supabase) and ask it to create the services and appointments tables and wire the booking page to them.",
+                "**Add sign-in and the dashboard:** ask for staff sign-in and a dashboard page no one else can see.",
+                "**Close the gaps:** explicitly ask for **Row Level Security** and make sure a visitor can only create a booking and can't read anyone else's. Use the built-in security scan if your plan includes it.",
+                "**Publish:** hit Publish to get a public URL; you can connect a custom domain depending on your plan.",
+                "**Own the code:** turn on GitHub sync in the settings so the code lives in your repository."
+              ]
+            },
+            {
+              "type": "h3",
+              "id": "lovable-tips",
+              "text": "Lovable-specific tips"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "Ask for one feature per message and test it before moving on.",
+                "Put the project's fixed rules (language, colors, right-to-left layout) in the project's knowledge settings so you don't repeat them in every message.",
+                "If a change breaks something that worked, restore an earlier version from the history instead of stacking “fix” on top of “fix”.",
+                "Never put secret keys in front-end code; ask for a back-end (Edge) function that uses stored secrets."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "replit",
+              "text": "Path three: a complete project with Replit"
+            },
+            {
+              "type": "p",
+              "text": "Replit is a complete development environment in the browser, with **Replit Agent**, which plans, writes, runs and fixes the code. Everything the project needs is in one place: a built-in database, sign-in, secrets and deployment. Its extra advantage is that it doesn't lock you into one language or framework."
+            },
+            {
+              "type": "h3",
+              "id": "replit-steps",
+              "text": "Steps from zero to a live URL"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**Describe the project to the agent:** paste the description and ask it to show its plan first (stack, pages, tables). Approve or adjust it before it starts.",
+                "**Start with a UI prototype:** let the agent build the booking page and try it in Replit's preview pane.",
+                "**Add the database:** ask it to use Replit's built-in PostgreSQL database and create the services and appointments tables with sample data.",
+                "**Add sign-in and the dashboard:** ask for an /admin page protected by sign-in (Replit Auth works) that lists today's appointments.",
+                "**Store secrets properly:** any key or password goes in the **Secrets** panel, never in the code.",
+                "**Test and roll back when needed:** run through the whole flow, and if the agent breaks something, restore an earlier checkpoint.",
+                "**Publish:** from Deploy/Publish pick the deployment type that fits to get a real URL; options and limits depend on your plan.",
+                "**Own the code:** connect the project to GitHub, or download it in full at any time."
+              ]
+            },
+            {
+              "type": "h3",
+              "id": "replit-tips",
+              "text": "Replit-specific tips"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "Ask the agent to explain what it's about to change before it does it, especially for big edits.",
+                "Because it supports almost any language, you can later add a Telegram reminder bot inside the same project.",
+                "Watch the console logs when something fails, and paste the exact error to the agent.",
+                "Ask for a seed script with sample data so you can test without typing data in every time."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "prompting",
+              "text": "How to write prompts that give real results (whichever tool you chose)"
+            },
+            {
+              "type": "p",
+              "text": "The quality of the result roughly equals the quality of the description. A good prompt answers: what, for whom, what it looks like, and what the constraints are. This template works with all three tools:"
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "Build a web app for booking appointments at a small dental clinic.\n\nUsers:\n- Patient: picks a service, day and time and confirms without creating an account.\n- Receptionist: signs in, sees today's appointments, can cancel or reschedule.\n\nData: services (name, duration, price), appointments (name, phone, time, status).\n\nDesign: clean and calm colors, works great on mobile.\n\nConstraints: no online payments for now. Explain your plan before writing code."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**One change per message.** Big requests produce big bugs that are hard to trace.",
+                "**Describe bugs precisely:** what you did, what you expected, what happened, plus the exact error message.",
+                "**Ask for an explanation:** “Explain why this happened before you fix it” leads to better fixes and teaches you something.",
+                "**For Arabic sites:** explicitly ask for right-to-left layout and an Arabic font, since most tools default to English."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "free-plan-tips",
+              "text": "Getting the most out of the free plan"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**Plan before you start:** prepare the brief and description up front, and come to the tool with ready prompts instead of thinking out loud in the chat.",
+                "**Don't burn credits on tiny details:** changing a color or a margin is faster and cheaper by editing the code yourself, and all three tools let you do that.",
+                "**Export early:** connect GitHub on day one so your project stays with you when the credits run out.",
+                "**Finish the core flow first:** a small project that fully works beats a big one that half works."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "limits",
+              "text": "What these tools won't do for you"
+            },
+            {
+              "type": "p",
+              "text": "Whichever tool you chose, it's a powerful lever, but not a substitute for understanding. Watch out for these before you put real people's data in:"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**Security and privacy:** generated code can work and look fine while hiding a hole, like a table anyone can read.",
+                "**Payments and compliance:** anything touching money or sensitive data needs a human review.",
+                "**Maintainability:** after hundreds of prompts the code gets tangled, and every change breaks something else.",
+                "**Performance and scale:** what works for ten users may collapse at ten thousand.",
+                "**Platform lock-in:** always make sure you own the code and can move it."
+              ]
+            },
+
+            {
+              "type": "h2",
+              "id": "launch",
+              "text": "After building: launch and first users"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**A custom domain:** it earns more trust than a subdomain on the builder's platform.",
+                "**SEO basics:** a unique title and description for every page, a sitemap and a social share image, so people can find you on Google.",
+                "**Analytics:** add Google Analytics or similar to see where users drop off.",
+                "**A feedback channel:** a WhatsApp button or a simple form, and ask every user one question: what almost made you stop?"
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "tip",
+              "title": "The golden rule",
+              "text": "Don't build the next feature until a real person has used the current one. The speed these tools give you is worth something only if you use it to learn from users, not to pile up features."
+            },
+
+            {
+              "type": "h2",
+              "id": "when-to-hire",
+              "text": "When do you need a software engineer?"
+            },
+            {
+              "type": "p",
+              "text": "When people start paying, when you handle sensitive data, or when every small change becomes a risk, that's the moment to bring in an engineer. Not necessarily to rebuild everything from scratch, but to review the architecture, close the gaps and prepare the product to grow. That's exactly the work I do: turning prototypes into scalable systems on a strong foundation."
+            },
+
+            { "type": "h2", "id": "final-thoughts", "text": "Final thoughts" },
+            {
+              "type": "p",
+              "text": "You don't need all three tools. Pick **one**, v0, Lovable or Replit, and follow its steps until you have a live URL that a real person uses. Start with the problem, not the tool, launch fast, listen to users, and remember that speed without understanding produces a fragile product. And when you reach the point where you need a solid foundation, [get in touch](/#contact)."
+            }
+          ],
+          "faq": [
+            {
+              "q": "Can I really build a complete project with just one tool?",
+              "a": "Yes. v0, Lovable and Replit can each build the UI, connect it to a database, add sign-in and publish the project at a real URL, without needing another tool."
+            },
+            {
+              "q": "Can I really build a product for free?",
+              "a": "You can build a working first version that real users can try on the free plans. Costs usually appear when you need more credits, a custom domain, a bigger database or always-on hosting."
+            },
+            {
+              "q": "Do I need to know how to code?",
+              "a": "Not to get started, but understanding the basics, like databases, permissions and reading error messages, makes you much faster and protects you from security holes the tool won't notice."
+            },
+            {
+              "q": "Do I own the code these tools generate?",
+              "a": "All three let you export the code or sync it to GitHub, so the project stays with you even if you stop using the tool. Check each platform's terms of service for the details."
+            },
+            {
+              "q": "Do these tools support Arabic, right-to-left sites?",
+              "a": "Yes, but you usually have to ask explicitly: right-to-left direction (dir=rtl), a clear Arabic font, and Arabic copy instead of the default English text."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
