@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   description:
     "Off-duty mode: the co-op shooters, competitive FPS, story-driven and open-world games Osama Alghoul plays, plus his Section Zero gaming crew on Discord.",
   alternates: { canonical: "/gaming" },
+  openGraph: {
+    type: "website",
+    url: "/gaming",
+    siteName: "Osama Alghoul - Portfolio",
+    title: "Gaming | Osama Alghoul (OsssGhoul)",
+    description:
+      "Off-duty mode: the co-op shooters, competitive FPS, story-driven and open-world games Osama Alghoul plays, plus his Section Zero gaming crew on Discord.",
+    locale: "en_US",
+  },
 };
 
 export default function GamingPage() {

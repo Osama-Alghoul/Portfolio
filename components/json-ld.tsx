@@ -1,18 +1,23 @@
 import data from "@/data.json";
+import { SITE_URL, personJsonLd } from "@/lib/site";
 
-const SITE_URL = "https://www.osssghoul.com";
+/** Renders Schema.org JSON-LD safely: `<` is escaped so content can't close the script tag. */
+export function JsonLdScript({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+    />
+  );
+}
 
+/** Site-wide Person + WebSite graph for the portfolio pages. */
 export default function JsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": `${SITE_URL}/#person`,
-        name: data.personal.name_en,
-        alternateName: [data.personal.handle, data.personal.name],
-        url: SITE_URL,
-        image: `${SITE_URL}/Me.png`,
+        ...personJsonLd,
         jobTitle: data.personal.title,
         description: data.personal.bio,
         email: `mailto:${data.contact.email}`,
@@ -27,15 +32,7 @@ export default function JsonLd() {
           ...data.skills.Architecture,
           ...data.skills.tools,
         ],
-        sameAs: [
-          data.contact.github,
-          data.contact.linkedin,
-          data.contact.Facebook,
-          data.contact.Instagram,
-          data.contact.Telegram,
-          data.contact.Steam,
-          data.contact.Discord,
-        ],
+        sameAs: [...personJsonLd.sameAs, data.contact.Steam, data.contact.Discord],
       },
       {
         "@type": "WebSite",
@@ -49,10 +46,5 @@ export default function JsonLd() {
     ],
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+  return <JsonLdScript data={jsonLd} />;
 }

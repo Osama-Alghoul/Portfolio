@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Gamepad2, Menu, X } from "lucide-react";
+import { BookOpen, Gamepad2, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CustomButton } from "./custom-button";
 
@@ -22,6 +22,7 @@ export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isGamingPage = pathname === "/gaming";
+  const isBlogPage = pathname === "/blog" || pathname.startsWith("/blog/");
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -43,6 +44,10 @@ export default function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const linkClass = "text-gray-300 hover:text-gold transition-colors";
+  const blogClass = cn(
+    "inline-flex items-center gap-1.5 transition-colors",
+    isBlogPage ? "text-gold" : "text-gray-300 hover:text-gold",
+  );
   const gamingClass = cn(
     "inline-flex items-center gap-1.5 transition-colors",
     isGamingPage ? "text-gold" : "text-gray-300 hover:text-gold",
@@ -75,6 +80,10 @@ export default function Header() {
                 {s.label}
               </Link>
             ))}
+            <Link href="/blog" className={blogClass} aria-current={isBlogPage ? "page" : undefined}>
+              <BookOpen aria-hidden className="h-4 w-4" />
+              Blog
+            </Link>
             <Link href="/gaming" className={gamingClass} aria-current={isGamingPage ? "page" : undefined}>
               <Gamepad2 aria-hidden className="h-4 w-4" />
               Gaming
@@ -109,6 +118,15 @@ export default function Header() {
                 {s.label}
               </Link>
             ))}
+            <Link
+              href="/blog"
+              className={cn(blogClass, "py-2 border-b border-blue-900/30")}
+              aria-current={isBlogPage ? "page" : undefined}
+              onClick={closeMenu}
+            >
+              <BookOpen aria-hidden className="h-4 w-4" />
+              Blog
+            </Link>
             <Link
               href="/gaming"
               className={cn(gamingClass, "py-2 border-b border-blue-900/30")}

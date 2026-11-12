@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // Required for app/global-not-found.tsx (the app has multiple root layouts).
+    globalNotFound: true,
+  },
 };
 
 export default nextConfig;
