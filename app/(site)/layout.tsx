@@ -10,6 +10,8 @@ import WebmcpColorTool from "@/components/webmcp-color-tool";
 import JsonLd from "@/components/json-ld";
 import data from "@/data.json";
 import { SITE_URL, indexableRobots } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,6 +60,8 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-black text-white min-h-screen overflow-x-hidden`}
       >
+        <Analytics />
+        <SpeedInsights />
         <JsonLd />
         <Header />
         {children}
