@@ -12,7 +12,12 @@ export default function MemoWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { messages, sendMessage: chatSendMessage, status, error } = useChat({
+  const {
+    messages,
+    sendMessage: chatSendMessage,
+    status,
+    error,
+  } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
     onFinish: () => {
       if (!isOpen) setHasNewMessage(true);
@@ -419,9 +424,9 @@ export default function MemoWidget() {
                       whiteSpace: "pre-wrap",
                     }}
                   >
-                    {message.parts.map((part, index) => {
+                    {message.parts.map((part) => {
                       if (part.type === "text") {
-                        return <span key={index}>{part.text}</span>;
+                        return <span key={message.id}>{part.text}</span>;
                       }
                       return null;
                     })}

@@ -24,6 +24,7 @@ export default async function Image() {
         fontFamily: "Arial, Helvetica, sans-serif",
       }}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={photoSrc}
         alt=""
