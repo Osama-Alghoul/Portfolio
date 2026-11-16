@@ -1,124 +1,172 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================
+   Design tokens. Type pairing and structure borrowed from harshitr.me.
+   Everything hangs off one accent, --brand: blue by default, and
+   re-themed by the gaming layer via <html data-theme="mage|warrior|rogue">
+   (set by components/theme-sync.tsx). Surfaces are tinted with the accent,
+   so the whole page shifts hue with the chosen class.
+   Usage: bg-ink, bg-surface, bg-chip, text-fg, text-dim, text-faint,
+   border-line, text-brand, bg-brand/10, font-serif, font-mono.
+   ============================================================ */
+@property --brand {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #60a5fa;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-brand: var(--brand);
+  --color-ink: color-mix(in srgb, var(--brand) 5%, #09090b);
+  --color-surface: color-mix(in srgb, var(--brand) 6%, #0e0e11);
+  --color-chip: color-mix(in srgb, var(--brand) 8%, #131317);
+  --color-fg: #f5f5f4;
+  --color-dim: #a1a1aa;
+  --color-faint: #6b6b76;
+  --color-line: color-mix(in srgb, var(--brand) 14%, #ffffff1a);
+  --color-hover: color-mix(in srgb, var(--brand) 12%, #ffffff08);
+  --color-stripe: color-mix(in srgb, var(--brand) 22%, #ffffff0a);
+  /* Legacy name used by gaming components: follows the accent. */
+  --color-gold: var(--brand);
+
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-serif: var(--font-instrument), "Instrument Serif", Georgia, serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-marquee: marquee 40s linear infinite;
 }
 
+/* Accent per gaming class. --brand-2 is the secondary hue for gradients and glows. */
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 221.2 83.2% 53.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
-  --radius: 0.5rem;
+  --brand: #60a5fa;
+  --brand-2: #818cf8;
+  /* No transition on --brand itself: Chrome then skips re-transitioning
+     descendants that use transition-colors, leaving them a theme behind. */
+}
+:root[data-theme="mage"] {
+  --brand: #a78bfa;
+  --brand-2: #e879f9;
+}
+:root[data-theme="warrior"] {
+  --brand: #f87171;
+  --brand-2: #fb923c;
+}
+:root[data-theme="rogue"] {
+  --brand: #34d399;
+  --brand-2: #22d3ee;
 }
 
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 224.3 76.3% 48%;
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* shadcn/ui tokens (components/ui/*), tuned to the same dark palette. */
+:root {
+  --background: 0 3% 6%;
+  --foreground: 60 5% 96%;
+  --card: 0 0% 6%;
+  --card-foreground: 60 5% 96%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 60 5% 96%;
+  --primary: 213 94% 68%;
+  --primary-foreground: 0 3% 6%;
+  --secondary: 0 0% 9%;
+  --secondary-foreground: 60 5% 96%;
+  --muted: 0 0% 9%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 0 0% 12%;
+  --accent-foreground: 60 5% 96%;
+  --destructive: 0 62.8% 50%;
+  --destructive-foreground: 60 5% 96%;
+  --border: 0 0% 16%;
+  --input: 0 0% 16%;
+  --ring: 213 94% 68%;
+  --radius: 0.5rem;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--color-ink);
+  /* Soft accent glow behind the top of the page. */
+  background-image:
+    radial-gradient(60rem 28rem at 50% -8rem, color-mix(in srgb, var(--brand) 16%, transparent), transparent 70%),
+    radial-gradient(40rem 24rem at 85% 30rem, color-mix(in srgb, var(--brand-2) 6%, transparent), transparent 70%);
+  background-repeat: no-repeat;
+  color: var(--color-fg);
+  font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar - Game Style */
-::-webkit-scrollbar {
-  width: 6px;
+::selection {
+  background: var(--brand);
+  color: #09090b;
 }
 
-::-webkit-scrollbar-track {
-  background: #000;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--brand) 35%, #27272a); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
 
-::-webkit-scrollbar-thumb {
-  background: #1e3a8a;
-  border-radius: 10px;
-}
+/* ---------- Layout primitives ---------- */
 
-::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
-}
-
-.snap-section {
-  min-height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
-
-:root {
-  --gold: 37 89% 59%;
-}
-
-.text-gold {
-  color: hsl(var(--gold));
-}
-
-.bg-gold {
-  background-color: hsl(var(--gold));
-}
-
-.border-gold {
-  border-color: hsl(var(--gold));
-}
-
-/* Fix for horizontal scrolling */
-.container {
+@layer components {
+/* The narrow center column with hairline side rails. */
+.rail {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  max-width: 48rem;
+  margin-inline: auto;
+  border-inline: 1px solid var(--color-line);
 }
 
-@media (min-width: 1400px) {
+/* Diagonal-hatched band between sections. */
+.stripes {
+  height: 2rem;
+  border-block: 1px solid var(--color-line);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-stripe) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+/* Small mono kicker above section titles: "// 02 · experience". */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Fix for horizontal scrolling. Layered so utilities like max-w-3xl can still narrow it. */
+@layer components {
   .container {
-    max-width: 1320px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      max-width: 1320px;
+    }
   }
 }
 
@@ -250,12 +298,12 @@ svg.animate .svg-elem-5 {
 }
 
 .loot-card {
-  --rarity: 215 16% 65%;
+  --rarity: #71717a;
   perspective: 1200px;
 }
-.loot-card[data-rarity="rare"] { --rarity: 213 94% 62%; }
-.loot-card[data-rarity="epic"] { --rarity: 271 91% 70%; }
-.loot-card[data-rarity="legendary"] { --rarity: var(--gold); }
+.loot-card[data-rarity="rare"] { --rarity: #cbd5e1; }
+.loot-card[data-rarity="epic"] { --rarity: var(--brand-2); }
+.loot-card[data-rarity="legendary"] { --rarity: var(--brand); }
 
 .loot-tilt {
   transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -276,8 +324,8 @@ svg.animate .svg-elem-5 {
   grid-area: 1 / 1;
   position: relative;
   border-radius: 12px;
-  border: 2px solid hsl(var(--rarity) / 0.35);
-  background: linear-gradient(160deg, #0b1324 0%, #070b14 60%);
+  border: 1px solid color-mix(in srgb, var(--rarity) 30%, transparent);
+  background: linear-gradient(160deg, var(--color-chip) 0%, var(--color-surface) 60%);
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -293,12 +341,12 @@ svg.animate .svg-elem-5 {
 }
 
 .loot-card:hover .loot-face {
-  border-color: hsl(var(--rarity) / 0.8);
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 32px -6px hsl(var(--rarity) / 0.55);
+  border-color: color-mix(in srgb, var(--rarity) 80%, transparent);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 24px -10px color-mix(in srgb, var(--rarity) 35%, transparent);
 }
 .loot-card[data-rarity="legendary"] .loot-face,
 .loot-card[data-rarity="epic"] .loot-face {
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 24px -10px hsl(var(--rarity) / 0.6);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 20px -12px color-mix(in srgb, var(--rarity) 35%, transparent);
 }
 
 /* Rotating light around the border for epic and legendary loot. */
@@ -312,7 +360,7 @@ svg.animate .svg-elem-5 {
   background: conic-gradient(
     from var(--loot-angle),
     transparent 0 65%,
-    hsl(var(--rarity)) 82%,
+    var(--rarity) 82%,
     #fff 86%,
     transparent 92%
   );
@@ -340,15 +388,15 @@ svg.animate .svg-elem-5 {
   transition: opacity 0.3s;
   background: radial-gradient(
     circle at var(--mx, 50%) var(--my, 50%),
-    hsl(var(--rarity) / 0.18),
+    color-mix(in srgb, var(--rarity) 18%, transparent),
     transparent 45%
   );
 }
 .loot-card:hover .loot-shine { opacity: 1; }
 
-.loot-title { color: hsl(var(--rarity)); }
+.loot-title { color: var(--rarity); }
 .loot-card[data-rarity="common"] .loot-title,
-.loot-card[data-rarity="rare"] .loot-title { color: hsl(var(--gold)); }
+.loot-card[data-rarity="rare"] .loot-title { color: var(--color-fg); }
 
 .loot-badge {
   display: inline-flex;
@@ -357,13 +405,14 @@ svg.animate .svg-elem-5 {
   border-radius: 9999px;
   padding: 2px 8px;
   font-size: 9px;
-  font-weight: 900;
+  font-weight: 500;
+  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: hsl(var(--rarity));
+  letter-spacing: 0.12em;
+  color: var(--rarity);
   background: rgb(0 0 0 / 0.7);
-  border: 1px solid hsl(var(--rarity) / 0.6);
-  box-shadow: 0 0 12px -2px hsl(var(--rarity) / 0.5);
+  border: 1px solid color-mix(in srgb, var(--rarity) 60%, transparent);
+  box-shadow: none;
   z-index: 3;
 }
 
@@ -375,7 +424,7 @@ svg.animate .svg-elem-5 {
   height: 20px;
   background: repeating-linear-gradient(
     to bottom,
-    hsl(var(--rarity) / 0.5) 0 3px,
+    color-mix(in srgb, var(--rarity) 50%, transparent) 0 3px,
     transparent 3px 6px
   );
 }
@@ -386,8 +435,8 @@ svg.animate .svg-elem-5 {
   width: 6px;
   height: 6px;
   border-radius: 9999px;
-  background: hsl(var(--rarity));
-  box-shadow: 0 0 8px hsl(var(--rarity));
+  background: var(--rarity);
+  box-shadow: none;
   transform: translateX(-50%);
   animation: loot-flow 1.6s linear infinite;
 }
@@ -407,12 +456,12 @@ svg.animate .svg-elem-5 {
 }
 
 .loot-node-me {
-  border-color: hsl(var(--gold) / 0.75);
-  background: hsl(var(--gold) / 0.1);
-  box-shadow: inset 0 0 12px -6px hsl(var(--gold) / 0.6);
+  border-color: color-mix(in srgb, var(--brand) 75%, transparent);
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  box-shadow: inset 0 0 12px -6px color-mix(in srgb, var(--brand) 60%, transparent);
 }
 .loot-node-team {
   border-style: dashed;
-  border-color: rgb(96 165 250 / 0.65);
-  background: rgb(96 165 250 / 0.05);
+  border-color: rgb(255 255 255 / 0.3);
+  background: rgb(255 255 255 / 0.03);
 }

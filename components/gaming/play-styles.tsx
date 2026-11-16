@@ -75,14 +75,14 @@ export default function PlayStyles() {
         <div className="container mx-auto px-4 md:px-6 h-full flex flex-col pt-24 pb-6 md:pb-10">
           <header className="flex items-end justify-between gap-4 mb-4 md:mb-8">
             <div>
-              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-gray-500">
+              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-faint">
                 Select your mode
               </p>
-              <h2 id="play-styles-title" className="text-2xl md:text-4xl font-black text-gold italic tracking-tighter">
+              <h2 id="play-styles-title" className="text-2xl md:text-4xl font-serif text-fg italic tracking-tight">
                 What I Play
               </h2>
             </div>
-            <p className="gs-counter font-mono text-sm md:text-base text-gray-500" aria-hidden>
+            <p className="gs-counter font-mono text-sm md:text-base text-faint" aria-hidden>
               <span style={{ color: current.accent }}>{pad(active + 1)}</span> / {pad(COUNT)}
             </p>
           </header>
@@ -101,31 +101,31 @@ export default function PlayStyles() {
                 </div>
                 <div className="gs-copy">
                   <p className="text-xs md:text-sm font-bold uppercase tracking-[0.25em]" style={{ color: style.accent }}>
-                    <span className="font-mono text-gray-500 mr-2" aria-hidden>
+                    <span className="font-mono text-faint mr-2" aria-hidden>
                       {pad(i + 1)}
                     </span>
                     {style.kicker}
                   </p>
                   <h3
                     id={`play-style-${style.id}`}
-                    className="text-4xl md:text-6xl font-black italic tracking-tighter text-white pr-2"
+                    className="text-4xl md:text-6xl font-serif italic tracking-tight text-fg pr-2"
                   >
                     {style.title}
                   </h3>
-                  <p className="text-sm md:text-lg text-gray-300 leading-relaxed max-w-md">{style.blurb}</p>
+                  <p className="text-sm md:text-lg text-dim leading-relaxed max-w-md">{style.blurb}</p>
                   <ul className="flex flex-wrap gap-2" aria-label="Favorite games">
                     {style.games.map((g) => (
                       <li
                         key={g}
-                        className="rounded-full border px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/80"
+                        className="rounded-full border px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest text-fg/80"
                         style={{ borderColor: `color-mix(in srgb, ${style.accent} 45%, transparent)` }}
                       >
                         {g}
                       </li>
                     ))}
                   </ul>
-                  <p className="font-mono text-xs text-gray-500">
-                    <span className="text-xl md:text-2xl font-black text-white">{style.hours}+</span> hrs logged
+                  <p className="font-mono text-xs text-faint">
+                    <span className="text-xl md:text-2xl font-semibold text-fg">{style.hours}+</span> hrs logged
                   </p>
                 </div>
               </article>
@@ -145,7 +145,7 @@ export default function PlayStyles() {
                     aria-label={`Show ${style.kicker}`}
                     aria-current={i === active ? "step" : undefined}
                     className={cn(
-                      "h-3 w-3 rounded-full border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+                      "h-3 w-3 rounded-full border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                       i === active ? "w-8" : "opacity-50 hover:opacity-100",
                     )}
                     style={{

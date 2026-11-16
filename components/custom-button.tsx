@@ -18,14 +18,17 @@ export function CustomButton({
   ...props
 }: CustomButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+    "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:opacity-50"
 
+  // Monochrome system. "gold", "red" and "purple" are kept as aliases so older call sites still work.
+  const solid = "bg-brand text-ink hover:bg-brand/85 shadow-[0_0_24px_-8px_var(--brand)]"
+  const ghost = "border border-line bg-chip text-fg hover:bg-hover hover:border-brand/40"
   const variantStyles = {
-    default: "bg-blue-600 hover:bg-blue-700 text-white",
-    outline: "border border-gold text-gold hover:bg-gold/10 bg-transparent",
-    gold: "bg-gold hover:bg-gold/90 text-black",
-    red: "bg-red-600 hover:bg-red-700 text-white",
-    purple: "bg-purple-600 hover:bg-purple-700 text-white",
+    default: solid,
+    gold: solid,
+    outline: ghost,
+    red: ghost,
+    purple: ghost,
   }
 
   const buttonStyles = cn(baseStyles, variantStyles[variant], className)

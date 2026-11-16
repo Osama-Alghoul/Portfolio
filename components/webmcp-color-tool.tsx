@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { hexToHslTriplet } from "@/lib/webmcp-color";
 
 const STORAGE_KEY = "webmcp:primaryColor";
-const CSS_VARS = ["--gold", "--primary"] as const;
+/** --brand drives the whole site accent; --primary is the shadcn/ui HSL triplet. */
+const CSS_VARS = ["--brand", "--primary"] as const;
 
 type ToolResult = { content: { type: "text"; text: string }[] };
 
@@ -29,9 +30,9 @@ function getModelContexts(): ModelContext[] {
 }
 
 function applyColor(hsl: string) {
-  for (const cssVar of CSS_VARS) {
-    document.documentElement.style.setProperty(cssVar, hsl);
-  }
+  const root = document.documentElement.style;
+  root.setProperty("--brand", `hsl(${hsl})`);
+  root.setProperty("--primary", hsl);
 }
 
 function clearColor() {

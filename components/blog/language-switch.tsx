@@ -19,7 +19,7 @@ export default function LanguageSwitch({ target, href, label }: { target: Locale
       lang={target}
       dir={localeMeta[target].dir}
       onClick={remember}
-      className="inline-flex items-center gap-2 rounded-full border border-blue-800/70 px-3 py-1.5 text-sm text-gray-300 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+      className="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-sm text-dim transition-colors hover:border-brand/60 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
     >
       <Languages aria-hidden className="h-4 w-4" />
       {label}

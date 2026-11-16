@@ -6,7 +6,7 @@ import { ogWord } from "@/lib/arabic-shape";
 import { localeMeta, type Locale } from "@/lib/blog-locales";
 
 export const OG_SIZE = { width: 1200, height: 630 };
-const GOLD = "#f3ac39";
+const GOLD = "#a1a1aa";
 
 let fontCache: Promise<Buffer> | null = null;
 const loadFont = () =>
@@ -68,7 +68,7 @@ export async function renderBlogOg({
         justifyContent: "space-between",
         alignItems: rtl ? "flex-end" : "flex-start",
         padding: "64px 72px",
-        backgroundColor: "#000000",
+        backgroundColor: "#0f0e0e",
         backgroundImage:
           "radial-gradient(circle at 15% 0%, rgba(30,64,175,0.55), transparent 55%), radial-gradient(circle at 100% 100%, rgba(88,28,135,0.45), transparent 50%)",
         color: "#ffffff",

@@ -56,8 +56,16 @@ export const RARITY_LABEL: Record<Rarity, string> = {
   common: "Common",
 };
 
-const vercel: ArchNode = { label: "Vercel", sub: "hosting · CDN", icon: "cloud" };
-const ghPages: ArchNode = { label: "GitHub Pages", sub: "static hosting", icon: "cloud" };
+const vercel: ArchNode = {
+  label: "Vercel",
+  sub: "hosting · CDN",
+  icon: "cloud",
+};
+const ghPages: ArchNode = {
+  label: "GitHub Pages",
+  sub: "static hosting",
+  icon: "cloud",
+};
 const visitor: ArchNode = { label: "Visitor", icon: "user" };
 
 export const categories: ProjectCategory[] = [
@@ -156,7 +164,12 @@ export const categories: ProjectCategory[] = [
         description:
           "Arabic–English AI data annotation, speech transcription, model evaluation, and translation services. A React site with a serverless TypeScript backend running as Cloudflare Pages Functions, deployed together with the frontend.",
         image: "/cordapoint.png",
-        tags: ["React", "TypeScript", "Cloudflare Pages Functions", "Serverless"],
+        tags: [
+          "React",
+          "TypeScript",
+          "Cloudflare Pages Functions",
+          "Serverless",
+        ],
         live: "https://cordapoint.net",
         rarity: "epic",
         stats: [
@@ -169,8 +182,18 @@ export const categories: ProjectCategory[] = [
             {
               group: "One Cloudflare Pages deploy",
               nodes: [
-                { label: "React Site", sub: "static assets", icon: "frontend", owner: "me" },
-                { label: "Pages Functions", sub: "TypeScript API", icon: "function", owner: "me" },
+                {
+                  label: "React Site",
+                  sub: "static assets",
+                  icon: "frontend",
+                  owner: "me",
+                },
+                {
+                  label: "Pages Functions",
+                  sub: "TypeScript API",
+                  icon: "function",
+                  owner: "me",
+                },
               ],
             },
           ],
@@ -202,7 +225,12 @@ export const categories: ProjectCategory[] = [
             { nodes: [{ label: "Buyers & Renters", icon: "user" }] },
             {
               nodes: [
-                { label: "Next.js App", sub: "search · compare", icon: "frontend", owner: "me" },
+                {
+                  label: "Next.js App",
+                  sub: "search · compare",
+                  icon: "frontend",
+                  owner: "me",
+                },
               ],
             },
             { nodes: [vercel] },
@@ -222,7 +250,16 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [{ label: "Investors", icon: "user" }] },
-            { nodes: [{ label: "Next.js Site", sub: "RTL · Arabic", icon: "frontend", owner: "me" }] },
+            {
+              nodes: [
+                {
+                  label: "Next.js Site",
+                  sub: "RTL · Arabic",
+                  icon: "frontend",
+                  owner: "me",
+                },
+              ],
+            },
             { nodes: [vercel] },
           ],
         },
@@ -242,7 +279,12 @@ export const categories: ProjectCategory[] = [
             { nodes: [{ label: "Customers", icon: "user" }] },
             {
               nodes: [
-                { label: "Next.js Site", sub: "AR/EN · dark mode", icon: "frontend", owner: "me" },
+                {
+                  label: "Next.js Site",
+                  sub: "AR/EN · dark mode",
+                  icon: "frontend",
+                  owner: "me",
+                },
               ],
             },
             { nodes: [vercel] },
@@ -269,8 +311,19 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [{ label: "Refugees", sub: "Gaza Strip", icon: "user" }] },
-            { nodes: [{ label: "Next.js + TS", sub: "market · maps", icon: "frontend", owner: "me" }] },
-            { nodes: [{ label: "Laravel API", icon: "server", owner: "team" }] },
+            {
+              nodes: [
+                {
+                  label: "Next.js + TS",
+                  sub: "market · maps",
+                  icon: "frontend",
+                  owner: "me",
+                },
+              ],
+            },
+            {
+              nodes: [{ label: "Laravel API", icon: "server", owner: "team" }],
+            },
             { nodes: [{ label: "MySQL", icon: "db", owner: "team" }] },
           ],
         },
@@ -294,7 +347,11 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [visitor] },
-            { nodes: [{ label: "React + Vite SPA", icon: "frontend", owner: "me" }] },
+            {
+              nodes: [
+                { label: "React + Vite SPA", icon: "frontend", owner: "me" },
+              ],
+            },
             { nodes: [vercel] },
           ],
         },
@@ -311,8 +368,14 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [visitor] },
-            { nodes: [{ label: "Next.js App", icon: "frontend", owner: "me" }] },
-            { nodes: [{ label: "SQLite", sub: "recipes", icon: "db", owner: "me" }] },
+            {
+              nodes: [{ label: "Next.js App", icon: "frontend", owner: "me" }],
+            },
+            {
+              nodes: [
+                { label: "SQLite", sub: "recipes", icon: "db", owner: "me" },
+              ],
+            },
           ],
         },
       },
@@ -328,7 +391,9 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [visitor] },
-            { nodes: [{ label: "Next.js Site", icon: "frontend", owner: "me" }] },
+            {
+              nodes: [{ label: "Next.js Site", icon: "frontend", owner: "me" }],
+            },
             { nodes: [vercel] },
           ],
         },
@@ -362,7 +427,16 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [visitor] },
-            { nodes: [{ label: "HTML · CSS · JS", sub: "single page", icon: "static", owner: "me" }] },
+            {
+              nodes: [
+                {
+                  label: "HTML · CSS · JS",
+                  sub: "single page",
+                  icon: "static",
+                  owner: "me",
+                },
+              ],
+            },
             { nodes: [ghPages] },
           ],
         },
@@ -379,7 +453,16 @@ export const categories: ProjectCategory[] = [
         architecture: {
           layers: [
             { nodes: [visitor] },
-            { nodes: [{ label: "HTML · CSS · JS", sub: "exercises", icon: "static", owner: "me" }] },
+            {
+              nodes: [
+                {
+                  label: "HTML · CSS · JS",
+                  sub: "exercises",
+                  icon: "static",
+                  owner: "me",
+                },
+              ],
+            },
             { nodes: [ghPages] },
           ],
         },

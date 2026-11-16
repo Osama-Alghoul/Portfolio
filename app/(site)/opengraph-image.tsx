@@ -6,7 +6,8 @@ import data from "@/data.json";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const GOLD = "#f3ac39";
+const FG = "#f5f5f4";
+const DIM = "#a1a1aa";
 
 export default async function Image() {
   const photo = await fs.readFile(path.join(process.cwd(), "public", "Me.png"));
@@ -19,7 +20,7 @@ export default async function Image() {
         height: "100%",
         display: "flex",
         alignItems: "center",
-        backgroundColor: "#000000",
+        backgroundColor: "#0f0e0e",
         padding: "80px",
         fontFamily: "Arial, Helvetica, sans-serif",
       }}
@@ -33,7 +34,7 @@ export default async function Image() {
         style={{
           borderRadius: 24,
           objectFit: "cover",
-          border: `6px solid ${GOLD}`,
+          border: "2px solid rgba(255,255,255,0.15)",
         }}
       />
       <div
@@ -43,19 +44,19 @@ export default async function Image() {
           flex: 1,
           minWidth: 0,
           marginLeft: 64,
-          color: "#ffffff",
+          color: FG,
         }}
       >
         <div style={{ fontSize: 68, fontWeight: 700 }}>
           {data.personal.name_en}
         </div>
-        <div style={{ fontSize: 30, color: GOLD, marginTop: 16 }}>
+        <div style={{ fontSize: 30, color: DIM, marginTop: 16 }}>
           Software Engineer &amp; Web Developer
         </div>
-        <div style={{ fontSize: 26, color: "#a3a3a3", marginTop: 24 }}>
+        <div style={{ fontSize: 26, color: "#63636b", marginTop: 24 }}>
           {`Palestine · ${["React", "Next.js", "AI Integration"].join(" · ")}`}
         </div>
-        <div style={{ fontSize: 24, color: GOLD, marginTop: 32 }}>
+        <div style={{ fontSize: 24, color: FG, marginTop: 32 }}>
           osssghoul.com
         </div>
       </div>

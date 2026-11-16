@@ -16,6 +16,8 @@ interface PlayerState {
   // Actions
   addXP: (id: string, amount: number) => void;
   setCharacter: (character: Character) => void;
+  /** Drops the class (and its site theme) but keeps XP. */
+  clearCharacter: () => void;
   resetSave: () => void;
 }
 
@@ -46,6 +48,8 @@ export const usePlayerStore = create<PlayerState>()(
       },
 
       setCharacter: (character) => set({ character }),
+
+      clearCharacter: () => set({ character: null }),
 
       resetSave: () =>
         set({

@@ -9,7 +9,7 @@ export const siteConfig = {
   name: data.personal.name_en,
   nameAr: data.personal.name,
   handle: data.personal.handle,
-  themeColor: "#000000",
+  themeColor: "#0f0e0e",
 } as const;
 
 /** Absolute URL helper for places `metadataBase` doesn't reach (JSON-LD, sitemap, feeds). */

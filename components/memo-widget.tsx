@@ -99,12 +99,12 @@ export default function MemoWidget() {
           0%,
           100% {
             box-shadow:
-              0 0 0 0 rgba(99, 102, 241, 0.4),
+              0 0 0 0 color-mix(in srgb, var(--brand) 45%, transparent),
               0 8px 32px rgba(0, 0, 0, 0.4);
           }
           50% {
             box-shadow:
-              0 0 0 10px rgba(99, 102, 241, 0),
+              0 0 0 10px transparent,
               0 8px 32px rgba(0, 0, 0, 0.4);
           }
         }
@@ -200,8 +200,8 @@ export default function MemoWidget() {
               width: "360px",
               height: "520px",
               background:
-                "linear-gradient(145deg, #0f0f1a 0%, #13131f 50%, #0f0f1a 100%)",
-              border: "1px solid rgba(99, 102, 241, 0.2)",
+                "linear-gradient(145deg, var(--color-surface) 0%, var(--color-chip) 50%, var(--color-surface) 100%)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
               borderRadius: "20px",
               display: "flex",
               flexDirection: "column",
@@ -215,8 +215,8 @@ export default function MemoWidget() {
               style={{
                 padding: "16px 18px",
                 background:
-                  "linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.1) 100%)",
-                borderBottom: "1px solid rgba(99, 102, 241, 0.15)",
+                  "linear-gradient(135deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0.05) 100%)",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.075)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -233,11 +233,11 @@ export default function MemoWidget() {
                     height: "38px",
                     borderRadius: "50%",
                     background:
-                      "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+                      "linear-gradient(135deg, var(--brand), var(--brand-2))",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    boxShadow: "0 0 16px rgba(99,102,241,0.5)",
+                    boxShadow: "0 0 16px rgba(255, 255, 255, 0.25)",
                     flexShrink: 0,
                   }}
                 >
@@ -335,7 +335,7 @@ export default function MemoWidget() {
                       width: "28px",
                       height: "28px",
                       borderRadius: "50%",
-                      background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                      background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -347,11 +347,11 @@ export default function MemoWidget() {
                   </div>
                   <div
                     style={{
-                      background: "rgba(99,102,241,0.12)",
-                      border: "1px solid rgba(99,102,241,0.2)",
+                      background: "rgba(255, 255, 255, 0.06)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
                       borderRadius: "4px 16px 16px 16px",
                       padding: "10px 14px",
-                      color: "#e4e4f7",
+                      color: "#e4e4e7",
                       fontSize: "13.5px",
                       lineHeight: "1.7",
                       maxWidth: "85%",
@@ -385,7 +385,7 @@ export default function MemoWidget() {
                       background:
                         message.role === "user"
                           ? "linear-gradient(135deg, #374151, #4b5563)"
-                          : "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                          : "linear-gradient(135deg, var(--brand), var(--brand-2))",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -405,18 +405,18 @@ export default function MemoWidget() {
                     style={{
                       background:
                         message.role === "user"
-                          ? "linear-gradient(135deg, #4f46e5 0%, #6366f1 100%)"
-                          : "rgba(99,102,241,0.12)",
+                          ? "linear-gradient(135deg, color-mix(in srgb, var(--brand) 55%, #000), color-mix(in srgb, var(--brand-2) 45%, #000))"
+                          : "rgba(255, 255, 255, 0.06)",
                       border:
                         message.role === "user"
                           ? "none"
-                          : "1px solid rgba(99,102,241,0.2)",
+                          : "1px solid rgba(255, 255, 255, 0.1)",
                       borderRadius:
                         message.role === "user"
                           ? "16px 4px 16px 16px"
                           : "4px 16px 16px 16px",
                       padding: "10px 14px",
-                      color: message.role === "user" ? "white" : "#e4e4f7",
+                      color: message.role === "user" ? "white" : "#e4e4e7",
                       fontSize: "13.5px",
                       lineHeight: "1.75",
                       maxWidth: "85%",
@@ -450,7 +450,7 @@ export default function MemoWidget() {
                       width: "28px",
                       height: "28px",
                       borderRadius: "50%",
-                      background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                      background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -461,8 +461,8 @@ export default function MemoWidget() {
                   </div>
                   <div
                     style={{
-                      background: "rgba(99,102,241,0.12)",
-                      border: "1px solid rgba(99,102,241,0.2)",
+                      background: "rgba(255, 255, 255, 0.06)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
                       borderRadius: "4px 16px 16px 16px",
                       padding: "12px 16px",
                       display: "flex",
@@ -476,7 +476,7 @@ export default function MemoWidget() {
                         width: "7px",
                         height: "7px",
                         borderRadius: "50%",
-                        background: "#6366f1",
+                        background: "var(--brand)",
                       }}
                     />
                     <div
@@ -485,7 +485,7 @@ export default function MemoWidget() {
                         width: "7px",
                         height: "7px",
                         borderRadius: "50%",
-                        background: "#6366f1",
+                        background: "var(--brand)",
                       }}
                     />
                     <div
@@ -494,7 +494,7 @@ export default function MemoWidget() {
                         width: "7px",
                         height: "7px",
                         borderRadius: "50%",
-                        background: "#6366f1",
+                        background: "var(--brand)",
                       }}
                     />
                   </div>
@@ -525,7 +525,7 @@ export default function MemoWidget() {
             <div
               style={{
                 padding: "12px 14px",
-                borderTop: "1px solid rgba(99,102,241,0.12)",
+                borderTop: "1px solid rgba(255, 255, 255, 0.06)",
                 background: "rgba(0,0,0,0.2)",
               }}
             >
@@ -550,7 +550,7 @@ export default function MemoWidget() {
                   style={{
                     flex: 1,
                     background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(99,102,241,0.2)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
                     borderRadius: "12px",
                     padding: "10px 14px",
                     color: "white",
@@ -559,11 +559,11 @@ export default function MemoWidget() {
                     transition: "border-color 0.2s ease",
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "rgba(99,102,241,0.5)";
+                    e.target.style.borderColor = "rgba(255, 255, 255, 0.25)";
                     e.target.style.background = "rgba(255,255,255,0.07)";
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = "rgba(99,102,241,0.2)";
+                    e.target.style.borderColor = "rgba(255, 255, 255, 0.1)";
                     e.target.style.background = "rgba(255,255,255,0.05)";
                   }}
                   id="memo-chat-input"
@@ -578,8 +578,8 @@ export default function MemoWidget() {
                     borderRadius: "11px",
                     background:
                       isLoading || !input.trim()
-                        ? "rgba(99,102,241,0.3)"
-                        : "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                        ? "rgba(255, 255, 255, 0.15)"
+                        : "linear-gradient(135deg, var(--brand), var(--brand-2))",
                     border: "none",
                     display: "flex",
                     alignItems: "center",
@@ -591,7 +591,7 @@ export default function MemoWidget() {
                     boxShadow:
                       isLoading || !input.trim()
                         ? "none"
-                        : "0 4px 14px rgba(99,102,241,0.4)",
+                        : "0 4px 14px rgba(255, 255, 255, 0.2)",
                   }}
                   aria-label="إرسال الرسالة"
                   id="memo-send-button"
@@ -622,8 +622,8 @@ export default function MemoWidget() {
             height: "56px",
             borderRadius: "50%",
             background: isOpen
-              ? "linear-gradient(135deg, #4f46e5, #7c3aed)"
-              : "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              ? "linear-gradient(135deg, color-mix(in srgb, var(--brand) 55%, #000), color-mix(in srgb, var(--brand-2) 45%, #000))"
+              : "linear-gradient(135deg, var(--brand), var(--brand-2))",
             border: "2px solid rgba(255,255,255,0.15)",
             display: "flex",
             alignItems: "center",
@@ -660,7 +660,7 @@ export default function MemoWidget() {
                 height: "14px",
                 borderRadius: "50%",
                 background: "#ef4444",
-                border: "2px solid #0f0f1a",
+                border: "2px solid var(--color-ink)",
               }}
             />
           )}

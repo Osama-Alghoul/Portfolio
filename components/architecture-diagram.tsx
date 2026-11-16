@@ -34,19 +34,19 @@ function Node({ node }: { node: ArchNode }) {
         "loot-node flex-1 min-w-0 flex items-center gap-2 rounded-md border px-2.5 py-1.5",
         node.owner === "me" && "loot-node-me",
         node.owner === "team" && "loot-node-team",
-        !node.owner && "border-white/10 bg-white/[0.03]",
+        !node.owner && "border-line bg-chip",
       )}
     >
       <Icon
         aria-hidden
         className={cn(
           "h-3.5 w-3.5 shrink-0",
-          node.owner === "me" ? "text-gold" : node.owner === "team" ? "text-blue-400" : "text-gray-400",
+          node.owner === "me" ? "text-brand" : node.owner === "team" ? "text-[var(--brand-2)]" : "text-faint",
         )}
       />
       <div className="min-w-0 leading-tight">
-        <div className="text-[11px] font-bold text-white truncate">{node.label}</div>
-        {node.sub && <div className="text-[9px] text-gray-400 truncate">{node.sub}</div>}
+        <div className="text-[11px] font-medium text-fg truncate">{node.label}</div>
+        {node.sub && <div className="text-[10px] text-faint truncate">{node.sub}</div>}
       </div>
     </div>
   );
@@ -73,7 +73,7 @@ export default function ArchitectureDiagram({ architecture }: { architecture: Ar
               )}
             >
               {layer.group && (
-                <span className="absolute -top-2 left-2 px-1.5 bg-[#070b14] text-[9px] font-bold uppercase tracking-widest text-gray-300">
+                <span className="absolute -top-2 left-2 px-1.5 bg-surface font-mono text-[10px] uppercase tracking-wider text-dim">
                   {layer.group}
                 </span>
               )}
@@ -86,8 +86,8 @@ export default function ArchitectureDiagram({ architecture }: { architecture: Ar
       </ol>
 
       <figcaption className="mt-3 space-y-1.5">
-        {note && <p className="text-[11px] text-gray-300 leading-snug">{note}</p>}
-        <div className="flex gap-3 text-[9px] uppercase tracking-widest text-gray-500">
+        {note && <p className="text-[11px] text-dim leading-snug">{note}</p>}
+        <div className="flex gap-3 font-mono text-[10px] uppercase tracking-wider text-faint">
           <span className="flex items-center gap-1">
             <span className="loot-node-me h-2 w-2 rounded-sm border" /> My build
           </span>

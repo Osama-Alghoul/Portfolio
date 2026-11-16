@@ -138,34 +138,34 @@ export default async function PostPage({ params }: Props) {
       <JsonLdScript data={jsonLd} />
 
       <article className="container mx-auto max-w-3xl px-4 pt-28 pb-20 md:px-6 md:pt-36">
-        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
+        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-dim">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="hover:text-gold">
+              <Link href="/" className="hover:text-brand">
                 {t.home}
               </Link>
             </li>
             <li aria-hidden>/</li>
             <li>
-              <Link href={blogPath(lang)} className="hover:text-gold">
+              <Link href={blogPath(lang)} className="hover:text-brand">
                 {t.blog}
               </Link>
             </li>
           </ol>
         </nav>
 
-        <header className="mb-10 border-b border-blue-900/60 pb-8">
-          <h1 className="text-3xl font-black leading-snug text-gold md:text-5xl md:leading-tight">{tr.title}</h1>
-          <p className="mt-5 text-lg leading-relaxed text-blue-200">{tr.excerpt}</p>
+        <header className="mb-10 border-b border-line pb-8">
+          <h1 className="font-serif text-4xl leading-tight tracking-tight text-fg md:text-6xl">{tr.title}</h1>
+          <p className="mt-5 text-lg leading-relaxed text-dim">{tr.excerpt}</p>
 
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <Image src="/Me.png" alt="" width={44} height={44} className="h-11 w-11 rounded-full border-2 border-gold object-cover" />
+              <Image src="/Me.png" alt="" width={44} height={44} className="h-11 w-11 rounded-full border-2 border-brand/40 object-cover" />
               <div className="text-sm leading-relaxed">
-                <p className="font-semibold text-white">
-                  {t.by} <Link href="/" rel="author" className="hover:text-gold">{t.brand}</Link>
+                <p className="font-semibold text-fg">
+                  {t.by} <Link href="/" rel="author" className="hover:text-brand">{t.brand}</Link>
                 </p>
-                <p className="text-gray-400">
+                <p className="text-dim">
                   <time dateTime={post.publishedAt}>{formatDate(post.publishedAt, lang)}</time>
                   <span aria-hidden> · </span>
                   {t.minRead(readingMinutes(tr))}
@@ -177,14 +177,14 @@ export default async function PostPage({ params }: Props) {
         </header>
 
         {toc.length > 2 && (
-          <nav aria-labelledby="toc-title" className="mb-10 rounded-xl border border-blue-800/60 bg-blue-950/30 p-5">
-            <h2 id="toc-title" className="mb-3 text-sm font-bold text-gold">
+          <nav aria-labelledby="toc-title" className="mb-10 rounded-xl border border-line bg-surface p-5">
+            <h2 id="toc-title" className="mb-3 text-sm font-bold text-fg">
               {t.toc}
             </h2>
-            <ol className="grid gap-1.5 text-gray-300 sm:grid-cols-2">
+            <ol className="grid gap-1.5 text-dim sm:grid-cols-2">
               {toc.map((h) => (
                 <li key={h.id}>
-                  <a href={`#${h.id}`} className="hover:text-gold">
+                  <a href={`#${h.id}`} className="hover:text-brand">
                     {stripInline(h.text)}
                   </a>
                 </li>
@@ -199,16 +199,16 @@ export default async function PostPage({ params }: Props) {
 
         {tr.faq && tr.faq.length > 0 && (
           <section aria-labelledby="faq" className="mt-14">
-            <h2 id="faq" className="mb-5 text-2xl font-bold text-white">
+            <h2 id="faq" className="mb-5 font-serif text-3xl italic text-fg">
               {t.faq}
             </h2>
             <div className="grid gap-3">
               {tr.faq.map((f) => (
-                <details key={f.q} className="group rounded-xl border border-blue-800/60 bg-blue-950/30 p-5 open:border-gold/60">
-                  <summary className="cursor-pointer list-none font-semibold text-white marker:hidden group-open:text-gold">
+                <details key={f.q} className="group rounded-xl border border-line bg-surface p-5 open:border-gold/60">
+                  <summary className="cursor-pointer list-none font-semibold text-fg marker:hidden group-open:text-gold">
                     {f.q}
                   </summary>
-                  <p className="mt-3 leading-relaxed text-gray-300">
+                  <p className="mt-3 leading-relaxed text-dim">
                     <Inline text={f.a} />
                   </p>
                 </details>
@@ -217,25 +217,25 @@ export default async function PostPage({ params }: Props) {
           </section>
         )}
 
-        <footer className="mt-14 grid gap-6 border-t border-blue-900/60 pt-8">
+        <footer className="mt-14 grid gap-6 border-t border-line pt-8">
           <ul className="flex flex-wrap gap-2" aria-label={t.tagsLabel}>
             {tr.tags.map((tag) => (
-              <li key={tag} className="rounded-full bg-blue-900/50 px-3 py-1 text-sm text-blue-200">
+              <li key={tag} className="rounded-full bg-chip px-3 py-1 text-sm text-dim">
                 {tag}
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-4 rounded-xl border border-blue-800/60 bg-blue-950/30 p-5">
-            <Image src="/Me.png" alt={t.brand} width={64} height={64} className="h-16 w-16 rounded-full border-2 border-gold object-cover" />
+          <div className="flex items-center gap-4 rounded-xl border border-line bg-surface p-5">
+            <Image src="/Me.png" alt={t.brand} width={64} height={64} className="h-16 w-16 rounded-full border-2 border-brand/40 object-cover" />
             <div>
-              <p className="font-bold text-white">{t.brand}</p>
-              <p className="text-sm text-gray-400">{t.authorBio}</p>
-              <Link href="/#contact" className="mt-1 inline-block text-sm font-semibold text-gold hover:underline">
+              <p className="font-bold text-fg">{t.brand}</p>
+              <p className="text-sm text-dim">{t.authorBio}</p>
+              <Link href="/#contact" className="mt-1 inline-block text-sm font-semibold text-fg hover:underline">
                 {t.contact}
               </Link>
             </div>
           </div>
-          <Link href={blogPath(lang)} className="inline-flex items-center gap-2 text-gray-300 hover:text-gold">
+          <Link href={blogPath(lang)} className="inline-flex items-center gap-2 text-dim hover:text-brand">
             <BackArrow aria-hidden className="h-4 w-4" />
             {t.backToBlog}
           </Link>

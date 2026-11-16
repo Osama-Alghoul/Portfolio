@@ -1,75 +1,60 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePlayerStore } from "@/lib/store";
 import { Shield, Wand2, Sword, User } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface PlayerHUDProps {
   variant?: "fixed" | "inline";
 }
 
+const ICONS = { mage: Wand2, warrior: Sword, rogue: Shield } as const;
+const XP_PER_LEVEL = 100;
+
 export default function PlayerHUD({ variant = "fixed" }: PlayerHUDProps) {
-  const { character } = usePlayerStore();
+  const { character, xp, level } = usePlayerStore();
+  // Persisted store: render nothing until the client has hydrated it.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
-  const getIcon = (id?: string) => {
-    switch (id) {
-      case "mage":
-        return <Wand2 className="w-4 h-4 text-purple-400" />;
-      case "warrior":
-        return <Shield className="w-4 h-4 text-red-400" />;
-      case "rogue":
-        return <Sword className="w-4 h-4 text-emerald-400" />;
-      default:
-        return <User className="w-4 h-4 text-blue-400" />;
-    }
-  };
+  if (!hydrated || !character) return null;
 
-  const getColorClass = (id?: string) => {
-    switch (id) {
-      case "mage":
-        return "from-purple-900/40 border-purple-500/30";
-      case "warrior":
-        return "from-red-900/40 border-red-500/30";
-      case "rogue":
-        return "from-emerald-900/40 border-emerald-500/30";
-      default:
-        return "from-blue-900/40 border-blue-500/30";
-    }
-  };
+  const Icon = ICONS[character.id as keyof typeof ICONS] ?? User;
+  const progress = (xp % XP_PER_LEVEL) / XP_PER_LEVEL;
 
-  // Hidden if no character selected
-  if (!character) return null;
-
-  if (variant === "inline") {
-    return (
-      <div
-        className={cn(
-          "flex flex-col gap-1 p-2 rounded-lg border bg-black/40 backdrop-blur-sm min-w-[150px]",
-          getColorClass(character.id),
-        )}
-      >
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            {getIcon(character.id)}
-            <span className="text-[10px] font-black text-white uppercase tracking-tighter truncate max-w-[80px]">
-              {character.name}
-            </span>
-          </div>
+  const body = (
+    <>
+      <div className="flex items-center gap-2">
+        <span className="flex h-6 w-6 items-center justify-center rounded-md border border-brand/40 bg-brand/10">
+          <Icon aria-hidden className="h-3.5 w-3.5 text-brand" />
+        </span>
+        <div className="min-w-0 leading-tight">
+          <p className="truncate text-[11px] font-medium text-fg">{character.name}</p>
+          <p className="font-mono text-[10px] text-faint">
+            LV {level} · {xp} XP
+          </p>
         </div>
       </div>
-    );
+      <div
+        className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10"
+        role="progressbar"
+        aria-label="Progress to next level"
+        aria-valuemin={0}
+        aria-valuemax={XP_PER_LEVEL}
+        aria-valuenow={xp % XP_PER_LEVEL}
+      >
+        <div className="h-full rounded-full bg-linear-to-r from-brand to-[var(--brand-2)] transition-[width] duration-500" style={{ width: `${progress * 100}%` }} />
+      </div>
+    </>
+  );
+
+  if (variant === "inline") {
+    return <div className="min-w-[150px] rounded-lg border border-line bg-surface p-2">{body}</div>;
   }
 
   return (
-    <div className="fixed bottom-6 left-6 z-100 pointer-events-none fade-in hidden md:block">
-      <div
-        className={cn(
-          "bg-linear-to-br to-black/80 p-4 rounded-xl border-2 shadow-2xl backdrop-blur-xl",
-          getColorClass(character.id),
-        )}
-      >
-        {getIcon(character.id)}
-      </div>
+    <div className="fade-in pointer-events-none fixed bottom-4 left-4 z-40 hidden md:block">
+      <div className="w-48 rounded-xl border border-brand/25 bg-ink/85 p-3 shadow-[0_0_30px_-12px_var(--brand)] backdrop-blur-md">{body}</div>
     </div>
   );
 }

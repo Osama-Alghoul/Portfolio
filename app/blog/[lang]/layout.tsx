@@ -2,7 +2,9 @@
 // so <html lang dir> matches the page language: Arabic pages are served as lang="ar" dir="rtl".
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
+import { IBM_Plex_Sans_Arabic } from "next/font/google";
+import { fontVariables } from "@/lib/fonts";
+import ThemeSync, { themeBootScript } from "@/components/theme-sync";
 import "@/app/globals.css";
 import "./blog.css";
 import Header from "@/components/header";
@@ -10,7 +12,6 @@ import Footer from "@/components/footer";
 import { LOCALES, dict, isLocale, localeMeta } from "@/lib/blog";
 import { SITE_URL, indexableRobots, siteConfig } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const plexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
   weight: ["400", "600", "700"],
@@ -54,8 +55,13 @@ export default async function BlogRootLayout({ children, params }: Props) {
   const { dir } = localeMeta[lang];
 
   return (
-    <html lang={lang} dir={dir} className={`light ${inter.variable} ${plexArabic.variable}`} style={{ colorScheme: "light" }}>
-      <body className="blog-body bg-black text-white min-h-screen overflow-x-hidden">
+    <html suppressHydrationWarning lang={lang} dir={dir} className={`dark ${fontVariables} ${plexArabic.variable}`} style={{ colorScheme: "dark" }}>
+      <head>
+        {/* Applies the saved gaming-class theme before paint. */}
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
+      <body className="blog-body min-h-screen overflow-x-hidden">
+        <ThemeSync />
         {/* Site chrome is English-only, so keep it LTR inside Arabic pages. */}
         <div dir="ltr" lang="en">
           <Header />

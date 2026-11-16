@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 const XP = { live: 25, code: 15, inspect: 10 };
 
 const btn =
-  "inline-flex flex-1 items-center justify-center rounded-md h-10 px-3 text-[10px] font-black uppercase tracking-widest italic border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+  "inline-flex flex-1 items-center justify-center rounded-md h-9 px-3 font-mono text-[11px] uppercase tracking-wider border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { collectedXP, addXP } = usePlayerStore();
@@ -88,8 +88,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       className={cn(
         btn,
         isLiveCollected
-          ? "border-gold text-gold bg-gold/10"
-          : "bg-gold/90 border-gold text-blue-400 hover:bg-white hover:border-white",
+          ? "border-brand/50 text-brand bg-brand/10"
+          : "bg-brand border-brand text-ink hover:bg-brand/85",
       )}
     >
       <ExternalLink aria-hidden className="h-4 w-4 mr-2" />
@@ -118,35 +118,35 @@ export default function ProjectCard({ project }: { project: Project }) {
                 src={project.image || "/placeholder.svg"}
                 alt={`Screenshot of ${project.title}`}
                 fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 768px) 24rem, 100vw"
                 className="object-cover object-top group-hover:scale-110 transition-transform duration-[1.5s] ease-out"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/30 to-transparent opacity-90" />
               <span className="loot-badge absolute top-3 left-3">
                 <Gem aria-hidden className="h-3 w-3" />
                 {rarityLabel}
               </span>
               {isFullyCollected && (
-                <span className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-black/70 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-gold">
+                <span className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-ink/80 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-fg">
                   <CheckCircle2 aria-hidden className="h-3 w-3" /> Looted
                 </span>
               )}
             </div>
 
-            <div className="p-8 relative grow flex flex-col">
-              <h3 className="loot-title text-2xl font-black mb-3 pr-2 uppercase italic tracking-tighter">
+            <div className="p-6 relative grow flex flex-col">
+              <h3 className="loot-title font-serif text-3xl italic mb-2 pr-2 tracking-tight">
                 {project.title}
               </h3>
-              <p className="text-sm text-gray-400 mb-6 font-medium leading-relaxed line-clamp-3">
+              <p className="text-sm text-dim mb-5 leading-relaxed line-clamp-3">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-1.5 mb-6">
                 {project.tags.map((tag) => (
                   <Badge
                     key={tag}
                     variant="secondary"
-                    className="bg-white/5 border border-white/10 text-white/50 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5"
+                    className="rounded border border-line bg-chip text-faint font-mono text-[10px] font-normal px-1.5 py-0.5 hover:bg-chip"
                   >
                     {tag}
                   </Badge>
@@ -162,10 +162,10 @@ export default function ProjectCard({ project }: { project: Project }) {
                     tabIndex={flipped ? -1 : 0}
                     className={cn(
                       btn,
-                      "w-full border-white/15 text-white/70 hover:border-gold/60 hover:text-gold bg-white/[0.03]",
+                      "w-full border-line bg-chip text-dim hover:border-white/20 hover:text-fg",
                     )}
                   >
-                    <Cpu aria-hidden className="h-7 w-4 mr-2" />
+                    <Cpu aria-hidden className="h-4 w-4 mr-2" />
                     Inspect Build
                   </button>
                 )}
@@ -178,7 +178,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                       onClick={() => addXP(ids.code, XP.code)}
                       className={cn(
                         btn,
-                        "border-gold/30 text-gold bg-gold/5 hover:bg-gold/10",
+                        "border-line bg-chip text-dim hover:border-white/20 hover:text-fg",
                       )}
                     >
                       <Github aria-hidden className="h-4 w-4 mr-2" />
@@ -205,10 +205,10 @@ export default function ProjectCard({ project }: { project: Project }) {
                     <Gem aria-hidden className="h-3 w-3" />
                     {rarityLabel}
                   </span>
-                  <h3 className="loot-title text-xl font-black pr-2 uppercase italic tracking-tighter truncate">
+                  <h3 className="loot-title font-serif text-2xl italic pr-2 tracking-tight truncate">
                     {project.title}
                   </h3>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-faint">
                     Build schematic
                   </p>
                 </div>
@@ -219,12 +219,12 @@ export default function ProjectCard({ project }: { project: Project }) {
                   {project.stats.map((s) => (
                     <div
                       key={s.label}
-                      className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5"
+                      className="rounded-md border border-line bg-chip px-2.5 py-1.5"
                     >
-                      <dt className="text-[9px] uppercase tracking-widest text-gray-500">
+                      <dt className="font-mono text-[10px] uppercase tracking-wider text-faint">
                         {s.label}
                       </dt>
-                      <dd className="loot-title text-sm font-black truncate pr-1">
+                      <dd className="loot-title text-sm font-medium truncate pr-1">
                         {s.value}
                       </dd>
                     </div>
@@ -242,7 +242,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                   tabIndex={flipped ? 0 : -1}
                   className={cn(
                     btn,
-                    "border-white/15 text-white/70 hover:border-gold/60 hover:text-gold",
+                    "border-line bg-chip text-dim hover:border-white/20 hover:text-fg",
                   )}
                 >
                   <RotateCcw aria-hidden className="h-4 w-4 mr-2" />

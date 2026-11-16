@@ -3,9 +3,9 @@
 
 .blog-body {
   /* globals.css sets an unlayered body background that beats Tailwind's bg-black utility. */
-  background-color: #000;
-  color: #fff;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background-color: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
 }
 html[lang="ar"] .blog-body {
   /* Plex Arabic for Arabic glyphs, Inter for Latin words mixed in (Replit, v0…). */
@@ -13,9 +13,9 @@ html[lang="ar"] .blog-body {
 }
 
 .prose-blog {
-  --prose-text: #d1d5db;
-  --prose-muted: #9ca3af;
-  --prose-border: rgb(30 58 138 / 0.6);
+  --prose-text: #d4d4d8;
+  --prose-muted: var(--color-dim);
+  --prose-border: var(--color-line);
   color: var(--prose-text);
   font-size: 1.0625rem;
   line-height: 1.85;
@@ -31,7 +31,7 @@ html[lang="ar"] .prose-blog {
 
 .prose-blog h2,
 .prose-blog h3 {
-  color: #fff;
+  color: var(--color-fg);
   font-weight: 700;
   line-height: 1.4;
   scroll-margin-top: 6rem;
@@ -44,7 +44,7 @@ html[lang="ar"] .prose-blog {
 }
 .prose-blog h3 {
   font-size: 1.2rem;
-  color: hsl(var(--gold));
+  color: var(--brand);
   margin-block-start: 1.8em;
 }
 .prose-blog .heading-anchor {
@@ -53,21 +53,23 @@ html[lang="ar"] .prose-blog {
 }
 .prose-blog .heading-anchor:hover::after {
   content: " #";
-  color: hsl(var(--gold));
+  color: var(--brand);
 }
 
 .prose-blog strong {
-  color: #fff;
-  font-weight: 700;
+  color: var(--color-fg);
+  font-weight: 600;
 }
 
 .prose-blog a:not(.heading-anchor) {
-  color: #60a5fa;
+  color: var(--color-fg);
   text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--brand) 60%, transparent);
   text-underline-offset: 3px;
 }
 .prose-blog a:not(.heading-anchor):hover {
-  color: hsl(var(--gold));
+  color: var(--brand);
+  text-decoration-color: var(--brand);
 }
 
 .prose-blog ul,
@@ -84,26 +86,27 @@ html[lang="ar"] .prose-blog {
   margin-block-start: 0.5em;
 }
 .prose-blog li::marker {
-  color: hsl(var(--gold));
+  color: var(--brand);
 }
 
 .prose-blog blockquote {
-  border-inline-start: 3px solid hsl(var(--gold));
+  border-inline-start: 2px solid var(--brand);
   padding-inline-start: 1em;
   color: var(--prose-muted);
   font-style: italic;
 }
 
 .prose-blog code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.875em;
-  background: rgb(30 58 138 / 0.35);
+  background: var(--color-chip);
+  border: 1px solid var(--color-line);
   border-radius: 0.3rem;
   padding: 0.1em 0.35em;
   unicode-bidi: isolate;
 }
 .prose-blog pre {
-  background: #0b1020;
+  background: var(--color-surface);
   border: 1px solid var(--prose-border);
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
@@ -115,7 +118,7 @@ html[lang="ar"] .prose-blog {
   background: none;
   padding: 0;
   font-size: 0.9rem;
-  color: #e5e7eb;
+  color: #e4e4e7;
 }
 html[lang="ar"] .prose-blog pre code {
   font-family: var(--font-arabic), ui-monospace, monospace;
@@ -123,16 +126,16 @@ html[lang="ar"] .prose-blog pre code {
 
 .prose-blog .callout {
   border: 1px solid var(--prose-border);
-  border-inline-start: 4px solid #3b82f6;
-  background: rgb(23 37 84 / 0.35);
+  border-inline-start: 2px solid var(--brand-2);
+  background: var(--color-surface);
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
 }
 .prose-blog .callout[data-variant="tip"] {
-  border-inline-start-color: hsl(var(--gold));
+  border-inline-start-color: var(--brand);
 }
 .prose-blog .callout[data-variant="warning"] {
-  border-inline-start-color: #f97316;
+  border-inline-start-color: #fbbf24;
 }
 .prose-blog .callout > * + * {
   margin-block-start: 0.4em;
@@ -141,8 +144,8 @@ html[lang="ar"] .prose-blog pre code {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #fff;
-  font-weight: 700;
+  color: var(--color-fg);
+  font-weight: 600;
 }
 
 .prose-blog .table-wrap {
@@ -165,11 +168,14 @@ html[lang="ar"] .prose-blog pre code {
   border-block-end: 1px solid var(--prose-border);
 }
 .prose-blog thead th {
-  color: hsl(var(--gold));
-  background: rgb(23 37 84 / 0.5);
+  color: var(--brand);
+  background: var(--color-chip);
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  font-weight: 500;
 }
 .prose-blog tbody th {
-  color: #fff;
+  color: var(--color-fg);
   white-space: nowrap;
 }
 .prose-blog tbody tr:last-child > * {
@@ -177,6 +183,13 @@ html[lang="ar"] .prose-blog pre code {
 }
 
 .prose-blog :focus-visible {
-  outline: 2px solid hsl(var(--gold));
+  outline: 2px solid var(--brand);
   outline-offset: 2px;
+}
+
+/* Instrument Serif has no Arabic glyphs: Arabic headings use Plex Arabic instead. */
+html[lang="ar"] .font-serif {
+  font-family: var(--font-arabic), var(--font-serif);
+  font-style: normal;
+  font-weight: 700;
 }
