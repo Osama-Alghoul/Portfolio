@@ -33,6 +33,7 @@ function Node({ node }: { node: ArchNode }) {
       className={cn(
         "loot-node flex-1 min-w-0 flex items-center gap-2 rounded-md border px-2.5 py-1.5",
         node.owner === "me" && "loot-node-me",
+        node.owner === "shared" && "loot-node-shared",
         node.owner === "team" && "loot-node-team",
         !node.owner && "border-white/10 bg-white/[0.03]",
       )}
@@ -41,20 +42,35 @@ function Node({ node }: { node: ArchNode }) {
         aria-hidden
         className={cn(
           "h-3.5 w-3.5 shrink-0",
-          node.owner === "me" ? "text-gold" : node.owner === "team" ? "text-blue-400" : "text-gray-400",
+          node.owner === "me" || node.owner === "shared"
+            ? "text-gold"
+            : node.owner === "team"
+              ? "text-blue-400"
+              : "text-gray-400",
         )}
       />
       <div className="min-w-0 leading-tight">
-        <div className="text-[11px] font-bold text-white truncate">{node.label}</div>
-        {node.sub && <div className="text-[9px] text-gray-400 truncate">{node.sub}</div>}
+        <div className="text-[11px] font-bold text-white truncate">
+          {node.label}
+        </div>
+        {node.sub && (
+          <div className="text-[9px] text-gray-400 truncate">{node.sub}</div>
+        )}
       </div>
     </div>
   );
 }
 
-export default function ArchitectureDiagram({ architecture }: { architecture: Architecture }) {
+export default function ArchitectureDiagram({
+  architecture,
+}: {
+  architecture: Architecture;
+}) {
   const { layers, note } = architecture;
-  const hasTeam = layers.some((l) => l.nodes.some((n) => n.owner === "team"));
+  const hasOwner = (owner: ArchNode["owner"]) =>
+    layers.some((l) => l.nodes.some((n) => n.owner === owner));
+  const hasShared = hasOwner("shared");
+  const hasTeam = hasOwner("team");
 
   return (
     <figure className="flex flex-col items-stretch">
@@ -69,7 +85,8 @@ export default function ArchitectureDiagram({ architecture }: { architecture: Ar
             <li
               className={cn(
                 "relative flex gap-2",
-                layer.group && "rounded-lg border border-dashed border-white/20 p-2 pt-4 mt-1",
+                layer.group &&
+                  "rounded-lg border border-dashed border-white/20 p-2 pt-4 mt-1",
               )}
             >
               {layer.group && (
@@ -86,11 +103,19 @@ export default function ArchitectureDiagram({ architecture }: { architecture: Ar
       </ol>
 
       <figcaption className="mt-3 space-y-1.5">
-        {note && <p className="text-[11px] text-gray-300 leading-snug">{note}</p>}
+        {note && (
+          <p className="text-[11px] text-gray-300 leading-snug">{note}</p>
+        )}
         <div className="flex gap-3 text-[9px] uppercase tracking-widest text-gray-500">
           <span className="flex items-center gap-1">
             <span className="loot-node-me h-2 w-2 rounded-sm border" /> My build
           </span>
+          {hasShared && (
+            <span className="flex items-center gap-1">
+              <span className="loot-node-shared h-2 w-2 rounded-sm border" />{" "}
+              Shared with
+            </span>
+          )}
           {hasTeam && (
             <span className="flex items-center gap-1">
               <span className="loot-node-team h-2 w-2 rounded-sm border" /> Team

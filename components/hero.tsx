@@ -23,13 +23,13 @@ export default function Hero() {
     <div className="container px-4 md:px-6 h-full flex items-center justify-center relative z-10">
       <div className="flex flex-col items-center text-center space-y-8">
         <div className="relative">
-          <div className="h-40 w-40 rounded-full border-4 border-gold/50 p-1 overflow-hidden">
+          <div className="rounded-2xl border-4 border-gold/50 p-1 overflow-hidden">
             <Image
               src="/Me.png"
               alt="Osama Alghoul"
               width={160}
               height={160}
-              className="object-cover rounded-full group-hover:scale-110 transition-transform duration-700"
+              className="object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700"
             />
           </div>
           <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gold px-3 py-1 rounded text-[10px] font-black uppercase text-black italic">

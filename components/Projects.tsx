@@ -1,5 +1,5 @@
 import { CustomButton } from "./custom-button";
-import ProjectCard from "./project-card";
+import ProjectCarousel from "./project-carousel";
 import { Github } from "lucide-react";
 import { categories } from "@/lib/projects";
 
@@ -11,27 +11,13 @@ export default function Projects() {
           My Projects
         </h2>
         <p className="text-blue-400 text-center max-w-3xl mx-auto mb-16">
-          From professional production work to freelance builds, a capstone
-          project, and the ground where it all started.
+          From professional production work to freelance builds, open-source
+          tools, and the ground where it all started.
         </p>
 
-        <div className="space-y-16">
+        <div className="space-y-10">
           {categories.map((category) => (
-            <div key={category.name}>
-              <div className="mb-6">
-                <h3 className="text-xl font-black text-white uppercase italic tracking-tighter">
-                  {category.name}
-                </h3>
-                <p className="text-sm text-gray-400 mt-1">
-                  {category.description}
-                </p>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.projects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
-            </div>
+            <ProjectCarousel key={category.name} category={category} />
           ))}
         </div>
 
