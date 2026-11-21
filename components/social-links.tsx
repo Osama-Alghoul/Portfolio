@@ -1,4 +1,4 @@
-import { Facebook, Github, Instagram, type LucideIcon } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, type LucideIcon } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import data from "@/data.json";
 import { DiscordIcon, SteamIcon, TelegramIcon, WhatsAppIcon } from "./brand-icons";
@@ -12,10 +12,11 @@ type Icon = LucideIcon | ComponentType<SVGProps<SVGSVGElement>>;
 const { contact } = data;
 
 const LINKS: { label: string; href: string; icon: Icon }[] = [
+  { label: "LinkedIn", href: contact.linkedin, icon: Linkedin },
+  { label: "GitHub", href: contact.github, icon: Github },
   { label: "Instagram", href: contact.Instagram, icon: Instagram },
   { label: "Facebook", href: contact.Facebook, icon: Facebook },
-  { label: "GitHub", href: contact.github, icon: Github },
-  { label: "Discord", href: contact.Discord, icon: DiscordIcon },
+  { label: "Discord", href: contact.DiscordProfile, icon: DiscordIcon },
   { label: "Steam", href: contact.Steam, icon: SteamIcon },
   { label: "Telegram", href: contact.Telegram, icon: TelegramIcon },
   { label: "WhatsApp", href: contact.Whatsapp, icon: WhatsAppIcon },
@@ -26,7 +27,7 @@ export default function SocialLinks({ size = "md" }: SocialLinksProps) {
   const gap = size === "sm" ? "gap-3" : size === "lg" ? "gap-6" : "gap-4";
 
   return (
-    <div className={`flex items-center ${gap}`}>
+    <div className={`flex flex-wrap items-center ${gap}`}>
       {LINKS.map(({ label, href, icon: Icon }) => (
         <a
           key={label}

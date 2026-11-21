@@ -77,7 +77,7 @@ export function GET() {
     `- GitHub: ${data.contact.github}`,
     `- LinkedIn: ${data.contact.linkedin}`,
     `- Telegram: ${data.contact.Telegram}`,
-    `- Discord: ${data.contact.Discord}`,
+    `- Discord: ${data.contact.DiscordUsername}, ${data.contact.DiscordProfile} (server invite: ${data.contact.Discord})`,
     `- Steam: ${data.contact.Steam}`,
     `- WhatsApp: ${data.contact.Whatsapp}`,
     `- Facebook: ${data.contact.Facebook}`,

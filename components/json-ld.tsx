@@ -32,7 +32,7 @@ export default function JsonLd() {
           ...data.skills.Architecture,
           ...data.skills.tools,
         ],
-        sameAs: [...personJsonLd.sameAs, data.contact.Steam, data.contact.Discord],
+        sameAs: [...personJsonLd.sameAs, data.contact.Steam, data.contact.DiscordProfile],
       },
       {
         "@type": "WebSite",
