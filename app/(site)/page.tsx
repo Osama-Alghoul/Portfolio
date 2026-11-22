@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import HeroSection from "@/components/heroSection";
 import Contact from "@/components/contact";
 import Services from "@/components/services";
+import Faq from "@/components/faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <Projects />
       {/* <Content /> */}
+      <Faq />
       <Contact />
     </main>
   );

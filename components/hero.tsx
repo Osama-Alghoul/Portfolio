@@ -1,9 +1,10 @@
 "use client";
 
-import PixelAvatar from "./pixel-avatar";
+// import PixelAvatar from "./pixel-avatar";
 import { CustomButton } from "./custom-button";
 import { usePlayerStore, Character } from "@/lib/store";
 import { Wand2, Sword, Shield } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   const { setCharacter, addXP, character } = usePlayerStore();
@@ -24,7 +25,14 @@ export default function Hero() {
       <div className="flex flex-col items-center text-center space-y-8">
         <div className="relative">
           <div className="rounded-2xl border-4 border-gold/50 p-1 overflow-hidden bg-[#1a2350]">
-            <PixelAvatar size={160} title="Osama Alghoul" className="block rounded-xl" />
+            {/* <PixelAvatar size={160} title="Osama Alghoul" className="block rounded-xl" /> */}
+            <Image
+              src="/Me.png"
+              alt="Osama Alghoul"
+              width={160}
+              height={160}
+              className="object-cover rounded-lg"
+            />
           </div>
           <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gold px-3 py-1 rounded text-[10px] font-black uppercase text-black italic">
             Founder

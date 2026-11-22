@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BookOpen, Gamepad2, Menu, X } from "lucide-react";
+import { BookOpen, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CustomButton } from "./custom-button";
 
@@ -21,7 +21,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const isGamingPage = pathname === "/gaming";
+  // const isGamingPage = pathname === "/gaming";
   const isBlogPage = pathname === "/blog" || pathname.startsWith("/blog/");
 
   useEffect(() => {
@@ -35,7 +35,8 @@ export default function Header() {
   useEffect(() => setIsMenuOpen(false), [pathname]);
   useEffect(() => {
     if (!isMenuOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsMenuOpen(false);
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setIsMenuOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isMenuOpen]);
@@ -48,16 +49,18 @@ export default function Header() {
     "inline-flex items-center gap-1.5 transition-colors",
     isBlogPage ? "text-gold" : "text-gray-300 hover:text-gold",
   );
-  const gamingClass = cn(
-    "inline-flex items-center gap-1.5 transition-colors",
-    isGamingPage ? "text-gold" : "text-gray-300 hover:text-gold",
-  );
+  // const gamingClass = cn(
+  //   "inline-flex items-center gap-1.5 transition-colors",
+  //   isGamingPage ? "text-gold" : "text-gray-300 hover:text-gold",
+  // );
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled || isMenuOpen ? "bg-black/90 backdrop-blur-sm py-2 shadow-md" : "bg-transparent py-4",
+        isScrolled || isMenuOpen
+          ? "bg-black/90 backdrop-blur-sm py-2 shadow-md"
+          : "bg-transparent py-4",
       )}
     >
       <div className="container px-4 md:px-6 mx-auto">
@@ -80,14 +83,18 @@ export default function Header() {
                 {s.label}
               </Link>
             ))}
-            <Link href="/blog" className={blogClass} aria-current={isBlogPage ? "page" : undefined}>
+            <Link
+              href="/blog"
+              className={blogClass}
+              aria-current={isBlogPage ? "page" : undefined}
+            >
               <BookOpen aria-hidden className="h-4 w-4" />
               Blog
             </Link>
-            <Link href="/gaming" className={gamingClass} aria-current={isGamingPage ? "page" : undefined}>
+            {/* <Link href="/gaming" className={gamingClass} aria-current={isGamingPage ? "page" : undefined}>
               <Gamepad2 aria-hidden className="h-4 w-4" />
               Gaming
-            </Link>
+            </Link> */}
             <CustomButton href={sectionHref("contact")}>Contact</CustomButton>
           </nav>
 
@@ -99,7 +106,11 @@ export default function Header() {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsMenuOpen((o) => !o)}
           >
-            {isMenuOpen ? <X aria-hidden className="h-6 w-6" /> : <Menu aria-hidden className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X aria-hidden className="h-6 w-6" />
+            ) : (
+              <Menu aria-hidden className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
@@ -107,7 +118,10 @@ export default function Header() {
       {/* Mobile navigation */}
       {isMenuOpen && (
         <div id="mobile-nav" className="md:hidden bg-black/95 backdrop-blur-sm">
-          <nav aria-label="Main" className="container px-4 py-4 flex flex-col gap-4">
+          <nav
+            aria-label="Main"
+            className="container px-4 py-4 flex flex-col gap-4"
+          >
             {SECTIONS.map((s) => (
               <Link
                 key={s.id}
@@ -127,7 +141,7 @@ export default function Header() {
               <BookOpen aria-hidden className="h-4 w-4" />
               Blog
             </Link>
-            <Link
+            {/* <Link
               href="/gaming"
               className={cn(gamingClass, "py-2 border-b border-blue-900/30")}
               aria-current={isGamingPage ? "page" : undefined}
@@ -135,7 +149,7 @@ export default function Header() {
             >
               <Gamepad2 aria-hidden className="h-4 w-4" />
               Gaming
-            </Link>
+            </Link> */}
             <Link
               href={sectionHref("contact")}
               onClick={closeMenu}
