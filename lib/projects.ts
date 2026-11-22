@@ -478,15 +478,25 @@ export const categories: ProjectCategory[] = [
         tags: ["Next.js", "TypeScript", "CSS", "Route Handlers", "Serverless"],
         link: "https://github.com/Osama-Alghoul/Full-E-commerce-website",
         live: "https://full-e-commerce-react.vercel.app/",
-        rarity: "common",
+        rarity: "rare",
         architecture: {
           layers: [
             { nodes: [{ label: "Shoppers", icon: "user" }] },
             {
               group: "One Next.js deploy on Vercel",
               nodes: [
-                { label: "Next.js UI", sub: "store pages", icon: "frontend", owner: "me" },
-                { label: "Route Handlers", sub: "serverless API", icon: "function", owner: "me" },
+                {
+                  label: "Next.js UI",
+                  sub: "store pages",
+                  icon: "frontend",
+                  owner: "me",
+                },
+                {
+                  label: "Route Handlers",
+                  sub: "serverless API",
+                  icon: "function",
+                  owner: "me",
+                },
               ],
             },
           ],

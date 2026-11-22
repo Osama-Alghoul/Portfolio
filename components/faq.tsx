@@ -1,4 +1,9 @@
-import { ChevronDown } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { JsonLdScript } from "./json-ld";
 
 const faqs = [
@@ -49,23 +54,22 @@ export default function Faq() {
           Quick answers to what clients usually ask before working together
         </p>
 
-        <div className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-4">
           {faqs.map(({ question, answer }) => (
-            <details
+            <AccordionItem
               key={question}
-              className="group rounded-lg border border-blue-600/30 bg-black/60 px-5 open:border-[hsl(var(--gold)/0.5)] transition-colors"
+              value={question}
+              className="rounded-lg border border-blue-600/30 bg-black/60 px-5 transition-colors duration-300 data-[state=open]:border-[hsl(var(--gold)/0.5)]"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-medium text-white [&::-webkit-details-marker]:hidden">
+              <AccordionTrigger className="gap-4 text-left text-lg text-white hover:no-underline cursor-pointer [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-gold [&>svg]:duration-300">
                 {question}
-                <ChevronDown
-                  aria-hidden="true"
-                  className="h-5 w-5 shrink-0 text-gold transition-transform duration-200 group-open:rotate-180"
-                />
-              </summary>
-              <p className="pb-5 text-gray-300 leading-relaxed">{answer}</p>
-            </details>
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-base text-gray-300 leading-relaxed">
+                {answer}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
       <JsonLdScript data={faqJsonLd} />
     </section>

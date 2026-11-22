@@ -13,7 +13,7 @@ const SECTIONS = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
-  { id: "content", label: "Content" },
+  // { id: "content", label: "Content" },
 ];
 
 export default function Header() {
@@ -44,10 +44,11 @@ export default function Header() {
   const sectionHref = (id: string) => (isHomePage ? `#${id}` : `/#${id}`);
   const closeMenu = () => setIsMenuOpen(false);
 
-  const linkClass = "text-gray-300 hover:text-gold transition-colors";
+  const linkClass =
+    "text-gray-300 transition-colors hover:text-[hsl(var(--gold))] underline-offset-4 decoration-gold";
   const blogClass = cn(
     "inline-flex items-center gap-1.5 transition-colors",
-    isBlogPage ? "text-gold" : "text-gray-300 hover:text-gold",
+    isBlogPage ? "text-gold" : "text-gray-300 hover:text-[hsl(var(--gold))]",
   );
   // const gamingClass = cn(
   //   "inline-flex items-center gap-1.5 transition-colors",
