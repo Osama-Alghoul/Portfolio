@@ -3,15 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Badge } from "@/components/ui/badge";
-import {
-  CheckCircle2,
-  Cpu,
-  ExternalLink,
-  Gem,
-  Github,
-  PlayCircle,
-  RotateCcw,
-} from "lucide-react";
+import { Cpu, ExternalLink, Github, PlayCircle, RotateCcw } from "lucide-react";
 import ArchitectureDiagram from "./architecture-diagram";
 import {
   Dialog,
@@ -20,17 +12,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { usePlayerStore } from "@/lib/store";
-import { RARITY_LABEL, type Project } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-const XP = { live: 25, code: 15, video: 15, inspect: 10 };
-
 const btn =
-  "inline-flex flex-1 items-center justify-center rounded-md h-10 px-3 text-[10px] font-black uppercase tracking-widest italic border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+  "inline-flex flex-1 items-center justify-center rounded-md h-10 px-3 text-[10px] font-bold uppercase tracking-wider border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const { collectedXP, addXP } = usePlayerStore();
   const [flipped, setFlipped] = useState(false);
   const tiltRef = useRef<HTMLDivElement>(null);
   const inspectRef = useRef<HTMLButtonElement>(null);
@@ -50,19 +38,6 @@ export default function ProjectCard({ project }: { project: Project }) {
     return () => ro.disconnect();
   }, [project.description]);
 
-  const ids = {
-    code: `project_${project.id}_code`,
-    live: `project_${project.id}_live`,
-    inspect: `project_${project.id}_inspect`,
-    video: `project_${project.id}_video`,
-  };
-  const isLiveCollected = collectedXP.includes(ids.live);
-  const isFullyCollected =
-    isLiveCollected &&
-    collectedXP.includes(ids.inspect) &&
-    (!project.link || collectedXP.includes(ids.code)) &&
-    (!project.video || collectedXP.includes(ids.video));
-
   // Move focus to the face that just turned toward the viewer.
   useEffect(() => {
     if (!didMount.current) {
@@ -76,10 +51,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     return () => clearTimeout(t);
   }, [flipped]);
 
-  const flip = () => {
-    if (!flipped) addXP(ids.inspect, XP.inspect);
-    setFlipped((f) => !f);
-  };
+  const flip = () => setFlipped((f) => !f);
 
   const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse" || !tiltRef.current) return;
@@ -100,23 +72,18 @@ export default function ProjectCard({ project }: { project: Project }) {
     s.setProperty("--ry", "0deg");
   };
 
-  const rarityLabel = RARITY_LABEL[project.rarity];
-
-  const liveButton = (
+  const liveButton = project.live && (
     <a
       href={project.live}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => addXP(ids.live, XP.live)}
       className={cn(
         btn,
-        isLiveCollected
-          ? "border-gold text-gold bg-gold/10"
-          : "bg-gold/90 border-gold text-blue-400 hover:bg-white hover:border-white",
+        "bg-gold border-gold text-black hover:bg-white hover:border-white",
       )}
     >
       <ExternalLink aria-hidden className="h-4 w-4 mr-2" />
-      Enter Realm
+      Live Site
     </a>
   );
 
@@ -125,11 +92,10 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => addXP(ids.code, XP.code)}
       className={cn(btn, "border-gold/30 text-gold bg-gold/5 hover:bg-gold/10")}
     >
       <Github aria-hidden className="h-4 w-4 mr-2" />
-      Examine Code
+      Source Code
     </a>
   );
 
@@ -138,7 +104,6 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={project.video}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => addXP(ids.video, XP.video)}
       className={cn(btn, "border-gold/30 text-gold bg-gold/5 hover:bg-gold/10")}
     >
       <PlayCircle aria-hidden className="h-4 w-4 mr-2" />
@@ -147,7 +112,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   );
 
   return (
-    <div className="loot-card h-full" data-rarity={project.rarity}>
+    <div className="loot-card h-full">
       <div
         ref={tiltRef}
         className="loot-tilt h-full"
@@ -159,7 +124,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <article
             className="loot-face group flex flex-col"
             aria-hidden={flipped}
-            aria-label={`${project.title}, ${rarityLabel} project`}
+            aria-label={project.title}
           >
             <div className="loot-shine" aria-hidden />
             <div className="aspect-video relative overflow-hidden shrink-0 rounded-t-[10px]">
@@ -171,19 +136,10 @@ export default function ProjectCard({ project }: { project: Project }) {
                 className="object-cover object-top group-hover:scale-110 transition-transform duration-[1.5s] ease-out"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-80" />
-              <span className="loot-badge absolute top-3 left-3">
-                <Gem aria-hidden className="h-3 w-3" />
-                {rarityLabel}
-              </span>
-              {isFullyCollected && (
-                <span className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-black/70 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-gold">
-                  <CheckCircle2 aria-hidden className="h-3 w-3" /> Looted
-                </span>
-              )}
             </div>
 
             <div className="p-8 relative grow flex flex-col">
-              <h3 className="loot-title text-2xl font-black mb-3 pr-2 uppercase italic tracking-tighter">
+              <h3 className="loot-title text-2xl font-black mb-3 pr-2 tracking-tight">
                 {project.title}
               </h3>
               <div className="relative mb-6">
@@ -210,10 +166,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                         </span>
                       </button>
                     </DialogTrigger>
-                    <DialogContent
-                      data-rarity={project.rarity}
-                      className="loot-card max-w-2xl max-h-[90vh] overflow-y-auto gap-0 p-0 border-2 border-[hsl(var(--rarity)/0.5)] bg-[#070b14] text-white sm:rounded-xl [&>button:last-child]:rounded-full [&>button:last-child]:bg-black/70 [&>button:last-child]:p-1.5 [&>button:last-child]:text-white [&>button:last-child]:opacity-100"
-                    >
+                    <DialogContent className="loot-card max-w-2xl max-h-[90vh] overflow-y-auto gap-0 p-0 border-2 border-[hsl(var(--card-accent)/0.5)] bg-[#070b14] text-white sm:rounded-xl [&>button:last-child]:rounded-full [&>button:last-child]:bg-black/70 [&>button:last-child]:p-1.5 [&>button:last-child]:text-white [&>button:last-child]:opacity-100">
                       <div className="aspect-video relative shrink-0">
                         <Image
                           src={project.image || "/placeholder.svg"}
@@ -223,14 +176,10 @@ export default function ProjectCard({ project }: { project: Project }) {
                           className="object-cover object-top"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-[#070b14] via-transparent to-transparent" />
-                        <span className="loot-badge absolute top-3 left-3">
-                          <Gem aria-hidden className="h-3 w-3" />
-                          {rarityLabel}
-                        </span>
                       </div>
 
                       <div className="p-6 sm:p-8 space-y-5">
-                        <DialogTitle className="loot-title text-2xl sm:text-3xl font-black uppercase italic tracking-tighter">
+                        <DialogTitle className="loot-title text-2xl sm:text-3xl font-black tracking-tight">
                           {project.title}
                         </DialogTitle>
                         <DialogDescription className="text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -299,11 +248,11 @@ export default function ProjectCard({ project }: { project: Project }) {
                     tabIndex={flipped ? -1 : 0}
                     className={cn(
                       btn,
-                      "w-full border-white/15 text-white/70 hover:border-gold/60 hover:text-gold bg-white/[0.03]",
+                      "w-full border-white/15 text-white/70 hover:border-gold/60 hover:text-gold bg-white/[0.03] cursor-pointer",
                     )}
                   >
                     <Cpu aria-hidden className="h-7 w-4 mr-2" />
-                    Inspect Build
+                    View Architecture
                   </button>
                 )}
                 <div className="flex gap-3">
@@ -320,20 +269,16 @@ export default function ProjectCard({ project }: { project: Project }) {
             <article
               className="loot-face loot-face-back flex flex-col p-6"
               aria-hidden={!flipped}
-              aria-label={`${project.title} build schematic`}
+              aria-label={`${project.title} architecture`}
             >
               <div className="loot-shine" aria-hidden />
               <header className="flex items-start justify-between gap-3 mb-4">
                 <div className="min-w-0">
-                  <span className="loot-badge mb-2">
-                    <Gem aria-hidden className="h-3 w-3" />
-                    {rarityLabel}
-                  </span>
-                  <h3 className="loot-title text-xl font-black pr-2 uppercase italic tracking-tighter truncate">
+                  <h3 className="loot-title text-xl font-black pr-2 tracking-tight truncate">
                     {project.title}
                   </h3>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500">
-                    Build schematic
+                    Architecture
                   </p>
                 </div>
               </header>

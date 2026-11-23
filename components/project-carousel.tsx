@@ -51,10 +51,10 @@ export default function ProjectCarousel({
         <div>
           <h3
             id={headingId}
-            className="text-xl font-black text-white uppercase italic tracking-tighter"
+            className="text-xl font-bold text-white tracking-tight"
           >
             {category.name}
-            <span className="ml-2 text-sm font-bold not-italic text-gray-500">
+            <span className="ml-2 text-sm font-bold text-gray-500">
               {category.projects.length}
             </span>
           </h3>

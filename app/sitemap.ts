@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: SITE_URL },
-    { url: absoluteUrl("/gaming") },
     // Blog index per language, each listing all language versions (hreflang).
     ...LOCALES.map((lang) => ({
       url: absoluteUrl(blogPath(lang)),

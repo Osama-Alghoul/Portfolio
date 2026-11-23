@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import PlayerHUD from "@/components/player-hud";
 import MemoWidget from "@/components/memo-widget";
 import WebmcpColorTool from "@/components/webmcp-color-tool";
 import JsonLd from "@/components/json-ld";
@@ -65,7 +64,6 @@ export default function RootLayout({
         <JsonLd />
         <Header />
         {children}
-        <PlayerHUD />
         <MemoWidget />
         <Footer />
         <WebmcpColorTool />

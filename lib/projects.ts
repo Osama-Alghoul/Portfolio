@@ -1,5 +1,3 @@
-export type Rarity = "legendary" | "epic" | "rare" | "common";
-
 export type NodeIcon =
   | "user"
   | "bot"
@@ -39,8 +37,8 @@ export interface Project {
   link?: string;
   /** Demo video, for projects visitors can't log in to. */
   video?: string;
-  live: string;
-  rarity: Rarity;
+  /** Live site; omit for projects with nothing deployed. */
+  live?: string;
   stats?: { label: string; value: string }[];
   architecture?: Architecture;
 }
@@ -50,13 +48,6 @@ export interface ProjectCategory {
   description: string;
   projects: Project[];
 }
-
-export const RARITY_LABEL: Record<Rarity, string> = {
-  legendary: "Legendary",
-  epic: "Epic",
-  rare: "Rare",
-  common: "Common",
-};
 
 const vercel: ArchNode = {
   label: "Vercel",
@@ -93,7 +84,6 @@ export const categories: ProjectCategory[] = [
         ],
         live: "https://academy.rowwadhimam.org/",
         video: "https://www.youtube.com/watch?v=yz65MKFs1Y8",
-        rarity: "legendary",
         stats: [
           { label: "Role", value: "Frontend · AI" },
           { label: "Permissions", value: "80+" },
@@ -144,7 +134,6 @@ export const categories: ProjectCategory[] = [
         image: "/privco.png",
         tags: ["React", "Next.js", "AI Integration", "SEO", "Performance"],
         live: "https://privco.com",
-        rarity: "legendary",
         stats: [
           { label: "Role", value: "Frontend · ooblek" },
           { label: "Focus", value: "AI · SEO · Perf" },
@@ -189,7 +178,6 @@ export const categories: ProjectCategory[] = [
         image: "/quranik.png",
         tags: ["Next.js", "Odoo", "Frontend", "Backend"],
         live: "https://quranik.org",
-        rarity: "epic",
         stats: [
           { label: "Format", value: "1:1 live" },
           { label: "Teachers", value: "From Gaza" },
@@ -233,7 +221,6 @@ export const categories: ProjectCategory[] = [
           "Serverless",
         ],
         live: "https://cordapoint.net",
-        rarity: "epic",
         stats: [
           { label: "Servers", value: "0" },
           { label: "Deploys", value: "1 unit" },
@@ -271,7 +258,6 @@ export const categories: ProjectCategory[] = [
         tags: ["Next JS", "CSS", "TypeScript", "Laravel", "MySQL"],
         link: "https://github.com/graduationUP/Masar_Project/",
         live: "https://masar-project-frontui.vercel.app/",
-        rarity: "epic",
         stats: [{ label: "Type", value: "Graduation" }],
         architecture: {
           layers: [
@@ -308,7 +294,6 @@ export const categories: ProjectCategory[] = [
         image: "/amtar.png",
         tags: ["Next.js", "Real Estate", "Frontend"],
         live: "https://amtar-jade.vercel.app/",
-        rarity: "rare",
         stats: [
           { label: "Listings", value: "15,000+" },
           { label: "Compounds", value: "800+" },
@@ -338,7 +323,6 @@ export const categories: ProjectCategory[] = [
         image: "/tadaol.png",
         tags: ["Next.js", "Corporate Site", "Frontend"],
         live: "https://tadaol.vercel.app/",
-        rarity: "rare",
         stats: [{ label: "Location", value: "KAFD, Riyadh" }],
         architecture: {
           layers: [
@@ -365,7 +349,6 @@ export const categories: ProjectCategory[] = [
         image: "/upal.png",
         tags: ["Next.js", "Corporate Site", "Frontend"],
         live: "https://al-factory.vercel.app/",
-        rarity: "rare",
         stats: [{ label: "Client", value: "Jeddah factory" }],
         architecture: {
           layers: [
@@ -399,8 +382,6 @@ export const categories: ProjectCategory[] = [
         image: "/seo-skill.svg",
         tags: ["AI Agents", "Claude Code", "SEO", "Next.js", "React"],
         link: "https://github.com/Osama-Alghoul/React-Next.js-seo",
-        live: "https://github.com/Osama-Alghoul/React-Next.js-seo",
-        rarity: "epic",
         stats: [
           { label: "Type", value: "Agent skill" },
           { label: "Frameworks", value: "3 tracks" },
@@ -442,8 +423,6 @@ export const categories: ProjectCategory[] = [
         image: "/electricity-bot.jpg",
         tags: ["Python", "Telegram Bot API", "Automation"],
         link: "https://github.com/Osama-Alghoul/telegram-bot",
-        live: "https://github.com/Osama-Alghoul/telegram-bot",
-        rarity: "common",
         stats: [{ label: "Language", value: "Python" }],
         architecture: {
           layers: [
@@ -478,7 +457,6 @@ export const categories: ProjectCategory[] = [
         tags: ["Next.js", "TypeScript", "CSS", "Route Handlers", "Serverless"],
         link: "https://github.com/Osama-Alghoul/Full-E-commerce-website",
         live: "https://full-e-commerce-react.vercel.app/",
-        rarity: "rare",
         architecture: {
           layers: [
             { nodes: [{ label: "Shoppers", icon: "user" }] },
@@ -511,7 +489,6 @@ export const categories: ProjectCategory[] = [
         tags: ["HTML", "CSS", "JavaScript", "Next JS", "sqlite"],
         link: "https://github.com/Osama-Alghoul/Next-Level-Food",
         live: "https://next-level-food-lovat.vercel.app/",
-        rarity: "common",
         architecture: {
           layers: [
             { nodes: [visitor] },
@@ -534,7 +511,6 @@ export const categories: ProjectCategory[] = [
         tags: ["HTML", "CSS", "TypeScript", "Next JS"],
         link: "https://github.com/Osama-Alghoul/Portfolio.Abdullah-Abo-sido",
         live: "https://portfolio-abdullah-abo-sido.vercel.app/",
-        rarity: "common",
         architecture: {
           layers: [
             { nodes: [visitor] },
@@ -553,7 +529,6 @@ export const categories: ProjectCategory[] = [
         tags: ["HTML", "CSS", "JavaScript", "React"],
         link: "https://github.com/Osama-Alghoul/Moviedux-React",
         live: "https://moviedux-react.vercel.app/",
-        rarity: "common",
         architecture: {
           layers: [
             { nodes: [visitor] },
@@ -570,7 +545,6 @@ export const categories: ProjectCategory[] = [
         tags: ["HTML", "CSS", "JavaScript"],
         link: "https://github.com/Osama-Alghoul/Shipping_company",
         live: "https://osama-alghoul.github.io/Shipping_company/",
-        rarity: "common",
         architecture: {
           layers: [
             { nodes: [visitor] },
@@ -596,7 +570,6 @@ export const categories: ProjectCategory[] = [
         tags: ["HTML", "CSS", "JavaScript"],
         link: "https://github.com/Osama-Alghoul/Elzero-web-school",
         live: "https://osama-alghoul.github.io/Elzero-web-school/",
-        rarity: "common",
         architecture: {
           layers: [
             { nodes: [visitor] },

@@ -257,20 +257,11 @@ svg.animate .svg-elem-5 {
   transform: translateY(-5px);
 }
 
-/* ---------- Loot cards (components/project-card.tsx) ---------- */
-@property --loot-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
+/* ---------- Project cards (components/project-card.tsx) ---------- */
 .loot-card {
-  --rarity: 215 16% 65%;
+  --card-accent: 213 94% 62%;
   perspective: 1200px;
 }
-.loot-card[data-rarity="rare"] { --rarity: 213 94% 62%; }
-.loot-card[data-rarity="epic"] { --rarity: 271 91% 70%; }
-.loot-card[data-rarity="legendary"] { --rarity: var(--gold); }
 
 .loot-tilt {
   transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -293,7 +284,7 @@ svg.animate .svg-elem-5 {
   grid-area: 1 / 1;
   position: relative;
   border-radius: 12px;
-  border: 2px solid hsl(var(--rarity) / 0.35);
+  border: 2px solid hsl(var(--card-accent) / 0.35);
   background: linear-gradient(160deg, #0b1324 0%, #070b14 60%);
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
   backface-visibility: hidden;
@@ -310,43 +301,9 @@ svg.animate .svg-elem-5 {
 }
 
 .loot-card:hover .loot-face {
-  border-color: hsl(var(--rarity) / 0.8);
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 32px -6px hsl(var(--rarity) / 0.55);
+  border-color: hsl(var(--card-accent) / 0.8);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 32px -6px hsl(var(--card-accent) / 0.55);
 }
-.loot-card[data-rarity="legendary"] .loot-face,
-.loot-card[data-rarity="epic"] .loot-face {
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6), 0 0 24px -10px hsl(var(--rarity) / 0.6);
-}
-
-/* Rotating light around the border for epic and legendary loot. */
-.loot-card[data-rarity="legendary"] .loot-face::before,
-.loot-card[data-rarity="epic"] .loot-face::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  padding: 2px;
-  background: conic-gradient(
-    from var(--loot-angle),
-    transparent 0 65%,
-    hsl(var(--rarity)) 82%,
-    #fff 86%,
-    transparent 92%
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  animation: loot-spin 4s linear infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-.loot-card[data-rarity="epic"] .loot-face::before {
-  animation-duration: 6s;
-}
-@keyframes loot-spin {
-  to { --loot-angle: 360deg; }
-}
-
 .loot-shine {
   position: absolute;
   inset: 0;
@@ -357,32 +314,14 @@ svg.animate .svg-elem-5 {
   transition: opacity 0.3s;
   background: radial-gradient(
     circle at var(--mx, 50%) var(--my, 50%),
-    hsl(var(--rarity) / 0.18),
+    hsl(var(--card-accent) / 0.18),
     transparent 45%
   );
 }
 .loot-card:hover .loot-shine { opacity: 1; }
 
-.loot-title { color: hsl(var(--rarity)); }
-.loot-card[data-rarity="common"] .loot-title,
-.loot-card[data-rarity="rare"] .loot-title { color: hsl(var(--gold)); }
+.loot-title { color: hsl(var(--gold)); }
 
-.loot-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  border-radius: 9999px;
-  padding: 2px 8px;
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: hsl(var(--rarity));
-  background: rgb(0 0 0 / 0.7);
-  border: 1px solid hsl(var(--rarity) / 0.6);
-  box-shadow: 0 0 12px -2px hsl(var(--rarity) / 0.5);
-  z-index: 3;
-}
 
 /* Animated request flow between diagram layers. */
 .loot-flow {
@@ -392,7 +331,7 @@ svg.animate .svg-elem-5 {
   height: 20px;
   background: repeating-linear-gradient(
     to bottom,
-    hsl(var(--rarity) / 0.5) 0 3px,
+    hsl(var(--card-accent) / 0.5) 0 3px,
     transparent 3px 6px
   );
 }
@@ -403,8 +342,8 @@ svg.animate .svg-elem-5 {
   width: 6px;
   height: 6px;
   border-radius: 9999px;
-  background: hsl(var(--rarity));
-  box-shadow: 0 0 8px hsl(var(--rarity));
+  background: hsl(var(--card-accent));
+  box-shadow: 0 0 8px hsl(var(--card-accent));
   transform: translateX(-50%);
   animation: loot-flow 1.6s linear infinite;
 }
@@ -418,7 +357,6 @@ svg.animate .svg-elem-5 {
 @media (prefers-reduced-motion: reduce) {
   .loot-tilt { transform: none !important; transition: none; }
   .loot-flip { transition: none; }
-  .loot-face::before,
   .loot-flow::after { animation: none !important; }
   .loot-flow::after { display: none; }
 }

@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BookOpen, Menu, X } from "lucide-react";
+import { BookOpen, FileText, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CustomButton } from "./custom-button";
+import { CV_URL } from "@/lib/site";
 
 /** Home-page sections linked from the nav. */
 const SECTIONS = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
-  // { id: "content", label: "Content" },
+  { id: "faq", label: "FAQ" },
 ];
 
 export default function Header() {
@@ -21,7 +22,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  // const isGamingPage = pathname === "/gaming";
   const isBlogPage = pathname === "/blog" || pathname.startsWith("/blog/");
 
   useEffect(() => {
@@ -50,10 +50,6 @@ export default function Header() {
     "inline-flex items-center gap-1.5 transition-colors",
     isBlogPage ? "text-gold" : "text-gray-300 hover:text-[hsl(var(--gold))]",
   );
-  // const gamingClass = cn(
-  //   "inline-flex items-center gap-1.5 transition-colors",
-  //   isGamingPage ? "text-gold" : "text-gray-300 hover:text-gold",
-  // );
 
   return (
     <header
@@ -92,11 +88,13 @@ export default function Header() {
               <BookOpen aria-hidden className="h-4 w-4" />
               Blog
             </Link>
-            {/* <Link href="/gaming" className={gamingClass} aria-current={isGamingPage ? "page" : undefined}>
-              <Gamepad2 aria-hidden className="h-4 w-4" />
-              Gaming
-            </Link> */}
-            <CustomButton href={sectionHref("contact")}>Contact</CustomButton>
+            <CustomButton href={CV_URL} external variant="outline">
+              <FileText aria-hidden className="mr-2 h-4 w-4" />
+              Show CV
+            </CustomButton>
+            <CustomButton href={sectionHref("contact")} variant="gold">
+              Hire Me
+            </CustomButton>
           </nav>
 
           <button
@@ -142,22 +140,25 @@ export default function Header() {
               <BookOpen aria-hidden className="h-4 w-4" />
               Blog
             </Link>
-            {/* <Link
-              href="/gaming"
-              className={cn(gamingClass, "py-2 border-b border-blue-900/30")}
-              aria-current={isGamingPage ? "page" : undefined}
-              onClick={closeMenu}
-            >
-              <Gamepad2 aria-hidden className="h-4 w-4" />
-              Gaming
-            </Link> */}
-            <Link
-              href={sectionHref("contact")}
-              onClick={closeMenu}
-              className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 px-4 py-2 text-sm font-medium text-white transition-colors"
-            >
-              Contact
-            </Link>
+            <div className="mt-2 grid grid-cols-2 gap-3">
+              <a
+                href={CV_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                className="inline-flex items-center justify-center rounded-md border border-gold px-4 py-2 text-sm font-medium text-gold hover:bg-gold/10 transition-colors"
+              >
+                <FileText aria-hidden className="mr-2 h-4 w-4" />
+                Show CV
+              </a>
+              <Link
+                href={sectionHref("contact")}
+                onClick={closeMenu}
+                className="inline-flex items-center justify-center rounded-md bg-gold hover:bg-gold/90 px-4 py-2 text-sm font-medium text-black transition-colors"
+              >
+                Hire Me
+              </Link>
+            </div>
           </nav>
         </div>
       )}

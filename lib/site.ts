@@ -50,3 +50,10 @@ export const personJsonLd = {
     data.contact.Telegram,
   ],
 };
+
+/** CV hosted on Google Drive (shared as "anyone with the link"). */
+export const CV_URL =
+  "https://drive.google.com/file/d/1UFBXHB0UycLVR77VI34IDbRYVO6U-QX-/view";
+
+/** Where "Hire me" buttons lead: the contact section on the home page. */
+export const HIRE_ME_HREF = "/#contact";

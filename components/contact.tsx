@@ -1,70 +1,65 @@
-"use client";
-
 import { Card, CardContent } from "./ui/card";
-import { MessageSquare, Sparkles } from "lucide-react";
+import { Briefcase, FileText, Mail } from "lucide-react";
 import SocialLinks from "./social-links";
+import { CustomButton } from "./custom-button";
+import { CV_URL } from "@/lib/site";
+
+const EMAIL = "osamalghoul2@gmail.com";
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="h-full flex items-center bg-black/95 py-12"
-    >
+    <section id="contact" className="h-full flex items-center bg-black/95 py-20">
       <div className="container px-4 md:px-6 mx-auto">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-12 text-gold tracking-[0.2em] uppercase italic">
-          The Final Phase
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gold">
+          Let&apos;s Work Together
         </h2>
+        <p className="text-blue-400 text-center max-w-2xl mx-auto mb-12">
+          Available for full-time roles, contracts, and freelance projects. I
+          can start immediately.
+        </p>
 
         <div className="max-w-xl mx-auto">
-          <Card className="bg-blue-950/20 border-2 border-blue-900/30 shadow-[0_0_50px_rgba(30,58,138,0.3)] hover:border-gold/50 transition-all duration-700 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-blue-500/50 to-transparent" />
-
-            <CardContent className="p-10 space-y-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-gold/10 rounded-xl border border-gold/30">
-                  <Sparkles className="w-6 h-6 text-gold" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-black text-gold uppercase tracking-tighter italic">
-                    Quest: Establish Connection
-                  </h3>
-                  <p className="text-[10px] text-white/60 uppercase tracking-widest font-bold">
-                    Difficulty: Zero-Day
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-4 border-l-4 border-gold/30 pl-6 py-2 italic font-serif relative">
-                <p className="text-base text-gray-300 leading-relaxed antialiased">
-                  &quot;Your journey across the digital layers ends here,
-                  traveler. The final objective is clear: send your signal
-                  across the expanse. Will you forge a new alliance?&quot;
+          <Card className="bg-blue-950/20 border border-blue-900/40 shadow-[0_0_50px_rgba(30,58,138,0.25)] hover:border-gold/40 transition-colors duration-500">
+            <CardContent className="p-8 md:p-10 space-y-8">
+              <div className="space-y-3">
+                <p className="text-xs text-white/60 uppercase tracking-[0.2em] font-semibold">
+                  Email
                 </p>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="flex items-center p-4 rounded-xl bg-black/60 border border-white/5 hover:border-blue-500/50 transition-colors text-blue-400 hover:text-gold text-lg font-semibold break-all"
+                >
+                  <Mail aria-hidden className="mr-4 h-6 w-6 shrink-0" />
+                  {EMAIL}
+                </a>
               </div>
 
-              <div className="space-y-8 pt-6">
-                <div className="space-y-3">
-                  <p className="text-[10px] text-white/60 uppercase tracking-[0.3em] font-black">
-                    Transmission Channel
-                  </p>
-                  <div className="flex items-center p-4 rounded-xl bg-black/60 border border-white/5 hover:border-blue-500/50 transition-all group/item">
-                    <MessageSquare className="mr-4 h-6 w-6 text-blue-400 group-hover/item:scale-110 transition-transform" />
-                    <a
-                      href="mailto:osamalghoul2@gmail.com"
-                      className="text-blue-400 hover:text-gold transition-colors text-lg font-black tracking-tight"
-                    >
-                      osamalghoul2@gmail.com
-                    </a>
-                  </div>
-                </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <CustomButton
+                  href={`mailto:${EMAIL}?subject=${encodeURIComponent("Hiring inquiry")}`}
+                  variant="gold"
+                  className="h-12 font-semibold"
+                >
+                  <Briefcase aria-hidden className="mr-2 h-4 w-4" />
+                  Hire Me
+                </CustomButton>
+                <CustomButton
+                  href={CV_URL}
+                  external
+                  variant="outline"
+                  className="h-12 font-semibold"
+                >
+                  <FileText aria-hidden className="mr-2 h-4 w-4" />
+                  Show CV
+                </CustomButton>
+              </div>
 
-                <div className="space-y-4">
-                  <p className="text-[10px] text-white/60 uppercase tracking-[0.3em] font-black">
-                    Decrypt Socials
-                  </p>
-                  <div className="flex justify-center md:justify-start">
-                    <SocialLinks size="lg" />
-                  </div>
+              <div className="space-y-4">
+                <p className="text-xs text-white/60 uppercase tracking-[0.2em] font-semibold">
+                  Find me online
+                </p>
+                <div className="flex justify-center md:justify-start">
+                  <SocialLinks size="lg" />
                 </div>
               </div>
             </CardContent>

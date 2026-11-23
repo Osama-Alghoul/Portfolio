@@ -8,7 +8,7 @@ export default function SkillsSet() {
         "CSS",
         "JavaScript",
         "AI",
-        "Bootstarp",
+        "Bootstrap",
         "Tailwind",
         "TypeScript",
         "React",
