@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: "What’s your notice period?",
-    answer: "None — I can start immediately.",
+    answer: "None, I can start immediately.",
   },
 ];
 

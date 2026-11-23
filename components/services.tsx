@@ -12,7 +12,7 @@ export default function Services() {
     {
       title: "Building Full-Stack Web & AI-Powered Apps",
       description:
-        "Designing and building complete applications — from polished, interactive interfaces to the AI-powered features running underneath them.",
+        "Designing and building complete applications from polished, interactive interfaces to the AI-powered features running underneath them.",
       iconType: "interactive" as const,
     },
     {
@@ -30,7 +30,7 @@ export default function Services() {
     {
       title: "Leading Teams and Technical Direction",
       description:
-        "Providing technical leadership for your engineering team — architecture decisions, code review, mentorship, and keeping the project on a solid long-term path.",
+        "Providing technical leadership for your engineering team, architecture decisions, code review, mentorship, and keeping the project solid.",
       iconType: "usability" as const,
     },
     {
@@ -47,8 +47,8 @@ export default function Services() {
           My Services
         </h2>
         <p className="text-blue-400 text-center max-w-3xl mx-auto mb-12">
-          I help businesses architect, build, and scale technical systems —
-          from strong infrastructure to AI integration
+          I help businesses architect, build, and scale technical systems from
+          strong infrastructure to AI integration
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

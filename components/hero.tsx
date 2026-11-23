@@ -28,11 +28,11 @@ export default function Hero() {
             Osama <span className="text-gold">Alghoul</span>
           </h1>
           <p className="text-blue-400 text-lg md:text-xl font-medium tracking-[0.2em] uppercase">
-            Software Engineer & Web Developer
+            Software Engineer
           </p>
           <p className="max-w-2xl mx-auto text-gray-300 text-base md:text-lg leading-relaxed">
-            I design, build, and scale web platforms with AI integrations —
-            using React, Next.js, and TypeScript on a solid infrastructure.
+            I design, build, and scale web platforms with AI integrations using
+            React, Next.js, and TypeScript on a solid infrastructure.
           </p>
         </div>
 

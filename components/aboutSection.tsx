@@ -33,6 +33,7 @@ const highlights = [
 export default function About() {
   const [firstDivRef, firstDivInView] = useInView({ triggerOnce: true });
   const [secondDivRef, secondDivInView] = useInView({ triggerOnce: true });
+  const [stackRef, stackInView] = useInView({ triggerOnce: true });
 
   return (
     <section
@@ -43,34 +44,11 @@ export default function About() {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gold">
           About Me
         </h2>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div
             ref={firstDivRef}
-            className={`transition-all duration-1000 ${
-              firstDivInView ? "slide-in-left" : "opacity-0"
-            }`}
-          >
-            <ul className="grid sm:grid-cols-2 gap-4">
-              {highlights.map(({ icon: Icon, title, text }) => (
-                <li
-                  key={title}
-                  className="bg-blue-950/20 p-6 rounded-2xl border border-blue-900/40 hover:border-gold/40 transition-colors"
-                >
-                  <Icon aria-hidden className="h-6 w-6 text-gold mb-3" />
-                  <h3 className="text-base font-semibold text-white mb-1">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
-                    {text}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div
-            ref={secondDivRef}
             className={`space-y-8 transition-all duration-1000 ${
-              secondDivInView ? "slide-in-right" : "opacity-0"
+              firstDivInView ? "slide-in-left" : "opacity-0"
             }`}
           >
             <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
@@ -78,16 +56,10 @@ export default function About() {
               <span className="text-gold font-semibold">Osama Alghoul</span>, a
               Software Engineer & Web Developer based in Palestine. I build
               high-performance web applications with AI integrations using
-              React, Next.js, and TypeScript — with a focus on clean,
-              maintainable code and a strong technical foundation.
+              React, Next.js, and TypeScript with a focus on clean, maintainable
+              code and a strong technical foundation.
             </p>
-            <div className="space-y-4">
-              <h3 className="text-xs font-bold text-blue-400 uppercase tracking-[0.3em]">
-                Tech Stack
-              </h3>
-              <SkillsSet />
-            </div>
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-4">
               <CustomButton
                 href="#contact"
                 variant="gold"
@@ -107,6 +79,37 @@ export default function About() {
               </CustomButton>
             </div>
           </div>
+          <ul
+            ref={secondDivRef}
+            className={`grid sm:grid-cols-2 gap-4 transition-all duration-1000 ${
+              secondDivInView ? "slide-in-right" : "opacity-0"
+            }`}
+          >
+            {highlights.map(({ icon: Icon, title, text }) => (
+              <li
+                key={title}
+                className="bg-blue-950/20 p-6 rounded-2xl border border-blue-900/40 hover:border-gold/40 transition-colors"
+              >
+                <Icon aria-hidden className="h-6 w-6 text-gold mb-3" />
+                <h3 className="text-base font-semibold text-white mb-1">
+                  {title}
+                </h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          ref={stackRef}
+          className={`mt-16 transition-all duration-1000 ${
+            stackInView ? "fade-in" : "opacity-0"
+          }`}
+        >
+          <h3 className="text-xs font-bold text-blue-400 uppercase tracking-[0.3em] text-center mb-6">
+            Tech Stack
+          </h3>
+          <SkillsSet />
         </div>
       </div>
     </section>
