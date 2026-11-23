@@ -34,20 +34,20 @@ The work has four phases: **inspect → gather facts → implement → verify**.
 
 Pull from the codebase, README, `package.json`, existing copy and env vars first. Ask the user only for what's missing, in one batched question. Never invent verification codes, social handles, app-store IDs or ratings; leave a clearly marked `TODO` instead.
 
-| Fact | Used for |
-|---|---|
-| Production URL (e.g. `https://example.com`) | absolute URLs, canonical, sitemap, robots, JSON-LD `@id`s |
-| App / brand name, one-line tagline | title default + template, OG, manifest |
-| Description (≤ ~160 chars, written for humans) | description, OG, X |
-| Brand colors for light/dark | theme-color, manifest |
+| Fact                                                                                                      | Used for                                                                           |
+| --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Production URL (e.g. `https://example.com`)                                                               | absolute URLs, canonical, sitemap, robots, JSON-LD `@id`s                          |
+| App / brand name, one-line tagline                                                                        | title default + template, OG, manifest                                             |
+| Description (≤ ~160 chars, written for humans)                                                            | description, OG, X                                                                 |
+| Brand colors for light/dark                                                                               | theme-color, manifest                                                              |
 | Supported locales (if any), the default one, and whether the language should follow the visitor's browser | hreflang, `<html lang dir>`, language negotiation (`references/i18n-reference.md`) |
-| X handle(s) for company and author | `twitter:site`, `twitter:creator` |
-| Search Console / Bing / Yandex / Facebook verification codes | verification |
-| Organization legal name, logo URL, social profile URLs | JSON-LD `Organization` |
-| What the product is (SaaS, product, articles…), pricing, real ratings | JSON-LD type choice |
-| Native iOS/Android app details (only if one ships) | app links |
-| **SPA only:** which routes must have their own social previews, and the host | rendering strategy, soft-404 setup |
-| Whether they want `llms.txt` (optional, see below) | `llms.txt` / `llms-full.txt` |
+| X handle(s) for company and author                                                                        | `twitter:site`, `twitter:creator`                                                  |
+| Search Console / Bing / Yandex / Facebook verification codes                                              | verification                                                                       |
+| Organization legal name, logo URL, social profile URLs                                                    | JSON-LD `Organization`                                                             |
+| What the product is (SaaS, product, articles…), pricing, real ratings                                     | JSON-LD type choice                                                                |
+| Native iOS/Android app details (only if one ships)                                                        | app links                                                                          |
+| **SPA only:** which routes must have their own social previews, and the host                              | rendering strategy, soft-404 setup                                                 |
+| Whether they want `llms.txt` (optional, see below)                                                        | `llms.txt` / `llms-full.txt`                                                       |
 
 Read the site URL from an env var (`NEXT_PUBLIC_SITE_URL`, `VITE_SITE_URL`, `REACT_APP_SITE_URL`, `SITE_URL`) with a hard-coded production fallback, so the canonical domain is defined in one place.
 
@@ -65,7 +65,7 @@ Rules, reasons and edge cases: `references/nextjs-reference.md` (multilingual / 
 8. **Verification / format detection / app links**: `verification.google`, `other['msvalidate.01']`, never `yahoo`. `formatDetection` off for email/address/telephone. `appLinks` only if a native app ships.
 9. **JSON-LD**: the `JsonLd` helper (escapes `<`). Home page gets `Organization` + `WebSite` (+ `SoftwareApplication`/`Product`) linked by `@id`. Posts get `Article`/`BlogPosting` + `BreadcrumbList`. Only real, visible ratings.
 10. **Sitemap + robots**: `app/sitemap.ts` (public routes + dynamic entries, real `lastModified`) and `app/robots.ts` (disallow `/api/` and private areas, link the sitemap, block non-production).
-11. *(Optional)* **llms.txt**: only if the user wants it. See "Optional — llms.txt" below. Templates: `lib/llms.ts`, `app/llms.txt/route.ts`, `app/llms-full.txt/route.ts`.
+11. _(Optional)_ **llms.txt**: only if the user wants it. See "Optional — llms.txt" below. Templates: `lib/llms.ts`, `app/llms.txt/route.ts`, `app/llms-full.txt/route.ts`.
 
 Keep shared values in `lib/site.ts` and use the `pageMetadata()` helper so canonical, OG url and shared OG fields are always set together.
 
@@ -73,11 +73,12 @@ Keep shared values in `lib/site.ts` and use the `pageMetadata()` helper so canon
 
 Rules, reasons and edge cases: `references/react-reference.md`. **Read section 0 there first.** Templates: `templates/react/`.
 
-**Step 0: choose the rendering strategy and tell the user.** A client-only SPA serves one `index.html` for every route. Google eventually runs the JS. Social platforms (LinkedIn, Facebook, X, Slack, WhatsApp) and most AI crawlers don't, so they only ever see `index.html`.
+**Step 0: choose the rendering strategy and tell the user.** A client-only SPA serves one `index.html` for every route. Google eventually runs the JS. Social platforms (LinkedIn, Facebook, X, Slack) and most AI crawlers don't, so they only ever see `index.html`.
+
 - Only the landing page matters (app is behind a login) → stay an SPA with good `index.html` defaults.
 - Public marketing/blog/docs routes need their own previews → **prerender** them (React Router framework mode `prerender`, Vike, or a maintained Vite prerender plugin).
 - Many dynamic public pages → SSR (React Router framework mode or Vike) or migrate to Next.js.
-Don't silently pick one. If the project stays a pure SPA, state clearly what social previews and AI crawlers will and won't see.
+  Don't silently pick one. If the project stays a pure SPA, state clearly what social previews and AI crawlers will and won't see.
 
 ### B1 — Vite / CRA SPA
 
@@ -98,7 +99,7 @@ Don't silently pick one. If the project stays a pure SPA, state clearly what soc
 7. **Icons and manifest** in `public/`. CRA already has `manifest.json`, so update it rather than adding a second one. Don't link files that don't exist; list what the user must add.
 8. **Sitemap + robots.txt**: `templates/react/scripts/generate-sitemap.mjs` as a `postbuild` script (writes both into `dist/` or `build/`, disallow-all outside production). Use one source of truth: if a hand-written `public/robots.txt` exists, keep either it or the script, not both.
 9. **Prerendering** if chosen in step 0. Then verify that each public route's built HTML contains its own tags.
-10. *(Optional)* **llms.txt**: `templates/react/scripts/generate-llms.mjs` as an extra `postbuild` step, only if the user wants it.
+10. _(Optional)_ **llms.txt**: `templates/react/scripts/generate-llms.mjs` as an extra `postbuild` step, only if the user wants it.
 
 ### B2 — React Router v7 framework mode
 
@@ -110,7 +111,7 @@ Templates: `templates/react/react-router-framework/`.
 4. Private routes return `seoMeta({ ..., noindex: true })`.
 5. Resource routes `app/routes/sitemap[.]xml.ts` and `app/routes/robots[.]txt.ts`.
 6. `react-router.config.ts`: keep SSR, or `prerender` public routes (including dynamic ones and the sitemap/robots routes).
-7. *(Optional)* **llms.txt**: `app/lib/llms.ts` plus resource routes `llms[.]txt.ts` and `llms-full[.]txt.ts`, only if the user wants it. Add them to `prerender` if the site is static.
+7. _(Optional)_ **llms.txt**: `app/lib/llms.ts` plus resource routes `llms[.]txt.ts` and `llms-full[.]txt.ts`, only if the user wants it. Add them to `prerender` if the site is static.
 
 ## Optional — llms.txt and llms-full.txt
 
@@ -144,9 +145,10 @@ Templates: `templates/react/react-router-framework/`.
 - [ ] Sitemap and robots.txt live
 - [ ] React SPA: rendering strategy decided; public routes prerendered if they need their own previews; no hash routing
 - [ ] Site verified and sitemap submitted in Google Search Console (and Bing Webmaster Tools)
-- [ ] *(Optional, not required for launch)* `/llms.txt` and `/llms-full.txt` live, if the user chose them
+- [ ] _(Optional, not required for launch)_ `/llms.txt` and `/llms-full.txt` live, if the user chose them
 
 After deploying, test with:
+
 - **Google Rich Results Test**: does the JSON-LD qualify for rich results?
 - **Schema Markup Validator** (validator.schema.org): structured-data errors
 - **LinkedIn Post Inspector** and **Facebook Sharing Debugger**: preview cards, and refreshing cached images

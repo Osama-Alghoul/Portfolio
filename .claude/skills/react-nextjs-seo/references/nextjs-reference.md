@@ -3,6 +3,7 @@
 Detailed rules for each section of the SKILL.md workflow. Each section: **what it is → why it matters → how to do it in the App Router → pitfalls**.
 
 ## Contents
+
 1. Viewport
 2. Basic SEO and identity
 3. Canonical URLs and languages
@@ -28,20 +29,21 @@ Detailed rules for each section of the SKILL.md workflow. Each section: **what i
 **How:** export a separate `viewport` object from the root layout. Next.js renders the `<meta name="viewport">` and `<meta name="theme-color">` tags.
 
 ```tsx
-import type { Viewport } from 'next'
+import type { Viewport } from "next";
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 5, // keep pinch-zoom
-}
+};
 ```
 
 **Pitfalls**
+
 - Never `maximumScale: 1` or `userScalable: false` — blocks zoom for low-vision users; Lighthouse flags it.
 - `viewport`, `themeColor` and `colorScheme` inside `metadata` are deprecated since Next 14. Move them to the `viewport` export.
 - `viewport` can also be `generateViewport()` if it must be dynamic. Same segment can't export both `viewport` and `generateViewport`.
@@ -49,26 +51,27 @@ export const viewport: Viewport = {
 ## 2. Basic SEO and identity
 
 ```tsx
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://example.com'),
+  metadataBase: new URL("https://example.com"),
   title: {
-    default: 'Your App Name — The Ultimate Solution',
-    template: '%s | Your App Name',
+    default: "Your App Name — The Ultimate Solution",
+    template: "%s | Your App Name",
   },
-  description: 'What your app does and why users should care.',
-  applicationName: 'Your App Name',
-}
+  description: "What your app does and why users should care.",
+  applicationName: "Your App Name",
+};
 ```
 
-- **`title.template`**: a child page exporting `title: 'Pricing'` renders "Pricing | Your App Name". Templates apply to *child* segments, not the segment that defines them — that's why the root needs `default`. A page can opt out with `title: { absolute: 'Exact Title' }`.
+- **`title.template`**: a child page exporting `title: 'Pricing'` renders "Pricing | Your App Name". Templates apply to _child_ segments, not the segment that defines them — that's why the root needs `default`. A page can opt out with `title: { absolute: 'Exact Title' }`.
 - **Title length**: ~50–60 chars so Google doesn't truncate. Each page needs a unique title.
 - **`description`**: the grey snippet text. ≤ ~160 chars, written as ad copy for humans — it drives click-through rate. Each important page should have its own.
 - **`metadataBase`**: root URL. Lets every other field use relative paths (`/og-image.png`) that Next resolves to absolute URLs. OG, Twitter and canonical require absolute URLs, so always set it. Without it Next warns and falls back to `localhost` / Vercel URLs.
 - Recommended: derive from env so previews work:
   ```ts
-  export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com'
+  export const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
   ```
 
 ## 3. Canonical URLs and languages
@@ -78,31 +81,36 @@ export const metadata: Metadata = {
 ```tsx
 // app/pricing/page.tsx
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: "Pricing",
   alternates: {
-    canonical: '/pricing',
+    canonical: "/pricing",
     languages: {
-      'en-US': '/en-US/pricing',
-      'es-ES': '/es-ES/pricing',
-      'x-default': '/pricing',
+      "en-US": "/en-US/pricing",
+      "es-ES": "/es-ES/pricing",
+      "x-default": "/pricing",
     },
   },
-}
+};
 ```
 
 Dynamic routes:
+
 ```tsx
 // app/blog/[slug]/page.tsx  (Next 15+: params is a Promise)
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
-): Promise<Metadata> {
-  const { slug } = await params
-  return { alternates: { canonical: `/blog/${slug}` } }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  return { alternates: { canonical: `/blog/${slug}` } };
 }
 ```
+
 On Next 13/14, `params` is a plain object: `({ params }: { params: { slug: string } })`.
 
 **Pitfalls**
+
 - **Never `canonical: '/'` (or any fixed canonical) in the root layout.** Every page inherits it → every page says "I'm a copy of the homepage" → pages drop out of the index. Set it per page. (A layout canonical is only OK when the layout wraps exactly one page.)
 - Canonical must be self-referential for indexable pages, absolute after resolution (it will be, given `metadataBase`), and match the URL in the sitemap.
 - `x-default` is easy to forget: the page shown to users whose language isn't supported.
@@ -138,7 +146,7 @@ robots: {
 
 ## 5. Open Graph
 
-Preview cards on LinkedIn, Facebook, WhatsApp, Slack, Discord, iMessage. Not a ranking factor, but it decides click-through on shared links, which bring traffic and backlinks.
+Preview cards on LinkedIn, Facebook, Slack, Discord, iMessage. Not a ranking factor, but it decides click-through on shared links, which bring traffic and backlinks.
 
 ```tsx
 openGraph: {
@@ -169,6 +177,7 @@ twitter: {
   // title / description / images optional — X falls back to Open Graph
 },
 ```
+
 - `summary_large_image` = big image instead of thumbnail.
 - X falls back to `og:title`, `og:description`, `og:image`, so usually only `card`, `site`, `creator` are needed.
 
@@ -184,6 +193,7 @@ Favicon shows next to your site name in Google mobile results, tabs, bookmarks. 
 | `apple-icon.png` | 180×180, no transparency (iOS fills it black) |
 
 Equivalent object form:
+
 ```tsx
 icons: {
   icon: [
@@ -208,6 +218,7 @@ appleWebApp: {
 ## 8. Verification, format detection, app links, `other`
 
 **Verification** — proves ownership so you can use Google Search Console (submit sitemap, see queries, indexing errors) and Bing Webmaster Tools (also feeds DuckDuckGo, Yahoo results, ChatGPT search, Copilot).
+
 ```tsx
 verification: {
   google: 'google-site-verification-code',
@@ -218,37 +229,45 @@ verification: {
   },
 },
 ```
+
 - Google code: Search Console → add property → "HTML tag" method; copy only the `content` value. A DNS TXT record is an equally valid alternative (and covers all subdomains).
 - Ignore `yahoo` — that service no longer exists.
 - Only include entries the user actually has; use a `TODO` comment otherwise. Never ship placeholder codes.
 
 **Format detection** — stops iOS Safari auto-linking numbers/addresses (order IDs, prices mistaken for phone numbers):
+
 ```tsx
 formatDetection: { email: false, address: false, telephone: false },
 ```
 
 **App links** — only if a native app ships:
+
 ```tsx
 appLinks: {
   ios: { url: 'https://example.com/ios', app_store_id: '123456789' },
   android: { package: 'com.example.app', app_name: 'Your App Name' },
 },
 ```
+
 For iOS Safari's Smart App Banner, `itunes: { appId: '123456789' }`.
 
 **`other`** — arbitrary `<meta>` tags without a dedicated field. Skip `msapplication-TileColor` (Windows 8 tiles).
 
 ## 9. Structured data (JSON-LD)
 
-Metadata tells search engines *about* a page; JSON-LD tells them *what it is* (Schema.org vocabulary). Enables rich results — ratings, prices, breadcrumbs, logo/knowledge panel — and helps AI search understand the product.
+Metadata tells search engines _about_ a page; JSON-LD tells them _what it is_ (Schema.org vocabulary). Enables rich results — ratings, prices, breadcrumbs, logo/knowledge panel — and helps AI search understand the product.
 
 Not part of `metadata`; render a script tag in the page/layout (server component):
+
 ```tsx
 <script
   type="application/ld+json"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+  }}
 />
 ```
+
 - The `.replace(/</g, '\\u003c')` prevents injected content (e.g. a post title containing `</script>`) from breaking out of the tag. Always include it. Use the `JsonLd` helper in `templates/nextjs/components/json-ld.tsx`.
 - `@graph` holds several entities in one block; `@id` values (e.g. `https://example.com/#organization`) link them.
 - Use absolute URLs inside JSON-LD (`metadataBase` doesn't apply here).
@@ -264,6 +283,7 @@ Not part of `metadata`; render a script tag in the page/layout (server component
 | FAQ section | `FAQPage` (note: Google shows FAQ rich results only for authoritative gov/health sites now; still harmless and useful to AI tools) |
 
 **Rules**
+
 - Only mark up what's visible on the page. `aggregateRating`/`review` only if real and shown — fake review markup gets manual penalties.
 - Ratings require `ratingValue` + `ratingCount` (or `reviewCount`).
 - TypeScript: `npm i -D schema-dts`, type as `WithContext<SoftwareApplication>` or `Graph`.
@@ -275,26 +295,29 @@ Site-wide files. Sitemap lists every page you want indexed so new pages are foun
 
 ```ts
 // app/sitemap.ts
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getAllPosts()
+  const posts = await getAllPosts();
   return [
-    { url: 'https://example.com', lastModified: new Date() },
-    ...posts.map((p) => ({ url: `https://example.com/blog/${p.slug}`, lastModified: p.updatedAt })),
-  ]
+    { url: "https://example.com", lastModified: new Date() },
+    ...posts.map((p) => ({
+      url: `https://example.com/blog/${p.slug}`,
+      lastModified: p.updatedAt,
+    })),
+  ];
 }
 ```
 
 ```ts
 // app/robots.ts
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: '*', allow: '/', disallow: ['/dashboard/', '/api/'] },
-    sitemap: 'https://example.com/sitemap.xml',
-  }
+    rules: { userAgent: "*", allow: "/", disallow: ["/dashboard/", "/api/"] },
+    sitemap: "https://example.com/sitemap.xml",
+  };
 }
 ```
 
@@ -318,14 +341,14 @@ export default function robots(): MetadataRoute.Robots {
 
 ## 12. Fields to skip
 
-| Field | Why |
-|---|---|
-| `keywords` | Ignored by Google since 2009 |
-| `generator`, `category`, `classification` | No ranking effect |
-| `verification.yahoo` | Service no longer exists |
-| `other['msapplication-TileColor']`, `msapplication-*` | Windows 8 tiles |
-| `icons.other` mask-icon | Legacy Safari pinned tabs |
-| `appleWebApp.startupImage` | Optional legacy splash screens |
+| Field                                                                | Why                                |
+| -------------------------------------------------------------------- | ---------------------------------- |
+| `keywords`                                                           | Ignored by Google since 2009       |
+| `generator`, `category`, `classification`                            | No ranking effect                  |
+| `verification.yahoo`                                                 | Service no longer exists           |
+| `other['msapplication-TileColor']`, `msapplication-*`                | Windows 8 tiles                    |
+| `icons.other` mask-icon                                              | Legacy Safari pinned tabs          |
+| `appleWebApp.startupImage`                                           | Optional legacy splash screens     |
 | `metadata.viewport` / `metadata.themeColor` / `metadata.colorScheme` | Deprecated — use `viewport` export |
 
 ## 13. Optional: llms.txt and llms-full.txt
@@ -337,10 +360,12 @@ export default function robots(): MetadataRoute.Robots {
 **Why it's optional:** it's a community proposal, not a standard. Google and Bing don't use it for ranking or indexing, and the major AI crawlers don't reliably request it yet. It's most useful on docs sites, developer tools and APIs, where coding agents and AI assistants are pointed at the docs directly. For most marketing sites it does little.
 
 **How (App Router):** templates in `templates/nextjs/`:
+
 - `lib/llms.ts`: the link sections plus `buildLlmsTxt()` / `buildLlmsFullTxt()`, using `siteConfig` and `absoluteUrl()` from `lib/site.ts`.
 - `app/llms.txt/route.ts` and `app/llms-full.txt/route.ts`: route handlers (a folder named `llms.txt` serves `/llms.txt`), `force-static` with hourly `revalidate`, `Content-Type: text/plain; charset=utf-8`.
 
 **Pitfalls:**
+
 - Public, indexable pages only, the same list as the sitemap. Never private, noindex or gated content, especially in `llms-full.txt`.
 - Use Markdown or plain text from the CMS/MDX source, not rendered HTML.
 - Absolute URLs that match the canonicals.

@@ -5,6 +5,7 @@ Covers React apps built with **Vite** or **Create React App**, using either clie
 **Why** each tag matters is the same as in Next.js. See `nextjs-reference.md` for the reasoning behind each field. This file covers **how to do it in React** and the problems that only single-page apps (SPAs) have.
 
 ## Contents
+
 0. The core problem: client-side rendering
 1. Viewport
 2. Title and description (head management)
@@ -26,22 +27,23 @@ Covers React apps built with **Vite** or **Create React App**, using either clie
 
 A Vite or CRA SPA ships one `index.html` with an empty `<div id="root">`. Everything else is rendered by JavaScript.
 
-| Crawler | Runs JS? | What it sees on `/pricing` of a plain SPA |
-|---|---|---|
-| Googlebot | Yes, in a delayed second "render" pass with a limited budget | Your per-route tags, eventually |
-| Bingbot | Partially, unreliably | Often only `index.html` |
-| LinkedIn, Facebook, X, Slack, WhatsApp, Discord, iMessage | **No** | Only `index.html`, so every route shows the homepage preview |
-| Most AI crawlers (GPTBot, ClaudeBot, PerplexityBot…) | **No** | Only `index.html` and an empty root div |
+| Crawler                                              | Runs JS?                                                     | What it sees on `/pricing` of a plain SPA                    |
+| ---------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Googlebot                                            | Yes, in a delayed second "render" pass with a limited budget | Your per-route tags, eventually                              |
+| Bingbot                                              | Partially, unreliably                                        | Often only `index.html`                                      |
+| LinkedIn, Facebook, X, Slack, Discord, iMessage      | **No**                                                       | Only `index.html`, so every route shows the homepage preview |
+| Most AI crawlers (GPTBot, ClaudeBot, PerplexityBot…) | **No**                                                       | Only `index.html` and an empty root div                      |
 
 So tags set with JavaScript reach Google and nobody else. Pick a strategy based on what the public pages are:
 
-| Situation | Strategy |
-|---|---|
-| App is behind a login; only the landing page needs SEO | Good `index.html` defaults + a head manager for titles. Consider building the landing page separately as a static site. |
-| Marketing pages, blog or docs built in React | **Prerender** every public route to static HTML at build time |
-| Many dynamic public pages (products, listings, user content) | **SSR**: React Router v7 framework mode with SSR, Vike, or migrate to Next.js |
+| Situation                                                    | Strategy                                                                                                                |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| App is behind a login; only the landing page needs SEO       | Good `index.html` defaults + a head manager for titles. Consider building the landing page separately as a static site. |
+| Marketing pages, blog or docs built in React                 | **Prerender** every public route to static HTML at build time                                                           |
+| Many dynamic public pages (products, listings, user content) | **SSR**: React Router v7 framework mode with SSR, Vike, or migrate to Next.js                                           |
 
 **Prerendering options**
+
 - **React Router v7 framework mode**: `prerender` in `react-router.config.ts` (section 11). Best choice if the app already uses React Router.
 - **Vike** (the successor to vite-plugin-ssr): prerender or SSR for Vite + React.
 - A Vite prerender plugin such as `vite-prerender-plugin`, or a headless-browser prerender step. Check the package is maintained before adopting it. Avoid `react-snap`, which is unmaintained.
@@ -55,10 +57,22 @@ Always tell the user which strategy you chose, and if they stay a pure SPA, say 
 Put it in `index.html` (Vite: project root; CRA: `public/index.html`):
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=5"
+/>
+<meta
+  name="theme-color"
+  content="#ffffff"
+  media="(prefers-color-scheme: light)"
+/>
+<meta
+  name="theme-color"
+  content="#0a0a0a"
+  media="(prefers-color-scheme: dark)"
+/>
 ```
+
 Never `maximum-scale=1` or `user-scalable=no`.
 
 ## 2. Title and description (head management)
@@ -69,11 +83,13 @@ React has no `metadata` object, so you need a way to set head tags per route:
 - **React 18:** use `react-helmet-async` (`<HelmetProvider>` at the root, `<Helmet>` per route). Don't use the original `react-helmet`; it's unmaintained and not concurrent-safe.
 
 Use the `Seo` component in `templates/react/src/seo/` (one version for React 19, one for Helmet). It:
+
 - builds a "Page | Brand" title, since React has no `title.template`
 - sets description, canonical, hreflang, robots, Open Graph and X tags from one set of props
 - turns relative paths into absolute URLs, since there's no `metadataBase`
 
 **Rules**
+
 - Render exactly one `<Seo>` per route, usually at the top of the route component. Every route needs one.
 - Titles ~50–60 chars, descriptions ≤ ~160, unique per page.
 - **Duplicate-tag trap:** neither React 19 nor Helmet removes tags already in `index.html`. If `index.html` has a default `<title>` and description, and a route renders its own, the page ends up with two. Fix: mark every route-specific default in `index.html` with `data-seo-default` and remove those tags at startup (`removeSeoDefaults()` in `main.tsx`, see template). Crawlers that don't run JS still see the defaults. Google and prerendered HTML see only the route's tags.
@@ -84,8 +100,16 @@ Use the `Seo` component in `templates/react/src/seo/` (one version for React 19,
 
 ```html
 <link rel="canonical" href="https://example.com/pricing" />
-<link rel="alternate" hreflang="en-US" href="https://example.com/en-US/pricing" />
-<link rel="alternate" hreflang="es-ES" href="https://example.com/es-ES/pricing" />
+<link
+  rel="alternate"
+  hreflang="en-US"
+  href="https://example.com/en-US/pricing"
+/>
+<link
+  rel="alternate"
+  hreflang="es-ES"
+  href="https://example.com/es-ES/pricing"
+/>
 <link rel="alternate" hreflang="x-default" href="https://example.com/pricing" />
 ```
 
@@ -98,12 +122,18 @@ Use the `Seo` component in `templates/react/src/seo/` (one version for React 19,
 ## 4. Robots meta, soft 404s, preview deployments
 
 Keep a permanent default in `index.html`:
+
 ```html
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
 ```
+
 Private routes (dashboard, settings, account, admin, checkout, auth) render `<Seo noindex />`, which adds `<meta name="robots" content="noindex, nofollow">`. When a page has two robots tags, Google follows the most restrictive, so the default doesn't need removing. Put it once in the private area's layout route so every child inherits it.
 
 **Soft 404s:** SPA hosting rewrites every unknown URL to `index.html` with HTTP **200**, so Google indexes junk URLs as real pages.
+
 - The catch-all "not found" route must render `<Seo noindex title="Page not found" />`.
 - Better: when prerendering, emit a real `404.html` and configure the host to serve it with status 404 for unknown paths (Netlify, Cloudflare Pages and Vercel each have a setting or convention for this). With SSR, return a real 404 status.
 
@@ -117,13 +147,22 @@ Note that Open Graph uses `property=`, not `name=`. Every URL must be **absolute
 <meta property="og:site_name" content="Your App Name" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" data-seo-default />
-<meta property="og:title" content="Your App Name — The Ultimate Solution" data-seo-default />
+<meta
+  property="og:title"
+  content="Your App Name — The Ultimate Solution"
+  data-seo-default
+/>
 <meta property="og:description" content="…" data-seo-default />
-<meta property="og:image" content="https://example.com/og-image.png" data-seo-default />
+<meta
+  property="og:image"
+  content="https://example.com/og-image.png"
+  data-seo-default
+/>
 <meta property="og:image:width" content="1200" data-seo-default />
 <meta property="og:image:height" content="630" data-seo-default />
 <meta property="og:image:alt" content="App preview" data-seo-default />
 ```
+
 - Image 1200 × 630, PNG/JPG, not SVG.
 - Leave `og:url` out of `index.html` defaults. On an un-prerendered SPA it would say "homepage" on every route. `<Seo>` sets it per route.
 - **Per-route previews only reach social platforms if the route is prerendered or server-rendered** (section 0).
@@ -137,20 +176,27 @@ Note that Open Graph uses `property=`, not `name=`. Every URL must be **absolute
 <meta name="twitter:site" content="@your_company" />
 <meta name="twitter:creator" content="@your_author" />
 ```
+
 X falls back to `og:title`, `og:description` and `og:image`, so these three are usually enough.
 
 ## 7. Icons and manifest
 
 Files go in `public/`, with links in `index.html`:
+
 ```html
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />  <!-- 180×180, no transparency -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<!-- 180×180, no transparency -->
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-title" content="Your App Name" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+/>
 ```
+
 - Manifest template: `templates/react/public/manifest.webmanifest`. `vite-plugin-pwa` can generate the manifest and icons if the user wants a full PWA.
 - CRA already ships `public/manifest.json` and `logo192.png`/`logo512.png`. Update the name, colors and icons instead of adding a second manifest.
 - Don't link icon files that don't exist. Tell the user which files and sizes to add.
@@ -164,15 +210,18 @@ Files go in `public/`, with links in `index.html`:
 <meta name="facebook-domain-verification" content="CODE" />
 <meta name="format-detection" content="telephone=no, email=no, address=no" />
 ```
+
 These must be in static `index.html` (or SSR output). Verification bots don't run JS. Only include codes the user actually has; a DNS TXT record also works. Skip Yahoo, which no longer exists.
 
 App links, only if a native app ships:
+
 ```html
 <meta property="al:ios:url" content="https://example.com/ios" />
 <meta property="al:ios:app_store_id" content="123456789" />
 <meta property="al:android:package" content="com.example.app" />
 <meta property="al:android:app_name" content="Your App Name" />
-<meta name="apple-itunes-app" content="app-id=123456789" />  <!-- Safari Smart App Banner -->
+<meta name="apple-itunes-app" content="app-id=123456789" />
+<!-- Safari Smart App Banner -->
 ```
 
 ## 9. JSON-LD
@@ -184,6 +233,7 @@ App links, only if a native app ships:
 ## 10. Sitemap and robots.txt
 
 Vite and CRA don't generate these, so produce them at build time:
+
 - `templates/react/scripts/generate-sitemap.mjs` writes `sitemap.xml` **and** `robots.txt` into the build folder (`dist/` for Vite, `build/` for CRA) from a route list plus your data source. Wire it up as `"postbuild": "node scripts/generate-sitemap.mjs"`.
 - Use one source of truth. If the project already has a hand-written `public/robots.txt` or `public/sitemap.xml`, either keep it and update it, or delete it and use the script. Never ship both.
 - Include only public, indexable, canonical URLs, with real `lastmod` dates.

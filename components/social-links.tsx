@@ -11,7 +11,6 @@ import {
   DiscordIcon,
   // SteamIcon,
   TelegramIcon,
-  WhatsAppIcon,
 } from "./brand-icons";
 
 interface SocialLinksProps {
@@ -30,7 +29,6 @@ const LINKS: { label: string; href: string; icon: Icon }[] = [
   { label: "Discord", href: contact.DiscordProfile, icon: DiscordIcon },
   // { label: "Steam", href: contact.Steam, icon: SteamIcon },
   { label: "Telegram", href: contact.Telegram, icon: TelegramIcon },
-  { label: "WhatsApp", href: contact.Whatsapp, icon: WhatsAppIcon },
 ];
 
 export default function SocialLinks({ size = "md" }: SocialLinksProps) {

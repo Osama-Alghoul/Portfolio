@@ -40,7 +40,7 @@ const TECH_FAQ_EN = [
   },
   {
     q: "Do you take freelance work?",
-    a: "Yes. Reach out by email or WhatsApp to discuss project details.",
+    a: "Yes. Reach out by email to discuss project details.",
   },
   {
     q: "How long does building a website take?",
@@ -79,15 +79,20 @@ export function GET() {
     `- Telegram: ${data.contact.Telegram}`,
     `- Discord: ${data.contact.DiscordUsername}, ${data.contact.DiscordProfile} (server invite: ${data.contact.Discord})`,
     `- Steam: ${data.contact.Steam}`,
-    `- WhatsApp: ${data.contact.Whatsapp}`,
     `- Facebook: ${data.contact.Facebook}`,
     `- Instagram: ${data.contact.Instagram}`,
   ];
 
   const blog = [
-    ...LOCALES.map((lang) => `- [Blog (${lang})](${SITE_URL}${blogPath(lang)}): articles in ${lang === "ar" ? "Arabic" : "English"}`),
+    ...LOCALES.map(
+      (lang) =>
+        `- [Blog (${lang})](${SITE_URL}${blogPath(lang)}): articles in ${lang === "ar" ? "Arabic" : "English"}`,
+    ),
     ...getAllPosts().flatMap((p) =>
-      LOCALES.map((lang) => `- [${p.translations[lang].title}](${SITE_URL}${postPath(lang, p.slug)}): ${p.translations[lang].description}`),
+      LOCALES.map(
+        (lang) =>
+          `- [${p.translations[lang].title}](${SITE_URL}${postPath(lang, p.slug)}): ${p.translations[lang].description}`,
+      ),
     ),
   ];
 
