@@ -15,7 +15,7 @@ const faqs = [
   {
     question: "How reliable is your setup?",
     answer:
-      "I’ve worked full-time remotely since 2025. I have stable power, I keep backup power and a backup connection, and I send written updates before blockers become surprises.",
+      "I’ve worked full-time remotely since 2020. I have stable power, I keep backup power and a backup connection, and I send written updates before blockers become surprises.",
   },
   {
     question: "Can you be hired from Palestine?",
