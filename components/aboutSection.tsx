@@ -11,7 +11,7 @@ const highlights = [
   {
     icon: Briefcase,
     title: "Full-time remote engineer",
-    text: "Shipping production work for international teams since 2025.",
+    text: "Shipping production work for international teams since 2020.",
   },
   {
     icon: Sparkles,
